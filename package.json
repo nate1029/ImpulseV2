@@ -20,7 +20,7 @@
     "url": "https://github.com/Meet-1010/Impulse-IDE-v2/issues"
   },
   "impulse": {
-    "cloudUrl": "https://impulse-cloud-1008821972739.us-west1.run.app"
+    "cloudUrl": "https://impulse-ide-cloud.onrender.com"
   },
   "license": "MIT",
   "engines": {
