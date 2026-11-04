@@ -31,13 +31,33 @@ export function codeEmail(type, otp) {
   return { subject: SUBJECTS[type] || SUBJECTS['sign-in'], text, html };
 }
 
+// "Impulse <no-reply@x.com>" or "no-reply@x.com" into { name, email }.
+function parseFrom(from) {
+  const m = /^\s*(.*?)\s*<([^>]+)>\s*$/.exec(from || '');
+  return m ? { name: m[1] || 'Impulse', email: m[2].trim() } : { name: 'Impulse', email: String(from || '').trim() };
+}
+
 /**
- * @param {{ resendKey: string, from: string }} config
+ * @param {{ resendKey: string, brevoKey: string, from: string }} config
  * @param {(msg: string) => void} [log]
  */
 export function createMailer(config, log = console.log) {
   return async function sendCode({ email, otp, type }) {
     const message = codeEmail(type, otp);
+    // Brevo first (single verified sender, no domain), then Resend, then log.
+    if (config.brevoKey) {
+      const sender = parseFrom(config.from);
+      const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'api-key': config.brevoKey, 'content-type': 'application/json', accept: 'application/json' },
+        body: JSON.stringify({ sender, to: [{ email }], subject: message.subject, textContent: message.text, htmlContent: message.html }),
+      });
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        throw new Error(`Brevo refused the email (${res.status}): ${detail.slice(0, 200)}`);
+      }
+      return;
+    }
     if (!config.resendKey) {
       log(`[email] ${type} code for ${email}: ${otp}`);
       return;

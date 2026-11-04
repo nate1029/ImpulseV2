@@ -16,6 +16,7 @@ export function loadConfig(env = process.env) {
   const baseURL = (env.IMPULSE_CLOUD_URL || env.BETTER_AUTH_URL || vercelURL || 'http://localhost:8787').replace(/\/+$/, '');
   const production = env.VERCEL_ENV === 'production' || env.NODE_ENV === 'production';
   const resendKey = env.RESEND_API_KEY || '';
+  const brevoKey = env.BREVO_API_KEY || '';
 
   return {
     missing,
@@ -44,11 +45,14 @@ export function loadConfig(env = process.env) {
         : null,
       email: {
         resendKey,
+        // Brevo (single verified sender, no domain needed). Takes precedence
+        // over Resend when set.
+        brevoKey,
         // Resend's shared test sender until a domain of ours is verified there.
         from: env.EMAIL_FROM || 'Impulse <onboarding@resend.dev>',
         // Without a mail service, codes are printed to the server log, which
         // is only acceptable outside production.
-        enabled: Boolean(resendKey) || !production,
+        enabled: Boolean(resendKey) || Boolean(brevoKey) || !production,
       },
       adminEmails: list(env.ADMIN_EMAILS).map((e) => e.toLowerCase()),
       trustedOrigins: list(env.TRUSTED_ORIGINS),
