@@ -1,0 +1,5 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/missing_include_wifi.ino: In function 'void setup()':
+<sketch>/missing_include_wifi.ino:1:16: error: 'WiFi' was not declared in this scope
+    1 | void setup() { WiFi.begin("net", "pass"); }
+      |                ^~~~

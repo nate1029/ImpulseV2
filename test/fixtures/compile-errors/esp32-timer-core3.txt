@@ -1,0 +1,20 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/esp32_timer_core3.ino: In function 'void setup()':
+<sketch>/esp32_timer_core3.ino:4:17: error: too many arguments to function 'hw_timer_t* timerBegin(uint32_t)'
+    4 |   t = timerBegin(0, 80, true);
+      |       ~~~~~~~~~~^~~~~~~~~~~~~
+~/Library/Arduino15/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal-timer.h:35:13: note: declared here
+   35 | hw_timer_t *timerBegin(uint32_t frequency);
+      |             ^~~~~~~~~~
+<sketch>/esp32_timer_core3.ino:5:23: error: too many arguments to function 'void timerAttachInterrupt(hw_timer_t*, void (*)())'
+    5 |   timerAttachInterrupt(t, &onTimer, true);
+      |   ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+~/Library/Arduino15/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal-timer.h:50:6: note: declared here
+   50 | void timerAttachInterrupt(hw_timer_t *timer, void (*userFunc)(void));
+      |      ^~~~~~~~~~~~~~~~~~~~
+<sketch>/esp32_timer_core3.ino:6:3: error: 'timerAlarmWrite' was not declared in this scope; did you mean 'timerWrite'?
+    6 |   timerAlarmWrite(t, 500000, true);
+      |   ^~~~~~~~~~~~~~~
+<sketch>/esp32_timer_core3.ino:7:3: error: 'timerAlarmEnable' was not declared in this scope; did you mean 'timerAlarm'?
+    7 |   timerAlarmEnable(t);
+      |   ^~~~~~~~~~~~~~~~

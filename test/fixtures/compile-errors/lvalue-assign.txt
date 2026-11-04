@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/lvalue_assign.ino: In function 'void loop()':
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/Arduino.h:40:14: error: lvalue required as left operand of assignment
+              ^
+<sketch>/lvalue_assign.ino:3:24: note: in expansion of macro 'HIGH'
+                        ^~~~

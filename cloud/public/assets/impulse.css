@@ -1,0 +1,182 @@
+/* Impulse web pages (sign-in, desktop hand-off, admin): the same instrument
+   language as the app's chat mode — see docs/design/chat-mode.md. */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/jetbrains-mono.woff2') format('woff2');
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --canvas: #0c0c0d;
+  --panel: #121213;
+  --raised: #18181a;
+  --raised-2: #1f1f22;
+  --line: #26262a;
+  --line-strong: #34343a;
+  --text: #eeeef2;
+  --text-2: #b4b4b8;
+  --text-3: #8a8a90;
+  --icon: #6a6a70;
+  --white: #ffffff;
+  --primary-bg: #eeeef2;
+  --primary-fg: #121213;
+  --led-amber: #ffcc33;
+  --led-green: #4ade80;
+  --led-red: #ff5c5c;
+  --ok: #71d083;
+  --warn: #e2b866;
+  --bad: #ff9592;
+  --link: #70b8ff;
+  --trace: #5b8fc9;
+  --focus: #70b8ff;
+  --sans: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --fast: 120ms;
+  --state: 200ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --canvas: #f4f4f2;
+    --panel: #ececea;
+    --raised: #ffffff;
+    --raised-2: #f6f6f4;
+    --line: #dededa;
+    --line-strong: #c9c9c4;
+    --text: #18181a;
+    --text-2: #45454b;
+    --text-3: #5d5d63;
+    --icon: #85858b;
+    --white: #000000;
+    --primary-bg: #18181a;
+    --primary-fg: #ffffff;
+    --led-amber: #e0a800;
+    --led-green: #1f9d55;
+    --led-red: #d93636;
+    --ok: #1f7a40;
+    --warn: #8a5a00;
+    --bad: #b42828;
+    --link: #1f5fb8;
+    --trace: #2f5f9a;
+    --focus: #1f5fb8;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+/* Component display rules must never beat the hidden attribute. */
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--canvas);
+  color: var(--text);
+  font: 400 14px/1.5 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Silkscreen label: mono caps, tracked. Labels and readouts only. */
+.label {
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.readout { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Status LED. */
+.led {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--icon);
+  flex: none;
+}
+.led.amber { background: var(--led-amber); box-shadow: 0 0 6px color-mix(in srgb, var(--led-amber) 60%, transparent); }
+.led.green { background: var(--led-green); box-shadow: 0 0 6px color-mix(in srgb, var(--led-green) 55%, transparent); }
+.led.red { background: var(--led-red); box-shadow: 0 0 6px color-mix(in srgb, var(--led-red) 55%, transparent); }
+.led.pulse { animation: led-pulse 1.2s ease-in-out infinite; }
+@keyframes led-pulse { 50% { opacity: 0.35; } }
+
+/* Buttons: rectilinear keys (3px). White fill is the one primary action. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 3px;
+  border: 1px solid var(--line-strong);
+  background: var(--raised);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background var(--fast) var(--ease-out), border-color var(--fast) var(--ease-out), transform 90ms;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--raised-2); text-decoration: none; }
+.btn:active { transform: translateY(0.5px); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.btn.primary { background: var(--primary-bg); color: var(--primary-fg); border-color: var(--primary-bg); }
+.btn.primary:hover { background: color-mix(in srgb, var(--primary-bg) 88%, var(--canvas)); }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--text-2); }
+.btn.ghost:hover { background: var(--raised); color: var(--text); }
+.btn.danger { color: var(--bad); }
+.btn.small { height: 28px; padding: 0 10px; font-size: 12.5px; }
+.btn.block { width: 100%; }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Inputs: 7px. */
+.field { display: grid; gap: 6px; align-content: start; }
+.field > span { font-size: 12.5px; color: var(--text-2); }
+.input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 7px;
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  color: var(--text);
+  transition: border-color var(--fast) var(--ease-out), background var(--fast) var(--ease-out);
+}
+.input::placeholder { color: var(--text-3); }
+.input:hover { border-color: color-mix(in srgb, var(--line-strong) 60%, var(--text-3)); }
+.input:focus { outline: none; border-color: var(--focus); background: var(--raised); }
+.input[aria-invalid="true"] { border-color: var(--bad); }
+
+.notice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text-2);
+  font-size: 13px;
+}
+.notice .led { margin-top: 6px; }
+.notice.error { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 35%, var(--line)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}

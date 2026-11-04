@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/avr_analog_resolution.ino: In function 'void setup()':
+<sketch>/avr_analog_resolution.ino:1:16: error: 'analogReadResolution' was not declared in this scope
+                ^~~~~~~~~~~~~~~~~~~~
+<sketch>/avr_analog_resolution.ino:1:16: note: suggested alternative: 'analogRead'
+                ^~~~~~~~~~~~~~~~~~~~

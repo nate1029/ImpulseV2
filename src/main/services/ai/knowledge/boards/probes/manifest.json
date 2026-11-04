@@ -1,0 +1,13 @@
+{
+  "probes": {
+    "avr": { "sketch": "avr.ino", "fqbn": "arduino:avr:uno", "platform": "arduino:avr" },
+    "esp32": { "sketch": "esp32.ino", "fqbn": "esp32:esp32:esp32", "platform": "esp32:esp32" },
+    "esp32-nano": { "sketch": "esp32-nano.ino", "fqbn": "arduino:esp32:nano_nora", "platform": "arduino:esp32" },
+    "esp8266": { "sketch": "esp8266.ino", "fqbn": "esp8266:esp8266:nodemcuv2", "platform": "esp8266:esp8266" },
+    "rp2040": { "sketch": "rp2040.ino", "fqbn": "rp2040:rp2040:rpipico", "platform": "rp2040:rp2040" },
+    "renesas_uno": { "sketch": "renesas_uno.ino", "fqbn": "arduino:renesas_uno:unor4wifi", "platform": "arduino:renesas_uno" },
+    "samd": { "sketch": "samd.ino", "fqbn": "arduino:samd:nano_33_iot", "platform": "arduino:samd" },
+    "megaavr": { "sketch": "megaavr.ino", "fqbn": "arduino:megaavr:nona4809", "platform": "arduino:megaavr" },
+    "stm32": { "sketch": "stm32.ino", "fqbn": "STMicroelectronics:stm32:GenF1:pnum=BLUEPILL_F103C8", "platform": "STMicroelectronics:stm32" }
+  }
+}

@@ -1,0 +1,8 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/unterminated_string.ino:1:51: error: missing terminating " character
+                                                   ^~~~~~~~~~
+<sketch>/unterminated_string.ino: In function 'void setup()':
+<sketch>/unterminated_string.ino:2:1: error: expected primary-expression before 'void'
+ ^~~~
+<sketch>/unterminated_string.ino:2:14: error: expected '}' at end of input
+              ^

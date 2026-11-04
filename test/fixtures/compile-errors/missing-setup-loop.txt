@@ -1,0 +1,4 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+/var/folders/c5/nx55k4bj3w33p9cxg06fjg8c0000gn/T//ccGu3fbP.ltrans0.ltrans.o: In function `main':
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/cores/arduino/main.cpp:46: undefined reference to `loop'
+collect2: error: ld returned 1 exit status

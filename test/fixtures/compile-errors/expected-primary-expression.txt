@@ -1,0 +1,4 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/expected_primary_expression.ino: In function 'void setup()':
+<sketch>/expected_primary_expression.ino:1:24: error: expected primary-expression before 'int'
+                        ^~~

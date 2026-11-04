@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulse IDE</title>
+    <!-- CSS is imported via main.js (Vite bundles CodeMirror + app styles locally) -->
+    <!-- Critical CSS: applied before the JS-imported bundle to prevent a flash of
+         unstyled elements (skip-link, resize handles) on every boot. -->
+    <style>
+        html, body { margin: 0; background: #08090a; }
+        .skip-link { position: absolute; left: -9999px; top: auto; z-index: 10000; }
+        .skip-link:focus { left: 0; top: 0; }
+        .ai-panel-overlay:not(.open) { width: 0 !important; overflow: hidden; }
+        .ai-resize-handle { width: 4px; }
+        .updater-banner.hidden { display: none !important; }
+        /* The view (chat mode or the IDE) is set by shell-boot.js before anything shows. */
+        :root:not([data-shell]) .app-container { visibility: hidden; }
+        :root[data-shell="vibe"] .app-container { display: none; }
+    </style>
+</head>
+
+<body>
+    <a href="#arduinoWorkspace" class="skip-link">Skip to editor</a>
+    <div class="app-container">
+        <!-- Top Row: Tool strip (extreme left) + Menu bar -->
+        <header class="top-row">
+            <h1 class="sr-only">Impulse IDE</h1>
+            <div class="tool-strip">
+                <button id="compileBtn" class="action-btn verify" title="Verify (Ctrl+R)">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </button>
+                <button id="uploadBtn" class="action-btn upload" title="Upload (Ctrl+U)">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M5 12l7-7 7 7M12 5v14" />
+                    </svg>
+                </button>
+                <div class="board-port-selector">
+                    <button id="boardPortDropdown" class="board-port-btn" title="Choose a board and port">
+                        <svg class="board-port-btn-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="5" y="5" width="14" height="14" rx="2" />
+                            <rect x="9" y="9" width="6" height="6" rx="1" />
+                            <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+                        </svg>
+                        <span id="boardPortDisplay" class="board-port-display">Choose a board</span>
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div id="boardPortDropdownMenu" class="board-port-dropdown-menu">
+                        <div id="boardPortSavedOptions" class="board-port-saved-options"></div>
+                        <div class="board-port-divider"></div>
+                        <button id="selectOtherBoardPort" class="board-port-other-btn">Choose another board and port…</button>
+                        <button id="boardOptionsBtn" class="board-port-other-btn">Board options…</button>
+                    </div>
+                </div>
+            </div>
+            <div class="top-row-right">
+                <div class="shell-switch" role="group" aria-label="View">
+                    <button type="button" id="shellChatBtn" aria-pressed="false" title="Chat mode (⌘E)">Chat</button>
+                    <button type="button" id="shellIdeBtn" aria-pressed="true" title="The IDE (⌘E)">IDE</button>
+                </div>
+                <span class="toolbar-divider" aria-hidden="true"></span>
+                <button id="serialMonitorBtn" class="action-btn serial-monitor" title="Serial monitor (Ctrl+Shift+M)">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M7 8h4M7 12h8M7 16h6" />
+                    </svg>
+                </button>
+                <button id="serialPlotterBtn" class="action-btn serial-plotter" title="Serial plotter">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </button>
+                <span class="toolbar-divider" aria-hidden="true"></span>
+                <button id="aiAgentTab" class="ai-agent-tab" title="Impulse AI (Ctrl+Shift+A)">
+                    <svg viewBox="0 0 24 24" class="ai-agent-tab-icon" width="16" height="16" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Update available banner (hidden by default) -->
+        <div id="updaterBanner" class="updater-banner hidden" role="status" aria-live="polite">
+            <span id="updaterBannerText" class="updater-banner-text"></span>
+            <div class="updater-banner-actions">
+                <button type="button" id="updaterDownloadBtn" class="updater-banner-btn hidden">Download</button>
+                <button type="button" id="updaterRestartBtn" class="updater-banner-btn hidden">Restart to install</button>
+                <button type="button" id="updaterDismissBtn" class="updater-banner-btn updater-banner-dismiss" aria-label="Dismiss">×</button>
+            </div>
+        </div>
+
+        <!-- Workspace: Activity Bar + Sidebar (Explorer a step down) + Main Area -->
+        <div class="workspace-row">
+            <!-- Activity bar: sketchbook, boards, libraries, debug, search -->
+            <nav class="activity-bar" aria-label="Activity bar">
+                <div class="activity-bar-top">
+                    <button class="activity-icon active" data-panel="explorer" title="Sketchbook (Ctrl+Shift+E)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="scm" title="Source control (Ctrl+Shift+G)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="6" cy="5" r="2.2" />
+                            <circle cx="6" cy="19" r="2.2" />
+                            <circle cx="18" cy="8" r="2.2" />
+                            <path d="M6 7.2v9.6M18 10.2c0 4.2-6.5 3.6-11.2 6.9" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="boards" title="Board manager (Ctrl+Shift+B)">
+                        <svg viewBox="0 0 24 24" class="activity-icon-img" width="24" height="24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                            <rect x="9" y="9" width="6" height="6" />
+                            <line x1="9" y1="1" x2="9" y2="4" />
+                            <line x1="15" y1="1" x2="15" y2="4" />
+                            <line x1="9" y1="20" x2="9" y2="23" />
+                            <line x1="15" y1="20" x2="15" y2="23" />
+                            <line x1="20" y1="9" x2="23" y2="9" />
+                            <line x1="20" y1="14" x2="23" y2="14" />
+                            <line x1="1" y1="9" x2="4" y2="9" />
+                            <line x1="1" y1="14" x2="4" y2="14" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="libraries" title="Library manager (Ctrl+Shift+I)">
+                        <svg viewBox="0 0 24 24" class="activity-icon-img" width="24" height="24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="3" width="14" height="18" rx="2" />
+                            <line x1="9" y1="3" x2="9" y2="21" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="debug" title="Debug">
+                        <svg viewBox="0 0 24 24" class="activity-icon-img" width="22" height="22" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a1 1 0 011 1v3a1 1 0 01-1 1h-1v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1H2a1 1 0 01-1-1v-3a1 1 0 011-1h1a7 7 0 017-7V5.73A2 2 0 0112 2z" />
+                            <path d="M12 13v1m-4-1v1m8-1v1" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="search" title="Search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="serial" title="Serial monitor (Ctrl+Shift+M)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="16" rx="2" />
+                            <path d="M7 9l3 3-3 3M13 15h4" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon" data-panel="simulate" title="Simulator (Ctrl+Shift+D)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8M12 17v4"/>
+                            <circle cx="9" cy="10" r="2" fill="currentColor" opacity="0.7"/>
+                            <path d="M13 10h4" stroke-linecap="round"/>
+                            <path d="M13 13h2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="activity-bar-bottom">
+                    <button class="activity-icon activity-theme-toggle" id="themeToggleBtn"
+                        title="Toggle dark/light mode">
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                        </svg>
+                    </button>
+                    <button class="activity-icon activity-user-btn" id="userBtn" title="Account">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        <span class="user-status-dot" id="userStatusDot"></span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Sidebar -->
+            <div class="sidebar" id="sidebar" role="complementary" aria-label="Sidebar">
+                <!-- Explorer Panel -->
+                <div class="sidebar-panel active" id="explorerPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Sketchbook</span>
+                        <button class="sidebar-collapse-btn" id="collapseSidebar" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-section">
+                            <button class="open-folder-btn" id="openFolder">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                    <path d="M12 11v6M9 14h6" />
+                                </svg>
+                                Open folder
+                            </button>
+                        </div>
+                        <div class="sidebar-section">
+                            <div class="folder-label" id="folderLabel">
+                                <span class="folder-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg></span>
+                                <span>No folder open</span>
+                            </div>
+                            <div id="fileTree" class="file-tree"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boards Panel -->
+                <div class="sidebar-panel" id="boardsPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Board manager</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-section">
+                            <div class="section-header">Board</div>
+                            <select id="boardSelectSidebar" class="sidebar-select">
+                                <option value="">Choose a board…</option>
+                            </select>
+                        </div>
+                        <div class="sidebar-section">
+                            <div class="section-header">Port</div>
+                            <select id="portSelectSidebar" class="sidebar-select">
+                                <option value="">Choose a port…</option>
+                            </select>
+                            <button id="refreshPortsSidebar" class="btn-small" style="margin-top: 8px;">
+                                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M23 4v6h-6M1 20v-6h6" />
+                                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+                                </svg>
+                                Refresh ports
+                            </button>
+                        </div>
+                        <div class="sidebar-section board-manager-section">
+                            <div class="section-header">Install boards (cores)</div>
+                            <div class="core-search-row">
+                                <input type="text" id="coreSearchInput" class="sidebar-input"
+                                    placeholder="e.g. esp32, samd">
+                                <button id="coreSearchBtn" class="btn-small">Search</button>
+                            </div>
+                            <div id="coreSearchResults" class="core-list"></div>
+                            <div class="section-header" style="margin-top: 12px;">Installed cores</div>
+                            <div id="coreInstalledList" class="core-list"></div>
+                        </div>
+                        <div class="sidebar-section">
+                            <div id="cliStatus" class="cli-status">Checking arduino-cli…</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Debug Panel -->
+                <div class="sidebar-panel" id="debugPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Debug</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-section debug-toolbar">
+                            <button id="debugStartBtn" class="debug-play-btn" title="Start debugging (F5)" aria-label="Start debugging">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                            <span id="debugBoardLabel" class="debug-board-label">Simulated Arduino Uno</span>
+                        </div>
+                        <div class="sidebar-section debug-help">
+                            <p>Click left of a line number to set a breakpoint (F9), then start debugging (F5). The sketch runs in the simulator and stops there; step with F10, F11 and ⇧F11.</p>
+                            <p>Variables, the call stack and registers appear in the simulator's <strong>Debug</strong> tab.</p>
+                        </div>
+                        <div class="sidebar-section">
+                            <h2 class="debug-section-header">Breakpoints</h2>
+                            <div id="debugBreakpoints" class="debug-section-content" role="list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Source Control Panel -->
+                <div class="sidebar-panel" id="scmPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Source control</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content" id="scmContent"></div>
+                </div>
+
+                <!-- Search Panel -->
+                <div class="sidebar-panel" id="searchPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Search</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-section">
+                            <input type="text" id="searchInput" class="sidebar-input" placeholder="Search in the sketch…">
+                            <button id="searchBtn" class="btn-small" style="margin-top: 8px; width: 100%;">Find</button>
+                            <div id="searchResults" class="search-results-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Libraries Panel -->
+                <div class="sidebar-panel" id="librariesPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Library manager</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-section">
+                            <div class="lib-search-row">
+                                <input type="text" id="libSearchInput" class="sidebar-input"
+                                    placeholder="Search libraries…">
+                                <button id="libSearchBtn" class="btn-small">Search</button>
+                            </div>
+                            <button id="libUpdateIndex" class="btn-small" style="width: 100%;">
+                                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M23 4v6h-6M1 20v-6h6" />
+                                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+                                </svg>
+                                Update the library index
+                            </button>
+                        </div>
+                        <div class="sidebar-section">
+                            <div id="libList" class="lib-list">
+                                <div class="lib-msg">Search for libraries above</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulate Panel -->
+                <div class="sidebar-panel" id="simulatePanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Simulator</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sim-hint">
+                            Add components from the library on the right.<br>
+                            Connect pins by clicking them.<br>
+                            Press <strong>Run</strong> to simulate.<br><br>
+                            <kbd>Ctrl+Shift+D</kbd> toggles the simulator.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serial Panel -->
+                <div class="sidebar-panel" id="serialPanel">
+                    <div class="sidebar-header">
+                        <span class="sidebar-title">Serial monitor</span>
+                        <button class="sidebar-collapse-btn" title="Collapse">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sidebar-content">
+                        <div class="sidebar-section serial-controls">
+                            <div class="serial-status">
+                                <span class="serial-status-dot" id="serialStatusDot"></span>
+                                <span id="serialStatusText">Disconnected</span>
+                            </div>
+                            <div class="section-header">Baud rate</div>
+                            <select id="baudRate" class="sidebar-select" aria-label="Baud rate">
+                                <option value="9600">9600</option>
+                                <option value="19200">19200</option>
+                                <option value="38400">38400</option>
+                                <option value="57600">57600</option>
+                                <option value="115200" selected>115200</option>
+                            </select>
+                            <button id="toggleSerial" class="serial-btn">
+                                Open serial monitor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Resizer Handle -->
+            <div id="sidebarResizer" class="resizer-vertical"></div>
+
+            <!-- Main Content Area (Explorer is a step down; toolbar is in top-row above) -->
+            <div class="main-area" id="arduinoWorkspace" role="main" style="flex-direction:column;">
+                <!-- Board/Port Selection Modal -->
+                <div id="boardPortModal" class="board-port-modal">
+                    <div class="board-port-modal-content">
+                        <div class="board-port-modal-header">
+                            <h2>Choose a board and port</h2>
+                            <button class="board-port-modal-close" id="boardPortModalClose">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 6L6 18M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="board-port-modal-description">
+                            Choose a board to verify your sketch, and its port as well to upload it.
+                        </div>
+                        <div class="board-port-modal-body">
+                            <div class="board-port-modal-section">
+                                <div class="board-port-modal-section-header">Boards</div>
+                                <div class="board-port-search">
+                                    <input type="text" id="boardSearchInput" placeholder="Search board"
+                                        class="board-port-search-input">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2" class="board-port-search-icon">
+                                        <circle cx="11" cy="11" r="8" />
+                                        <path d="m21 21-4.35-4.35" />
+                                    </svg>
+                                </div>
+                                <div id="boardList" class="board-port-list">
+                                    <!-- Board list will be populated here -->
+                                </div>
+                            </div>
+                            <div class="board-port-modal-section">
+                                <div class="board-port-modal-section-header">Ports</div>
+                                <div id="portList" class="board-port-list">
+                                    <!-- Port list will be populated here -->
+                                </div>
+                                <label class="board-port-checkbox">
+                                    <input type="checkbox" id="showAllPorts">
+                                    <span>Show all ports</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="board-port-modal-footer">
+                            <button id="boardPortModalCancel" class="board-port-modal-btn cancel">Cancel</button>
+                            <button id="boardPortModalOk" class="board-port-modal-btn ok">OK</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editor Container -->
+                <div class="editor-container">
+                    <!-- Tab Bar (multiple file tabs) -->
+                    <div class="tab-bar">
+                        <div id="fileTabs" class="file-tabs">
+                            <!-- Tabs are added dynamically when files are opened -->
+                        </div>
+                    </div>
+
+                    <!-- Code Editor -->
+                    <div class="code-editor-wrapper">
+                        <!-- Empty state shown when no file is open -->
+                        <div id="welcomeState" class="welcome-state">
+                            <div class="welcome-content">
+                                <div class="welcome-mark" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                                    </svg>
+                                </div>
+                                <h2>Impulse</h2>
+                                <p>Write it, wire it, simulate it, ship it to the board.</p>
+                                <button class="welcome-btn" id="welcomeOpenFolder">Open folder</button>
+                                <div class="welcome-shortcuts">
+                                    <ul>
+                                        <li><span>Open file</span><span class="keys"><kbd>Ctrl</kbd><kbd>O</kbd></span></li>
+                                        <li><span>New sketch</span><span class="keys"><kbd>Ctrl</kbd><kbd>N</kbd></span></li>
+                                        <li><span>Verify</span><span class="keys"><kbd>Ctrl</kbd><kbd>R</kbd></span></li>
+                                        <li><span>Upload</span><span class="keys"><kbd>Ctrl</kbd><kbd>U</kbd></span></li>
+                                        <li><span>Impulse AI</span><span class="keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>A</kbd></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Editor shown when file is open -->
+                        <div id="editorWrapper" class="editor-inner-wrapper" style="display: none;">
+                            <textarea id="codeEditor"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Output Panel -->
+                    <div id="outputPanel" class="output-panel">
+                        <div id="outputResizer" class="resizer-horizontal"></div>
+                        <div class="output-tabs">
+                            <button class="output-tab active" data-tab="console">Console</button>
+                            <button class="output-tab" data-tab="serial">Serial monitor</button>
+                            <button class="output-tab" data-tab="plotter">Serial plotter</button>
+                            <button class="output-tab" data-tab="problems">Problems</button>
+                            <button class="output-tab" data-tab="tests">Tests</button>
+                            <button class="output-tab" data-tab="playground">Playground</button>
+                        </div>
+                        <div id="consoleOutput" class="output-content active"></div>
+                        <div id="serialOutput" class="output-content serial-content">
+                            <div class="serial-toolbar">
+                                <span class="serial-toolbar-label">Baud rate:</span>
+                                <select id="serialBaudRate" class="serial-baud-select" aria-label="Baud rate">
+                                    <option value="9600">9600</option>
+                                    <option value="19200">19200</option>
+                                    <option value="38400">38400</option>
+                                    <option value="57600">57600</option>
+                                    <option value="115200" selected>115200</option>
+                                </select>
+                                <button id="serialClearBtn" class="serial-ctrl-btn" title="Clear">Clear</button>
+                            </div>
+                            <div class="serial-output-content" tabindex="0" aria-label="Serial output"></div>
+                        </div>
+                        <div id="plotterOutput" class="output-content plotter-content">
+                            <div class="plotter-toolbar">
+                                <span class="plotter-label">Channels: <span id="plotterChannelCount">0</span></span>
+                                <span class="plotter-label">Points: <span id="plotterPointCount">0</span></span>
+                                <button id="plotterPauseBtn" class="plotter-ctrl-btn" title="Pause" aria-label="Pause"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+                                <button id="plotterClearBtn" class="plotter-ctrl-btn" title="Clear the plot" aria-label="Clear the plot"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+                            </div>
+                            <canvas id="plotterCanvas" class="plotter-canvas"></canvas>
+                            <div class="plotter-empty" id="plotterEmpty"><strong>Waiting for data</strong><span>Print numbers, one line each, like 100 or 100,200,300</span></div>
+                        </div>
+                        <div id="problemsOutput" class="output-content"><div class="panel-empty problems-empty"><strong>No problems</strong><span>Errors and warnings from your last build show here.</span></div></div>
+                        <div id="testsOutput" class="output-content tests-content">
+                            <p class="tests-hint">Choose Sketch › Run Hardware Tests to build this sketch, run it in the simulator and check its <code>// @expect</code> lines.</p>
+                        </div>
+                        <div id="playgroundOutput" class="output-content playground-content">
+                            <div class="playground-toolbar">
+                                <span class="playground-label">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                                    </svg>
+                                    Hardware tasks
+                                </span>
+                                <button id="playgroundClearBtn" class="plotter-ctrl-btn" title="Clear hardware tasks" aria-label="Clear hardware tasks"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
+                            </div>
+                            <div id="playgroundEntries" class="playground-entries"></div>
+                        </div>
+                        <div class="serial-input-row" id="serialInputRow" style="display: none;">
+                            <input type="text" id="serialInput" placeholder="Send to the board…" aria-label="Send to the board">
+                            <button id="sendSerial">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Simulation View (Wokwi-style: editor left, live circuit right) -->
+            <div class="sim-view" id="simView" role="main" aria-label="Editor and simulator">
+                <div id="simEditorSlot"></div>
+                <div id="simPanel"></div>
+            </div>
+        </div>
+        <!-- end workspace-row -->
+
+        <!-- AI Agent Panel: 1/3 width, minimal -->
+        <div id="aiPanel" class="ai-panel-overlay">
+            <div class="ai-resize-handle" id="aiResizeHandle" title="Drag to resize"></div>
+            <div class="ai-panel-inner">
+                <div class="ai-panel-header">
+                    <span class="ai-panel-title">Impulse AI</span>
+                    <div class="ai-panel-header-actions">
+                        <span id="aiTokenCounter" class="ai-token-counter" title="Tokens used this session (auto-compacts at 70k)"></span>
+                        <button id="aiCompactBtn" class="ai-panel-header-btn" title="Compact conversation (summarise and clear context)">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 6h13M8 12h8M8 18h5"/>
+                                <path d="M3 6l1 1-1 1M3 12l1 1-1 1"/>
+                            </svg>
+                        </button>
+                        <button id="aiNewChatBtn" type="button" class="ai-panel-header-btn" title="New chat" aria-label="New chat">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.4 2.6a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"/>
+                            </svg>
+                        </button>
+                        <button id="aiCloseBtn" class="ai-panel-header-btn" title="Close">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="aiMessages" class="ai-msg-area">
+                    <div class="ai-welcome ai-empty">
+                        <div class="ai-empty-mark" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="8" width="16" height="12" rx="2"/>
+                                <path d="M12 8V4M9 4h6"/>
+                                <circle cx="9" cy="14" r="1" fill="currentColor"/>
+                                <circle cx="15" cy="14" r="1" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h2 class="ai-empty-title">What are we building?</h2>
+                        <p class="ai-empty-copy">The agent writes the sketch, wires the circuit, runs it in the simulator and fixes what breaks.</p>
+                        <div class="ai-starters">
+                            <button type="button" class="ai-starter" data-prompt="Blink the onboard LED every 500 ms and print each toggle to Serial.">Blink an LED and log to Serial</button>
+                            <button type="button" class="ai-starter" data-prompt="Read a potentiometer on A0 and fade an LED on pin 9 with PWM.">Fade an LED with a potentiometer</button>
+                            <button type="button" class="ai-starter" data-prompt="Show the temperature from a DHT22 sensor on a 16x2 I2C LCD.">DHT22 temperature on a 16x2 LCD</button>
+                            <button type="button" class="ai-starter" data-prompt="Explain my last compile error and fix it.">Explain and fix my last error</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- MorphOrb: the pill is the composer; on send it becomes the orb in the
+                     conversation and unfolds into the answer (morph-orb/morph-orb.js). -->
+                <div class="mo-root" data-phase="idle" data-kind="answer">
+                    <div class="mo-halo" aria-hidden="true"></div>
+                    <div class="mo-mover">
+                        <span class="mo-trail" aria-hidden="true"></span>
+                        <span class="mo-trail" aria-hidden="true"></span>
+                        <span class="mo-trail" aria-hidden="true"></span>
+                        <span class="mo-trail" aria-hidden="true"></span>
+                        <span class="mo-trail" aria-hidden="true"></span>
+                        <span class="mo-trail" aria-hidden="true"></span>
+                        <div class="mo-actor">
+                            <div class="mo-underglow" aria-hidden="true"></div>
+                            <div class="mo-halo-green" aria-hidden="true"></div>
+                            <div class="mo-surface" aria-hidden="true">
+                                <div class="mo-aurora"><i></i><i></i><i></i><i></i></div>
+                            </div>
+                            <div class="mo-ball" aria-hidden="true"></div>
+                            <div class="mo-green" aria-hidden="true"></div>
+                            <div class="mo-card" aria-hidden="true"></div>
+                            <div class="mo-ring" aria-hidden="true"></div>
+                            <form class="mo-input" autocomplete="off">
+                                <svg class="mo-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M10 3.5l1.7 4.8 4.8 1.7-4.8 1.7L10 16.5l-1.7-4.8L3.5 10l4.8-1.7L10 3.5z" />
+                                    <path d="M18 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z" />
+                                </svg>
+                                <textarea id="aiInput" class="mo-field" rows="1" placeholder="Ask anything…" aria-label="Ask anything" spellcheck="false"></textarea>
+                                <button type="button" id="aiSend" class="mo-send" aria-label="Send" title="Send">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 19V5" />
+                                        <path d="M5.5 11.5L12 5l6.5 6.5" />
+                                    </svg>
+                                </button>
+                            </form>
+                            <canvas class="mo-orb" aria-hidden="true"></canvas>
+                            <div class="mo-pulse" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <div class="mo-status" aria-hidden="true"></div>
+                    <div class="mo-live" role="status" aria-live="polite"></div>
+                </div>
+                <div class="ai-composer mo-dock">
+                    <div class="mo-slot" aria-hidden="true"></div>
+                    <!-- While the agent works: stop it (Esc does the same). -->
+                    <button id="aiStopBtn" type="button" class="ai-stop-btn" hidden title="Stop (Esc)">
+                        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor"/></svg>
+                        Stop
+                    </button>
+                    <div class="ai-composer-row">
+                        <span class="ai-mode-wrap">
+                            <svg class="ai-mode-ico" viewBox="0 0 24 24" width="12" height="12" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M4 12c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4zm8 0c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4" />
+                            </svg>
+                            <select id="aiModeSelect" class="ai-mode-select" title="Mode" aria-label="AI mode">
+                                <option value="agent">Agent</option>
+                                <option value="plan">Plan</option>
+                                <option value="debug">Debug</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+                <div id="aiStatus" class="ai-status" aria-live="polite"></div>
+            </div>
+        </div>
+
+        <!-- Examples dropdown (File > Examples): opens like a submenu -->
+        <div id="examplesDropdown" class="examples-dropdown" aria-hidden="true">
+            <div class="examples-dropdown-header">
+                <span class="examples-dropdown-title">Examples</span>
+                <button type="button" id="examplesDropdownClose" class="examples-dropdown-close"
+                    title="Close">×</button>
+            </div>
+            <input type="text" id="examplesDropdownFilter" class="sidebar-input" placeholder="Filter by library…">
+            <button id="examplesDropdownLoad" class="btn-small" style="width: 100%; margin-top: 6px;">Load
+                examples</button>
+            <div id="examplesDropdownList" class="examples-dropdown-list"></div>
+        </div>
+
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-left"></div>
+            <div class="footer-right"></div>
+        </footer>
+    </div>
+
+    <!-- Single Vite entry point: bundles CodeMirror + all app scripts locally -->
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>

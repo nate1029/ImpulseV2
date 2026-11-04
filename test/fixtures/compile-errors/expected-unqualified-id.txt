@@ -1,0 +1,3 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/expected_unqualified_id.ino:2:1: error: expected declaration before '}' token
+ ^

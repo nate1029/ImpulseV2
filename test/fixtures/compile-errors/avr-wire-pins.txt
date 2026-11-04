@@ -1,0 +1,13 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/avr_wire_pins.ino: In function 'void setup()':
+<sketch>/avr_wire_pins.ino:2:33: error: no matching function for call to 'TwoWire::begin(int, int)'
+                                 ^
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src/Wire.h:53:10: note: candidate: void TwoWire::begin()
+          ^~~~~
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src/Wire.h:53:10: note:   candidate expects 0 arguments, 2 provided
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src/Wire.h:54:10: note: candidate: void TwoWire::begin(uint8_t)
+          ^~~~~
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src/Wire.h:54:10: note:   candidate expects 1 argument, 2 provided
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src/Wire.h:55:10: note: candidate: void TwoWire::begin(int)
+          ^~~~~
+~/Library/Arduino15/packages/arduino/hardware/avr/1.8.8/libraries/Wire/src/Wire.h:55:10: note:   candidate expects 1 argument, 2 provided

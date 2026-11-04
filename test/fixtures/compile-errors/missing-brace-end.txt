@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/missing_brace_end.ino: In function 'void setup()':
+<sketch>/missing_brace_end.ino:4:13: error: a function-definition is not allowed here before '{' token
+             ^
+<sketch>/missing_brace_end.ino:4:14: error: expected '}' at end of input
+              ^

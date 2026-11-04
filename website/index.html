@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Impulse: the AI Arduino IDE</title>
+    <meta
+      name="description"
+      content="Impulse is an Arduino IDE with an AI agent and a simulator built in. Ask for what you want; it writes the sketch, wires the circuit, simulates and tests it, then uploads it to your board."
+    />
+    <meta name="theme-color" content="#08090a" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Impulse: from an idea to a working board" />
+    <meta
+      property="og:description"
+      content="An Arduino IDE with an AI agent and a simulator built in. Ask, write, wire, simulate, ship."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#features">Skip the tour</a>
+
+    <header class="nav" id="nav">
+      <a class="brand" href="#top" aria-label="Impulse, back to the top">
+        <svg class="brand-mark" viewBox="100 100 824 824" aria-hidden="true">
+          <rect x="102" y="102" width="820" height="820" rx="182" fill="#141516" stroke="#34343a" stroke-width="8" />
+          <polyline points="232,512 344,512 428,260 596,764 680,512 724,512" fill="none" stroke="#f7f8f8" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="796" cy="512" r="44" fill="#71d083" />
+        </svg>
+        <span>Impulse</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#workflow-steps">Workflow</a>
+        <a href="#features">Features</a>
+        <a href="#boards">Boards</a>
+        <a href="#download">Download</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-link" href="https://github.com/Meet-1010/Impulse-IDE-v2" target="_blank" rel="noopener" aria-label="Impulse on GitHub">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <a class="button button-small" href="#download">Download</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- The machine stays pinned while the copy scrolls over it: the hero, then one step per station. -->
+      <section class="stage" id="workflow" aria-label="The Impulse workflow">
+        <div class="stage-sticky">
+          <div class="machine embed" id="machine">
+            <div
+              id="scene"
+              role="img"
+              aria-label="An interactive 3D machine with five stations along a conveyor: Ask, Write, Wire, Simulate and Ship. A prompt rides the belt and becomes a sketch, a circuit, passing tests and a running board. Drag to turn it; hover or tap a station."
+            ></div>
+            <div class="vignette"></div>
+            <div id="labels"></div>
+            <div id="tooltip" role="tooltip"><strong></strong><p></p></div>
+            <div id="journey" aria-live="polite">
+              <div class="journey-icon" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M5 2.5l8 5.5-8 5.5v-11z" stroke="currentColor" stroke-linejoin="round" /></svg>
+              </div>
+              <div class="journey-text">
+                <strong id="journey-title">You ask</strong>
+                <small id="journey-detail">Ask · “Blink pin 13 every 500 ms and log it”</small>
+              </div>
+              <div class="track" aria-hidden="true"><i id="journey-progress"></i></div>
+            </div>
+            <div class="controls">
+              <nav class="mode-bar" aria-label="Machine mode">
+                <button type="button" data-mode="assembled" aria-pressed="true">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5l6 3.3v6.4l-6 3.3-6-3.3V4.8L8 1.5zM2 4.8l6 3.4 6-3.4M8 8.2v6.3" stroke="currentColor" stroke-linejoin="round" /></svg>
+                  Assembled
+                </button>
+                <button type="button" data-mode="cutaway" aria-pressed="false">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h10v12H3zM8 2v12M10.5 4l2.5 2.5m-2.5 0L13 9m-2.5 0 2.5 2.5" stroke="currentColor" stroke-linejoin="round" /></svg>
+                  Cutaway
+                </button>
+                <button type="button" data-mode="stations" aria-pressed="false">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5l6 3-6 3-6-3 6-3zM2 8l6 3 6-3M2 11.5l6 3 6-3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Stations
+                </button>
+                <button type="button" data-mode="order" aria-pressed="false">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 2.5l8 5.5-8 5.5v-11z" stroke="currentColor" stroke-linejoin="round" /></svg>
+                  One prompt
+                </button>
+              </nav>
+              <nav class="camera-row" aria-label="Camera">
+                <span class="caption">VIEW</span>
+                <button type="button" data-camera="overview" aria-pressed="true">Overview</button>
+                <button type="button" data-camera="side" aria-pressed="false">Side</button>
+                <button type="button" data-camera="top" aria-pressed="false">Top</button>
+                <button type="button" data-camera="station" aria-pressed="false">Station</button>
+                <button type="button" data-camera="flight" aria-pressed="false">Flight</button>
+              </nav>
+            </div>
+            <button type="button" id="play" aria-label="Pause the machine" aria-pressed="false"></button>
+            <div id="loading"><i></i><span>Assembling the machine</span></div>
+            <div id="error" role="alert">
+              <strong>The 3D machine couldn't start</strong>
+              <p>Check that WebGL is turned on in your browser. Everything else on this page works without it.</p>
+            </div>
+          </div>
+          <nav class="rail" aria-label="Workflow steps">
+            <button type="button" data-goto="ask"><span>01</span>Ask</button>
+            <button type="button" data-goto="write"><span>02</span>Write</button>
+            <button type="button" data-goto="wire"><span>03</span>Wire</button>
+            <button type="button" data-goto="simulate"><span>04</span>Simulate</button>
+            <button type="button" data-goto="ship"><span>05</span>Ship</button>
+          </nav>
+        </div>
+
+        <div class="stage-copy">
+          <div class="panel hero" data-step="hero">
+            <div class="hero-inner">
+              <p class="eyebrow-pill"><i></i>2.0 beta · free and open source</p>
+              <h1>From an idea<br />to a working board.</h1>
+              <p class="lead">
+                Impulse is an Arduino IDE with an AI agent and a simulator built in. Say what you want to build: it writes
+                the sketch, wires the circuit, runs and tests it, then puts it on your board.
+              </p>
+              <div class="cta-row">
+                <a class="button" href="#download" id="hero-download">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m0 0L4.5 7.5M8 11l3.5-3.5M2.5 14h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <span>Download the beta</span>
+                </a>
+                <button type="button" class="button button-ghost" id="watch">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 2.5l8 5.5-8 5.5v-11z" fill="currentColor" /></svg>
+                  Follow one prompt
+                </button>
+              </div>
+              <p class="meta">macOS, Windows and Linux · Free credits to start</p>
+            </div>
+            <a class="scroll-hint" href="#workflow-steps">
+              <span>Scroll through the machine</span>
+              <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="10" height="14" rx="5" stroke="currentColor" /><path d="M6 4v3" stroke="currentColor" stroke-linecap="round" /></svg>
+            </a>
+          </div>
+
+          <div id="workflow-steps">
+            <article class="panel step" data-step="ask" id="step-ask">
+              <div class="step-card">
+                <p class="step-index"><span>01</span> / 05 · Ask</p>
+                <h2>Say it in plain words.</h2>
+                <p>
+                  Type what the project should do. The agent reads your sketch and circuit, makes a plan, and the orb
+                  shows each step as it works: reading, writing, compiling, testing.
+                </p>
+                <ul class="facts">
+                  <li>Impulse AI through your account: free credits to start, no API key to bring</li>
+                  <li>The agent can't run shell commands</li>
+                </ul>
+              </div>
+            </article>
+            <article class="panel step" data-step="write" id="step-write">
+              <div class="step-card">
+                <p class="step-index"><span>02</span> / 05 · Write</p>
+                <h2>It writes the sketch, then compiles it.</h2>
+                <p>
+                  The code lands in the editor, not in a chat bubble. It compiles with arduino-cli for the board you
+                  picked, and compiler errors go straight back to the agent to fix.
+                </p>
+                <ul class="facts">
+                  <li>Arduino-aware editor that flags pin mistakes as you type</li>
+                  <li>Real arduino-cli, real libraries, multi-file sketches</li>
+                  <li>PlatformIO projects open as they are</li>
+                </ul>
+              </div>
+            </article>
+            <article class="panel step" data-step="wire" id="step-wire">
+              <div class="step-card">
+                <p class="step-index"><span>03</span> / 05 · Wire</p>
+                <h2>It wires the circuit.</h2>
+                <p>
+                  The circuit builder places the parts your sketch uses and wires them to the right pins. A circuit check
+                  catches missing resistors, floating inputs, shorts and I²C address clashes.
+                </p>
+                <ul class="facts">
+                  <li>91 parts: displays, NeoPixels, servos, steppers, sensors</li>
+                  <li>Imports and exports Wokwi diagram.json</li>
+                  <li>Hover a pin in the code to see what it's wired to</li>
+                </ul>
+              </div>
+            </article>
+            <article class="panel step" data-step="simulate" id="step-simulate">
+              <div class="step-card">
+                <p class="step-index"><span>04</span> / 05 · Simulate</p>
+                <h2>It runs before you touch hardware.</h2>
+                <p>
+                  The compiled firmware runs on an emulated board. Write what should happen as comments, and every change
+                  the AI makes is tested, with a pass or fail card and a Fix with AI button.
+                </p>
+                <pre class="snippet" aria-label="Hardware tests written as comments"><code><span class="c">// @run 3s</span>
+<span class="c">// @expect serial contains "ready"</span>
+<span class="c">// @expect pin 13 frequency 1Hz ±10%</span></code></pre>
+                <ul class="facts">
+                  <li>Logic analyzer and a debugger with breakpoints</li>
+                  <li>The same tests run in CI with impulse-test</li>
+                </ul>
+              </div>
+            </article>
+            <article class="panel step" data-step="ship" id="step-ship">
+              <div class="step-card">
+                <p class="step-index"><span>05</span> / 05 · Ship</p>
+                <h2>Then it goes on your board.</h2>
+                <p>
+                  Uploads go over USB once you approve them; the agent never flashes hardware on its own. The serial
+                  monitor picks up where the simulator left off, and you can diff the two line by line.
+                </p>
+                <ul class="facts">
+                  <li>Any board arduino-cli supports, plus Upload Using Programmer</li>
+                  <li>Simulator vs board: the same sketch, both serial logs compared</li>
+                  <li>Export the compiled binary or archive the sketch</li>
+                </ul>
+              </div>
+            </article>
+            <div class="panel step step-all" data-step="all">
+              <div class="step-card">
+                <p class="step-index"><span>05</span> stations · 1 app</p>
+                <h2>Every station is a real feature.</h2>
+                <p>
+                  Nothing on this machine is a mock-up of something Impulse might do one day. Turn it, open it in
+                  cutaway, or follow a single prompt from the chat to the board.
+                </p>
+                <div class="cta-row">
+                  <a class="button" href="#download">Download the beta</a>
+                  <a class="button button-ghost" href="#features">See everything it does</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="section-head">
+          <p class="eyebrow">Features</p>
+          <h2 id="features-title">Everything between the idea and the board.</h2>
+          <p class="section-lead">
+            One app for the whole loop. The AI is part of it, and so is everything you need when you'd rather do it
+            yourself.
+          </p>
+        </div>
+        <div class="bento">
+          <article class="tile tile-sim">
+            <div class="tile-copy">
+              <h3>A simulator that runs your real firmware</h3>
+              <p>
+                Any board built on the ATmega328P, ATmega2560, ATtiny85 or RP2040 families, with parts that behave
+                like the real ones: capacitors charge, servos sweep, displays draw. Real libraries work unchanged.
+              </p>
+            </div>
+            <dl class="stats">
+              <div><dt>Parts</dt><dd>91</dd></div>
+              <div><dt>Boards</dt><dd>100+</dd></div>
+              <div><dt>Examples</dt><dd>42</dd></div>
+            </dl>
+            <div class="marquee" aria-hidden="true">
+              <div class="marquee-track" id="parts"></div>
+            </div>
+          </article>
+
+          <article class="tile tile-tests">
+            <div class="tile-copy">
+              <h3>Tests written as comments</h3>
+              <p>Describe what should happen. Impulse checks it in the simulator, and impulse-test does the same in CI.</p>
+            </div>
+            <pre class="code" aria-label="A hardware test and its result"><code><span class="c">// @expect serial contains "ready"</span>
+<span class="c">// @expect pin 13 toggles</span>
+<span class="c">// @expect pin 13 frequency 1Hz ±10%</span>
+
+<span class="p">$</span> impulse-test blink.ino
+<span class="ok">✓</span> serial contains "ready"
+<span class="ok">✓</span> pin 13 toggles
+<span class="ok">✓</span> pin 13 frequency 1Hz ±10%
+<span class="ok">3 passed</span> <span class="dim">· junit.xml written</span></code></pre>
+          </article>
+
+          <article class="tile tile-agent">
+            <div class="tile-copy">
+              <h3>An agent that checks its own work</h3>
+              <p>Every code change the AI makes runs in the simulator first. You see the result before you trust it.</p>
+            </div>
+            <div class="mini-card" aria-hidden="true">
+              <div class="mini-head"><span class="dot"></span>Simulated · 3 of 3 tests passed</div>
+              <div class="mini-body">Pin 13 blinks at 1.00 Hz. Serial prints “ready”, then each change.</div>
+              <div class="mini-actions"><span class="pill pill-go">Upload</span><span class="pill">Fix with AI</span></div>
+            </div>
+          </article>
+
+          <article class="tile tile-analyzer">
+            <div class="tile-copy">
+              <h3>Logic analyzer</h3>
+              <p>Waveforms for every active pin, with frequency and duty cycle.</p>
+            </div>
+            <svg class="waves" viewBox="0 0 320 132" aria-hidden="true" id="waves"></svg>
+          </article>
+
+          <article class="tile tile-debug">
+            <div class="tile-copy">
+              <h3>A debugger on the simulated chip</h3>
+              <p>Breakpoints, step over and into, the call stack, locals, globals and registers. No probe needed.</p>
+            </div>
+            <div class="debug" aria-hidden="true">
+              <div class="debug-code">
+                <div><b>11</b><span>  digitalWrite(LED, HIGH);</span></div>
+                <div class="hit"><b>12</b><i></i><span>  Serial.println(<em>"LED on"</em>);</span></div>
+                <div><b>13</b><span>  delay(<u>500</u>);</span></div>
+              </div>
+              <div class="debug-vars">
+                <div><span>LED</span><code>13</code></div>
+                <div><span>PORTB</span><code>0x20</code></div>
+                <div><span>SREG</span><code>0x82</code></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile tile-diff">
+            <div class="tile-copy">
+              <h3>Simulator vs board</h3>
+              <p>Run the sketch in both for the same time and diff the serial output, line by line.</p>
+            </div>
+            <div class="diff" aria-hidden="true">
+              <div class="diff-col"><small>Simulator</small><code>ready</code><code>LED on</code><code>LED off</code></div>
+              <div class="diff-col"><small>Uno on USB</small><code>ready</code><code>LED on</code><code>LED off</code></div>
+              <p class="diff-ok">Identical · 3 lines</p>
+            </div>
+          </article>
+
+          <article class="tile tile-small">
+            <h3>Source control</h3>
+            <p>Start a repository, see each file's diff, commit, pull and push without leaving the sketch.</p>
+          </article>
+          <article class="tile tile-small">
+            <h3>PlatformIO</h3>
+            <p>Open a folder with platformio.ini; Verify, Upload, the simulator and the debugger use it.</p>
+          </article>
+          <article class="tile tile-small">
+            <h3>Pin-aware editor</h3>
+            <p>Flags analogWrite on pins without PWM, digitalWrite without pinMode, and Serial on pins 0 and 1.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="boards" aria-labelledby="boards-title">
+        <div class="section-head">
+          <p class="eyebrow">Boards</p>
+          <h2 id="boards-title">Simulate the chip. Upload to any board.</h2>
+          <p class="section-lead">
+            The simulator emulates the chip itself, so timers, interrupts and libraries behave as they do on the bench,
+            on every board built around these chips: Uno, Nano, Pro Mini, Mega, Pico, XIAO RP2040 and more.
+            Plug a board in and Impulse selects it; uploads go through arduino-cli, to any board it knows.
+          </p>
+        </div>
+        <ul class="boards">
+          <li class="board">
+            <div class="chip chip-28" aria-hidden="true"></div>
+            <h3>ATmega328P / 168</h3>
+            <p>Uno, Nano, Pro Mini, Fio, LilyPad, Duemilanove</p>
+          </li>
+          <li class="board">
+            <div class="chip chip-100" aria-hidden="true"></div>
+            <h3>ATmega2560 / 1280</h3>
+            <p>Mega 2560, Mega 1280, Mega ADK · 4 serial ports</p>
+          </li>
+          <li class="board">
+            <div class="chip chip-qfn" aria-hidden="true"></div>
+            <h3>RP2040</h3>
+            <p>Pico, XIAO RP2040, Feather RP2040 and about 100 more · 3.3 V</p>
+          </li>
+          <li class="board">
+            <div class="chip chip-8" aria-hidden="true"></div>
+            <h3>ATtiny25 / 45 / 85</h3>
+            <p>8 pins · software Serial · I²C and SPI over USI</p>
+          </li>
+          <li class="board">
+            <div class="chip chip-qfn" aria-hidden="true"></div>
+            <h3>Every other board</h3>
+            <p>ESP32, Uno R4, Leonardo, SAMD… compile, upload and Serial; not simulated yet</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section trust" aria-labelledby="trust-title">
+        <div class="section-head">
+          <p class="eyebrow">You stay in charge</p>
+          <h2 id="trust-title">An agent with a short leash.</h2>
+        </div>
+        <div class="trust-grid">
+          <div>
+            <h3>No API keys to manage</h3>
+            <p>Sign in with Google, GitHub or email and build on free credits. The AI key stays on our server, and your session is encrypted with the OS credential store.</p>
+          </div>
+          <div>
+            <h3>Uploads wait for you</h3>
+            <p>The agent can compile and simulate as much as it likes. Flashing a real board always asks first.</p>
+          </div>
+          <div>
+            <h3>Open source, MIT</h3>
+            <p>Read the code, build it yourself, or send a fix. The renderer runs sandboxed with no Node access.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section download" id="download" aria-labelledby="download-title">
+        <div class="download-card">
+          <svg class="download-mark" viewBox="100 100 824 824" aria-hidden="true">
+            <rect x="102" y="102" width="820" height="820" rx="182" fill="#141516" stroke="#34343a" stroke-width="6" />
+            <polyline points="232,512 344,512 428,260 596,764 680,512 724,512" fill="none" stroke="#f7f8f8" stroke-width="58" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="796" cy="512" r="40" fill="#71d083" />
+          </svg>
+          <h2 id="download-title">Build something this weekend.</h2>
+          <p class="section-lead">Impulse <span data-version>2.0.0-beta.2</span> is free and open source.</p>
+          <div class="download-grid">
+            <a class="dl" data-download="macArm" data-os="mac"><strong>macOS</strong><span>Apple silicon · .dmg</span></a>
+            <a class="dl" data-download="macIntel" data-os="mac"><strong>macOS</strong><span>Intel · .dmg</span></a>
+            <a class="dl" data-download="win" data-os="win"><strong>Windows</strong><span>64-bit · installer</span></a>
+            <a class="dl" data-download="appImage" data-os="linux"><strong>Linux</strong><span>x86_64 · AppImage</span></a>
+            <a class="dl" data-download="deb" data-os="linux"><strong>Linux</strong><span>Debian, Ubuntu · .deb</span></a>
+          </div>
+          <p class="fineprint">
+            The first time it opens, Impulse sets up
+            <a href="https://arduino.github.io/arduino-cli/" target="_blank" rel="noopener">arduino-cli</a> and the board cores it needs.
+            The beta isn't code-signed yet: on macOS, open it once from System Settings › Privacy &amp; Security ›
+            Open Anyway; on Windows, choose More info › Run anyway. On Ubuntu and Debian, the .deb is the one to use.
+            <a data-download="notes" target="_blank" rel="noopener">Release notes</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-brand">
+        <svg class="brand-mark" viewBox="100 100 824 824" aria-hidden="true">
+          <rect x="102" y="102" width="820" height="820" rx="182" fill="#141516" stroke="#34343a" stroke-width="8" />
+          <polyline points="232,512 344,512 428,260 596,764 680,512 724,512" fill="none" stroke="#f7f8f8" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="796" cy="512" r="44" fill="#71d083" />
+        </svg>
+        <div>
+          <strong>Impulse</strong>
+          <p>An Arduino IDE with an AI agent and a simulator built in.</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Project">
+        <a href="https://github.com/Meet-1010/Impulse-IDE-v2" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Meet-1010/Impulse-IDE-v2/releases" target="_blank" rel="noopener">Releases</a>
+        <a href="https://github.com/Meet-1010/Impulse-IDE-v2/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
+        <a href="https://github.com/Meet-1010/Impulse-IDE-v2/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://github.com/Meet-1010/Impulse-IDE-v2/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+      </nav>
+      <p class="footer-legal">
+        MIT License · <span id="year">2026</span>. Arduino is a trademark of Arduino SA; Impulse is an independent project
+        and isn't affiliated with Arduino. The 3D machine is drawn in code, live in your browser.
+      </p>
+    </footer>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

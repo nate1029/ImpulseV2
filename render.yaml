@@ -1,0 +1,38 @@
+# Render Blueprint — free tier, no credit card. Hosts the Impulse Cloud server
+# (the cloud/ folder) as a Docker web service against your Neon database.
+#
+# When you apply this blueprint, Render will prompt for the two values marked
+# `sync: false` below:
+#   DATABASE_URL  — your Neon *pooled* connection string (from cloud .env.local)
+#   ADMIN_EMAILS  — the email that should be the admin
+#
+# NODE_ENV is set to development on purpose: the Dockerfile hardcodes
+# production, which would turn off email-OTP sign-in and the Test button unless
+# a mail service is configured. For a real launch, set NODE_ENV=production,
+# add a Resend key, and remove TEST_LOGIN.
+#
+# If the live URL Render assigns differs from IMPULSE_CLOUD_URL below, update
+# that var to the real URL and redeploy.
+services:
+  - type: web
+    name: impulse-ide-cloud
+    runtime: docker
+    rootDir: cloud
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: development
+      - key: TEST_LOGIN
+        value: "1"
+      - key: HOST
+        value: "0.0.0.0"
+      - key: IMPULSE_CLOUD_URL
+        value: https://impulse-ide-cloud.onrender.com
+      - key: BETTER_AUTH_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_EMAILS
+        sync: false

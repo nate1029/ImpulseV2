@@ -1,0 +1,383 @@
+{
+ "avr-atmega328p": {
+  "title": "Uno R3, Nano, Pro Mini and other ATmega328P boards",
+  "upload": [
+   "USB-serial chip (ATmega16U2 on a genuine Uno, CH340 or CP2102 on clones) with auto-reset through DTR; avrdude at 115200 (Uno, Nano new bootloader) or 57600 (Nano old bootloader, Pro Mini).",
+   "Pro Mini, LilyPad and bare chips need an FTDI/CH340 adapter: DTR→DTR, TX→RX, RX→TX, VCC, GND.",
+   "'programmer is not responding' / 'not in sync': wrong board or processor choice (Nano: try the other bootloader), wrong port, something on pins 0/1, or no CH340 driver on an old OS."
+  ],
+  "power": [
+   "USB gives 5 V at about 500 mA; VIN or the barrel jack take 7–12 V through the regulator, which runs hot above 9 V under load.",
+   "The 3.3 V pin supplies about 50 mA (150 mA on newer Unos): not enough for an ESP-01 or any Wi-Fi module.",
+   "Motors, servos and relay coils on the 5 V pin reset the board: give them their own supply and share GND."
+  ],
+  "clones": [
+   "CH340 clones need the CH34x driver on old macOS/Windows; current systems have it.",
+   "Most Indian Nano clones use the old bootloader (57600 baud); a few carry the ATmega168 (half the memory)."
+  ],
+  "libraries": [
+   "Servo (takes Timer1: no PWM on 9/10), LiquidCrystal, LiquidCrystal_I2C (PCF8574 at 0x27 or 0x3F), Adafruit_SSD1306 + Adafruit_GFX, DHT sensor library, NewPing or pulseIn for HC-SR04, SoftwareSerial for a second UART (one at a time, up to 57600), IRremote 4.x (IrReceiver.decode(), decodedIRData.command: the 2.x API is gone), RF24 for nRF24L01, TinyGPSPlus."
+  ],
+  "notes": [
+   "Serial and the USB chip share pins 0/1: a GPS or Bluetooth module on 0/1 blocks uploads; use SoftwareSerial on other pins.",
+   "Pin 13 carries the LED, which loads the pin as an input."
+  ]
+ },
+ "avr-atmega2560": {
+  "title": "Mega 2560",
+  "upload": [
+   "ATmega16U2 USB bridge (CH340 on clones), STK500v2 bootloader at 115200; auto-reset through DTR."
+  ],
+  "power": [
+   "Same regulator and current limits as the Uno: many pins, still about 200 mA for the whole chip."
+  ],
+  "clones": [
+   "CH340 Mega clones upload like the original."
+  ],
+  "libraries": [
+   "Serial1 (19 RX / 18 TX), Serial2 (17/16) and Serial3 (15/14) are real UARTs: use them instead of SoftwareSerial. RAMPS 1.4 + Marlin, MCUFRIEND_kbv TFT shields, LCD keypad shields."
+  ],
+  "notes": [
+   "PWM on 2–13 and 44–46; external interrupts on 2, 3, 18, 19, 20, 21 (20/21 are also SDA/SCL).",
+   "SPI is on 50 (MISO), 51 (MOSI), 52 (SCK), 53 (SS) and the ICSP header, not 10–13; shields made for the Uno's SPI pins use ICSP."
+  ]
+ },
+ "avr-atmega32u4": {
+  "title": "Leonardo, Micro, Pro Micro (ATmega32U4, native USB)",
+  "upload": [
+   "Native USB: after reset the bootloader shows up as a different serial device for 8 s, then the sketch's own port returns; the port changing is normal.",
+   "If an upload fails, double-tap RESET (Pro Micro: short RST to GND twice) right as the upload starts; a sketch that breaks the USB stack needs this to recover."
+  ],
+  "power": [
+   "5 V/16 MHz and 3.3 V/8 MHz variants exist; a 3.3 V Pro Micro clone built as 5 V/16 MHz runs at half speed (Serial baud off by 2×)."
+  ],
+  "clones": [
+   "Pro Micro clones are built as Arduino Leonardo; the clone has no 11/12/13 headers, SPI is on 14 (MISO), 15 (SCK), 16 (MOSI)."
+  ],
+  "libraries": [
+   "Keyboard and Mouse (built in), HID-Project for more HID devices. Serial is USB CDC: while (!Serial) waits for a monitor, so remove it for standalone use. Serial1 is the UART on pins 0/1."
+  ],
+  "notes": [
+   "RX/TX LEDs on PB0/PD5 (RXLED1, TXLED1 macros); analog A6–A11 sit on digital pins 4, 6, 8, 9, 10, 12."
+  ]
+ },
+ "megaavr-atmega4809": {
+  "title": "Nano Every, Uno WiFi Rev2 (ATmega4809)",
+  "upload": [
+   "SAMD11 USB bridge programs the chip over UPDI: no button, 1200-baud touch resets it."
+  ],
+  "power": [
+   "5 V logic like the Nano; VIN 7–21 V on the Nano Every."
+  ],
+  "clones": [],
+  "libraries": [
+   "Servo, Wire, SPI, EEPROM, SoftwareSerial work; WiFiNINA on the Uno WiFi Rev2."
+  ],
+  "notes": [
+   "Serial is USB, Serial1 the UART on pins 0/1 (unlike the classic Nano where both are the same port).",
+   "No Timer1/Timer2 registers: libraries that touch AVR timers directly (TimerOne, old IRremote, PWM tricks) do not compile; ATmega328P register code (PORTB, TCCR1A) does not apply, the megaAVR names are PORTB.OUT, TCB0, etc."
+  ]
+ },
+ "renesas-ra4m1": {
+  "title": "Uno R4 Minima and WiFi (Renesas RA4M1)",
+  "upload": [
+   "USB DFU inside the RA4M1: if the board stops appearing, double-tap RESET (the LED fades) and upload again."
+  ],
+  "power": [
+   "5 V logic, the only 5 V 32-bit Arduino: Uno R3 shields and sensors fit. VIN 6–24 V."
+  ],
+  "clones": [],
+  "libraries": [
+   "WiFiS3 (not WiFiNINA) for the R4 WiFi's ESP32-S3 module; Arduino_LED_Matrix for its 12×8 matrix; Servo, Wire, SPI, EEPROM (emulated in flash), RTC, CAN, analogWave for the DAC."
+  ],
+  "notes": [
+   "analogReadResolution(14) gives the full 14-bit ADC; A0 doubles as a 12-bit DAC.",
+   "The R4 WiFi's Qwiic connector is Wire1 at 3.3 V; the ESP32-S3 only does Wi-Fi/BLE, your sketch runs on the RA4M1."
+  ]
+ },
+ "samd21": {
+  "title": "Nano 33 IoT, MKR boards, Zero, XIAO SAMD21 (SAMD21, 3.3 V)",
+  "upload": [
+   "Native USB: double-tap RESET to enter the bootloader (LED pulses) when the port is missing; normally the 1200-baud touch resets by itself."
+  ],
+  "power": [
+   "3.3 V logic on every pin: 5 V on an input destroys it. VUSB/5V pins are USB power out, not logic. MKR boards charge a LiPo from USB."
+  ],
+  "clones": [],
+  "libraries": [
+   "WiFiNINA (Nano 33 IoT, MKR WiFi 1010), WiFi101 (MKR1000), ArduinoBLE, Arduino_LSM6DS3 (Nano 33 IoT IMU), FlashStorage instead of EEPROM, Servo, SAMD_TimerInterrupt."
+  ],
+  "notes": [
+   "12-bit ADC (analogReadResolution(12)) and a 10-bit DAC on A0; no EEPROM (FlashStorage).",
+   "Serial is USB (while (!Serial) waits for a monitor); Serial1 is the UART on the TX/RX pins."
+  ]
+ },
+ "samd51": {
+  "title": "Wio Terminal, Feather M4 (SAMD51, 3.3 V)",
+  "upload": [
+   "Native USB with a UF2 bootloader; double-tap RESET for the drive."
+  ],
+  "power": [
+   "3.3 V logic; 120 MHz Cortex-M4F."
+  ],
+  "clones": [],
+  "libraries": [
+   "Wio Terminal: Seeed_Arduino_LCD (a TFT_eSPI fork) for the screen, rpcWiFi for Wi-Fi, the buttons are WIO_KEY_A/B/C and WIO_5S_*."
+  ],
+  "notes": []
+ },
+ "nrf52840": {
+  "title": "Nano 33 BLE, XIAO nRF52840, Feather nRF52840 (nRF52840, 3.3 V)",
+  "upload": [
+   "Native USB with a UF2 or Arduino bootloader: double-tap RESET for the drive; the 1200-baud touch resets normally.",
+   "The Arduino mbed core (Nano 33 BLE) and the Adafruit/Seeed cores are different platforms: a library written for one may not compile on the other."
+  ],
+  "power": [
+   "3.3 V logic; XIAO and Feather boards charge a LiPo."
+  ],
+  "clones": [],
+  "libraries": [
+   "ArduinoBLE (mbed Nano 33 BLE), Bluefruit (Adafruit nRF52 core, also XIAO through Seeed's core), Arduino_LSM9DS1 (BLE Sense) or Arduino_BMI270_BMM150 (BLE Sense Rev2), PDM for the microphone."
+  ],
+  "notes": [
+   "No EEPROM: KVStore/FlashIAP (mbed) or Adafruit's InternalFileSystem. analogWrite is PWM on any pin; analogReadResolution(12) available."
+  ]
+ },
+ "rp2040": {
+  "title": "Raspberry Pi Pico and RP2040 boards (Arduino-Pico core)",
+  "upload": [
+   "First upload: hold BOOTSEL while plugging in (a drive named RPI-RP2 appears); later uploads reset the board through USB by themselves. 'No accessible RP2040 devices in BOOTSEL mode' means do the BOOTSEL step again."
+  ],
+  "power": [
+   "3.3 V logic, not 5 V tolerant: level-shift 5 V sensors. VSYS takes 1.8–5.5 V in, VBUS is USB 5 V out, the 3V3 pin supplies about 300 mA."
+  ],
+  "clones": [
+   "Purple 'Pico clone' boards with USB-C behave like the Pico; RP2040-Zero boards use GPIO16 for a WS2812 instead of a plain LED."
+  ],
+  "libraries": [
+   "Arduino-Pico (Earle Philhower) core: Servo, Wire (Wire.setSDA/setSCL before begin), SPI (SPI.setRX/setTX/setSCK), Serial1/Serial2 (setRX/setTX), WiFi.h on the Pico W (not WiFiNINA), LittleFS, EEPROM emulation, Adafruit NeoPixel (PIO)."
+  ],
+  "notes": [
+   "Pins are GPIO numbers (GP0…GP28), not D labels; ADC on GPIO26–28 (A0–A2), the chip temperature on channel 4.",
+   "analogWriteFreq() and analogWriteRange() set PWM; every pin has PWM.",
+   "setup1()/loop1() run on the second core; rp2040.fifo passes messages. Interrupt handlers need no IRAM_ATTR (that is ESP32)."
+  ]
+ },
+ "rp2350": {
+  "title": "Raspberry Pi Pico 2 and RP2350 boards",
+  "upload": [
+   "Same BOOTSEL procedure as the Pico (the drive is RP2350)."
+  ],
+  "power": [
+   "3.3 V logic, not 5 V tolerant."
+  ],
+  "clones": [],
+  "libraries": [
+   "Arduino-Pico core 4.0 or later; the Pico 2 W uses WiFi.h like the Pico W."
+  ],
+  "notes": [
+   "Cortex-M33 (or Hazard3 RISC-V) at 150 MHz, 520 KB RAM; the pinout matches the Pico."
+  ]
+ },
+ "esp32": {
+  "title": "ESP32 (WROOM/WROVER dev kits, ESP32-CAM, D1 R32, LOLIN32)",
+  "upload": [
+   "esptool through the USB-serial chip; dev kits enter download mode by themselves. 'Failed to connect … Wrong boot mode' means hold BOOT (GPIO0) while 'Connecting…' prints, then release. Long or thin cables: Upload Speed 115200.",
+   "Boards without a USB chip (ESP32-CAM, bare modules) upload through a USB-serial adapter with GPIO0 to GND at reset.",
+   "A board in deep sleep cannot be flashed: its USB port comes and goes with each wake, so 'the port is gone' or 'Failed to connect' during an upload means press RESET (or hold BOOT while plugging in) when 'Connecting…' prints, or upload during the awake part of its cycle."
+  ],
+  "power": [
+   "Wi-Fi draws peaks above 400 mA: a weak USB port or thin cable gives 'Brownout detector was triggered' resets; use a 5 V 1 A supply or add a 470 µF capacitor on 5 V.",
+   "VIN/5V is USB 5 V; the 3.3 V regulator (AMS1117 on most kits) has about 500 mA minus the ESP32's own use: no servos or backlit displays on 3V3.",
+   "3.3 V logic: 5 V sensors (HC-SR04 ECHO, many relay boards) need a divider or level shifter; relay boards want 5 V for the coil with a 3.3 V logic input."
+  ],
+  "clones": [
+   "CH340, CP2102 and CH9102 USB chips are all common in India; CH9102 needs its own driver on old Windows.",
+   "'DevKit V1' boards differ in pin count (30 vs 36/38) between sellers but share GPIO numbers."
+  ],
+  "libraries": [
+   "WiFi.h, WiFiClientSecure, HTTPClient, WebServer, ESPAsyncWebServer (+AsyncTCP), PubSubClient (MQTT), ArduinoJson, Preferences (settings), LittleFS (files), ESP32Servo (not Servo), analogWrite works (LEDC), BluetoothSerial (classic BT, original ESP32 only), BLE (built-in BLE or NimBLE-Arduino), esp_now.h, esp_camera.h on camera boards, DHT sensor library."
+  ],
+  "notes": [
+   "ESP-NOW: both boards on the same Wi-Fi channel; WiFi.mode(WIFI_STA) before esp_now_init(); the receiver prints WiFi.macAddress() so the sender knows its peer (or send to the broadcast address FF:FF:FF:FF:FF:FF); 200 m or more line of sight.",
+   "Deep sleep wakes only through RTC GPIOs (0, 2, 4, 12–15, 25–27, 32–39): esp_sleep_enable_ext0_wakeup(); a timer wake needs no pin.",
+   "Core 1 runs setup()/loop(); xTaskCreatePinnedToCore() puts work on core 0; delay(0) or yield() inside long loops keeps the watchdog quiet."
+  ]
+ },
+ "esp32-s2": {
+  "title": "ESP32-S2 (Saola, LOLIN S2 Mini)",
+  "upload": [
+   "Native USB (CDC) only on most boards: enable USB CDC On Boot for Serial; hold BOOT (GPIO0) while plugging in if no port appears.",
+   "A board in deep sleep cannot be flashed: its USB port comes and goes with each wake, so 'the port is gone' or 'Failed to connect' during an upload means press RESET (or hold BOOT while plugging in) when 'Connecting…' prints, or upload during the awake part of its cycle."
+  ],
+  "power": [
+   "3.3 V logic; same brownout notes as the ESP32."
+  ],
+  "clones": [],
+  "libraries": [
+   "Same Wi-Fi libraries as the ESP32; no Bluetooth at all on the S2; USB device libraries (keyboard, MSC) through TinyUSB."
+  ],
+  "notes": [
+   "Single core, Wi-Fi only. GPIO19/20 are USB; strapping GPIO0, 45, 46; ADC1 GPIO1–10, ADC2 GPIO11–20 (unusable with Wi-Fi); DAC on GPIO17 and 18.",
+   "Boards on the chip's native USB lose what is printed in the first 1–2 s after a reset or deep-sleep wake (the port re-enumerates and the monitor reconnects): delay(2000) before the first print."
+  ]
+ },
+ "esp32-s3": {
+  "title": "ESP32-S3 (DevKitC, SuperMini, XIAO S3, Heltec V3, T-Display-S3)",
+  "upload": [
+   "DevKitC boards have two USB-C ports: the UART port (CP2102) behaves like the classic ESP32; the native port needs USB CDC On Boot for Serial (Impulse turns it on when the board is on its native port). SuperMini/XIAO boards have the native port only.",
+   "A board in deep sleep cannot be flashed: its USB port comes and goes with each wake, so 'the port is gone' or 'Failed to connect' during an upload means press RESET (or hold BOOT while plugging in) when 'Connecting…' prints, or upload during the awake part of its cycle."
+  ],
+  "power": [
+   "3.3 V logic; brownout notes as the ESP32; the native USB port alone cannot power a camera plus Wi-Fi reliably on thin cables."
+  ],
+  "clones": [
+   "DevKitC clones put the RGB LED on GPIO48 or GPIO38; SuperMini boards use GPIO48."
+  ],
+  "libraries": [
+   "Same Wi-Fi/BLE libraries as the ESP32 (BLE 5 only, no classic Bluetooth so no BluetoothSerial); USB HID/MSC through the USB library; esp_camera for camera boards; TFT_eSPI for display boards."
+  ],
+  "notes": [
+   "Dual core 240 MHz; GPIO26–32 are the flash and GPIO33–37 the PSRAM on octal-PSRAM (N8R8/N16R8) boards: do not use them; strapping GPIO0, 3, 45, 46; no DAC; ADC1 GPIO1–10, ADC2 GPIO11–20 (unusable with Wi-Fi). RGB LED through rgbLedWrite()/Adafruit_NeoPixel.",
+   "Native USB (USB CDC On Boot): the port disappears on reset, upload and deep sleep and re-enumerates on wake, and the serial monitor reconnects about 1–2 s after the chip boots. Lines printed before that are lost, and while(!Serial) returns as soon as USB is up, before a monitor attaches: delay(2000) (or wait for Serial and then 1 s more) before the first print, and keep deep-sleep awake time above that."
+  ]
+ },
+ "esp32-c3": {
+  "title": "ESP32-C3 (SuperMini, DevKitM-1, XIAO C3, LOLIN C3 Mini)",
+  "upload": [
+   "SuperMini and XIAO boards have native USB only: USB CDC On Boot must be enabled for Serial; hold BOOT (GPIO9) while plugging in to force download mode when no port appears. DevKitC-02 boards also have a UART chip.",
+   "A board in deep sleep cannot be flashed: its USB port comes and goes with each wake, so 'the port is gone' or 'Failed to connect' during an upload means press RESET (or hold BOOT while plugging in) when 'Connecting…' prints, or upload during the awake part of its cycle."
+  ],
+  "power": [
+   "3.3 V logic; the SuperMini's 3.3 V regulator is small (about 300 mA): no displays with backlights or servos from 3V3."
+  ],
+  "clones": [
+   "SuperMini boards from different sellers: LED on GPIO8 (active-LOW) on most; some antenna layouts have poor Wi-Fi range (keep WiFi.setTxPower(WIFI_POWER_8_5dBm) in mind if the connection drops)."
+  ],
+  "libraries": [
+   "Same Wi-Fi libraries as the ESP32; BLE 5 (NimBLE-Arduino is lighter); no classic Bluetooth; no DAC."
+  ],
+  "notes": [
+   "Single RISC-V core 160 MHz; GPIO0–21 only; GPIO18/19 are USB; strapping GPIO2, 8, 9; ADC1 GPIO0–4, ADC2 GPIO5 (unusable with Wi-Fi); UART0 TX GPIO21 / RX GPIO20.",
+   "Boards on the chip's native USB lose what is printed in the first 1–2 s after a reset or deep-sleep wake (the port re-enumerates and the monitor reconnects): delay(2000) before the first print."
+  ]
+ },
+ "esp32-c6": {
+  "title": "ESP32-C6 (DevKitC-1, SuperMini, XIAO C6)",
+  "upload": [
+   "DevKitC has UART and native USB ports; SuperMini/XIAO native only (USB CDC On Boot on).",
+   "A board in deep sleep cannot be flashed: its USB port comes and goes with each wake, so 'the port is gone' or 'Failed to connect' during an upload means press RESET (or hold BOOT while plugging in) when 'Connecting…' prints, or upload during the awake part of its cycle."
+  ],
+  "power": [
+   "3.3 V logic."
+  ],
+  "clones": [],
+  "libraries": [
+   "Wi-Fi 6 and BLE 5 through the usual libraries; Zigbee through the Zigbee library (needs the Zigbee partition scheme and mode in Board Options); Thread/802.15.4 through OpenThread."
+  ],
+  "notes": [
+   "RISC-V 160 MHz; GPIO12/13 are USB; strapping GPIO4, 5, 8, 9, 15; ADC on GPIO0–6. Needs ESP32 Arduino core 3.0 or later: core 2.x does not know the C6.",
+   "Boards on the chip's native USB lose what is printed in the first 1–2 s after a reset or deep-sleep wake (the port re-enumerates and the monitor reconnects): delay(2000) before the first print."
+  ]
+ },
+ "esp8266": {
+  "title": "ESP8266 (NodeMCU, D1 mini, ESP-01, ESP-12 modules)",
+  "upload": [
+   "esptool over CH340/CP2102 at 115200 (921600 works on good cables); NodeMCU and D1 mini auto-reset into flash mode; ESP-01 and bare modules need GPIO0 LOW at reset.",
+   "'espcomm_upload_mem failed' or 'Failed to connect': not in flash mode, wrong port, or weak power."
+  ],
+  "power": [
+   "Wi-Fi peaks above 300 mA: the Uno's 3.3 V pin cannot power an ESP-01; use the NodeMCU's own regulator or an AMS1117 3.3 V module with a 100 µF capacitor.",
+   "3.3 V logic: feed a 5 V TX into RX through a divider."
+  ],
+  "clones": [
+   "NodeMCU 'V3' (LoLin, CH340) and 'Amica' (CP2102) boards are both NodeMCU 1.0; the V3 is wider and has two extra pins (VU = 5 V from USB, G)."
+  ],
+  "libraries": [
+   "ESP8266WiFi, ESP8266WebServer, ESP8266HTTPClient, WiFiClientSecure (client.setInsecure() for quick tests), ESPAsyncWebServer (+ESPAsyncTCP), PubSubClient, ArduinoJson, LittleFS (SPIFFS is deprecated), ESP8266mDNS, ArduinoOTA, Servo, Ticker, EEPROM (emulated, 4 KB)."
+  ],
+  "notes": [
+   "One ADC (A0) and no DAC; PWM on any GPIO through software analogWrite (0–255 in core 3.x).",
+   "Deep sleep needs D0 (GPIO16) wired to RST: ESP.deepSleep(microseconds).",
+   "Code that blocks for about 3 s trips the software watchdog: yield() or delay(1) inside loops; the hardware watchdog resets at about 8 s."
+  ]
+ },
+ "stm32": {
+  "title": "STM32 Blue Pill, Black Pill, Nucleo, Discovery (STM32duino core)",
+  "upload": [
+   "Tools › Upload method (Board Options): ST-Link SWD (an ST-Link V2 dongle), Serial (BOOT0 jumper to 1, USB-serial adapter on PA9 TX / PA10 RX, then BOOT0 back to 0), DFU over USB (Black Pill: hold BOOT0, tap NRST, release), Mass Storage on Nucleo boards (the onboard ST-Link acts as a drive).",
+   "Serial over the board's own USB needs USB support = 'CDC (generic Serial supersede U(S)ART)' in Board Options; otherwise Serial is the UART on PA9/PA10 (Nucleo: the ST-Link's virtual COM port on PA2/PA3)."
+  ],
+  "power": [
+   "3.3 V logic; pins marked FT in the datasheet accept 5 V as digital inputs, analog pins do not."
+  ],
+  "clones": [
+   "Blue Pills with CKS32F103 / CS32F103 / GD32 clone chips: an ST-Link may refuse them ('unexpected IDCODE'); use STM32CubeProgrammer (SWD) or the serial method. Some are marked C8 (64 KB) but have 128 KB.",
+   "Old Blue Pills have a 10 kΩ USB pull-up (R10) instead of 1.5 kΩ, so USB enumeration fails: add 1.8 kΩ between PA12 and 3.3 V or use ST-Link."
+  ],
+  "libraries": [
+   "Servo, Wire and SPI with pin names (Wire.setSDA(PB7); Wire.setSCL(PB6); or TwoWire Wire2(PB11, PB10)); HardwareSerial Serial2(PA3, PA2); STM32duino RTC, LowPower, FreeRTOS; TFT_eSPI, U8g2 and most Adafruit libraries compile."
+  ],
+  "notes": [
+   "Pins are PA0…PC15 (D0/A0 aliases exist only on Arduino-shaped Nucleo boards); LED on PC13 (Blue/Black Pill, active-LOW) or PA5 (Nucleo-64 LD2); 12-bit ADC with analogReadResolution(12); analogWriteFrequency() sets PWM."
+  ]
+ },
+ "teensy4": {
+  "title": "Teensy 4.0 and 4.1",
+  "upload": [
+   "Teensy Loader over USB (HalfKay bootloader); press the board's button if the automatic upload does not start. The core comes from the teensy:avr board package."
+  ],
+  "power": [
+   "3.3 V logic and NOT 5 V tolerant (unlike Teensy 3.x): level-shift 5 V inputs. VIN 3.6–5.5 V; cut the VIN–VUSB pad when powering externally with USB attached."
+  ],
+  "clones": [],
+  "libraries": [
+   "Teensy Audio Library, IntervalTimer, elapsedMillis, OctoWS2811 and FastLED, TeensyThreads; most Arduino libraries compile."
+  ],
+  "notes": [
+   "Serial is USB (always 12 Mbit/s whatever the baud); Serial1–Serial8 are hardware UARTs (Serial1 on 0/1); analogWriteResolution up to 15 bits; CPU 600 MHz by default; EEPROM emulated (4 KB)."
+  ]
+ },
+ "attiny-x5": {
+  "title": "ATtiny85 / ATtiny84 (ATTinyCore), Digispark",
+  "upload": [
+   "ATTinyCore boards program over ISP: Arduino as ISP (Uno running ArduinoISP, pins 10 RST / 11 MOSI / 12 MISO / 13 SCK, 10 µF between RESET and GND on the Uno) or a USBasp; set Tools › Programmer and use Upload Using Programmer. Digispark: Micronucleus over USB, plug the board in only after clicking Upload."
+  ],
+  "power": [
+   "2.7–5.5 V; internal 8 MHz clock by default (16 MHz PLL on Digispark); no crystal."
+  ],
+  "clones": [
+   "Digispark clones work with the Digistump core; a missing driver on Windows shows them as an unknown USB device."
+  ],
+  "libraries": [
+   "ATTinyCore's Wire for I2C (TinyWireM on old cores), SoftwareSerial for debug output (no hardware UART on the 85), Adafruit NeoPixel at 8/16 MHz, Servo_ATTinyCore."
+  ],
+  "notes": [
+   "ATtiny85: 8 KB flash, 512 B RAM, 5 I/O pins (6 with RESET disabled, which needs a high-voltage programmer to undo); PWM on PB0, PB1 (PB4); ADC on PB2, PB3, PB4, PB5. Digispark pins P0–P5 = PB0–PB5; P3/P4 are USB (avoid while USB is in use), P1 has the LED."
+  ]
+ },
+ "attiny-modern": {
+  "title": "tinyAVR 0/1/2-series (ATtiny1614, 1616, 3216…, megaTinyCore)",
+  "upload": [
+   "UPDI with SerialUPDI: a USB-serial adapter whose TX goes through a 4.7 kΩ resistor (or a Schottky diode) to the UPDI pin, RX straight to it; Tools › Programmer = SerialUPDI, then Upload Using Programmer. Or a jtag2updi programmer."
+  ],
+  "power": [
+   "1.8–5.5 V; 20 MHz or 16 MHz internal clock (set in Board Options; Burn Bootloader writes the fuses)."
+  ],
+  "clones": [],
+  "libraries": [
+   "Wire, SPI, Serial (hardware UART on all 1-series parts), Servo through megaTinyCore's Servo, EEPROM (128–256 B), Logic/Event/Comparator libraries for the peripherals."
+  ],
+  "notes": [
+   "Pins are PA0…PC3 with Arduino numbers from megaTinyCore's pinout chart; registers follow the new AVR style (PORTA.OUT, TCA0.SINGLE…)."
+  ]
+ },
+ "general": {
+  "title": "",
+  "upload": [],
+  "power": [],
+  "clones": [],
+  "libraries": [],
+  "notes": []
+ }
+}

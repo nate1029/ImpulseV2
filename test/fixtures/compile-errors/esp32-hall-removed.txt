@@ -1,0 +1,5 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/esp32_hall_removed.ino: In function 'void setup()':
+<sketch>/esp32_hall_removed.ino:1:53: error: 'hallRead' was not declared in this scope
+    1 | void setup() { Serial.begin(115200); Serial.println(hallRead()); }
+      |                                                     ^~~~~~~~

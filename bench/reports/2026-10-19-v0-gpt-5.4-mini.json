@@ -1,0 +1,4951 @@
+{
+ "bench": "EmbedBench v0",
+ "date": "2026-10-19T13:09:39.300Z",
+ "model": "gpt-5.4-mini",
+ "reasoning": "low",
+ "label": "v0-gpt-5.4-mini",
+ "summary": {
+  "reference": {
+   "tasks": 60,
+   "passed": 60,
+   "passRate": 100,
+   "compiled": 60,
+   "costUsd": 0,
+   "costPerWorkingSketchUsd": 0
+  },
+  "alone": {
+   "tasks": 60,
+   "passed": 53,
+   "passRate": 88.3,
+   "compiled": 57,
+   "costUsd": 0.0888,
+   "costPerWorkingSketchUsd": 0.0017
+  },
+  "impulse": {
+   "tasks": 60,
+   "passed": 56,
+   "passRate": 93.3,
+   "compiled": 59,
+   "costUsd": 0.1146,
+   "costPerWorkingSketchUsd": 0.002
+  },
+  "impulse-fix": {
+   "tasks": 60,
+   "passed": 58,
+   "passRate": 96.7,
+   "compiled": 60,
+   "costUsd": 0.0772,
+   "costPerWorkingSketchUsd": 0.0013
+  }
+ },
+ "byBoard": {
+  "uno": {
+   "reference": "16/16",
+   "alone": "16/16",
+   "impulse": "16/16",
+   "impulse-fix": "16/16"
+  },
+  "esp32": {
+   "reference": "12/12",
+   "alone": "10/12",
+   "impulse": "12/12",
+   "impulse-fix": "12/12"
+  },
+  "esp32s3": {
+   "reference": "10/10",
+   "alone": "8/10",
+   "impulse": "10/10",
+   "impulse-fix": "10/10"
+  },
+  "esp32c3": {
+   "reference": "8/8",
+   "alone": "6/8",
+   "impulse": "6/8",
+   "impulse-fix": "7/8"
+  },
+  "pico": {
+   "reference": "8/8",
+   "alone": "8/8",
+   "impulse": "7/8",
+   "impulse-fix": "7/8"
+  },
+  "nanoesp32": {
+   "reference": "6/6",
+   "alone": "5/6",
+   "impulse": "5/6",
+   "impulse-fix": "6/6"
+  }
+ },
+ "results": [
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.001389,
+   "tokens": {
+    "input": 100,
+    "output": 292,
+    "reasoning": 172
+   },
+   "libraries": [],
+   "error": "pin 8 frequency 2Hz ±5%: GPIO8 did not oscillate long enough to measure",
+   "seconds": 130.4
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.00207975,
+   "tokens": {
+    "input": 1483,
+    "output": 215,
+    "reasoning": 94
+   },
+   "libraries": [],
+   "error": "pin 8 frequency 2Hz ±5%: GPIO8 did not oscillate long enough to measure",
+   "seconds": 163.4
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.00158475,
+   "tokens": {
+    "input": 1483,
+    "output": 297,
+    "reasoning": 166
+   },
+   "libraries": [],
+   "error": "pin 8 frequency 2Hz ±5%: GPIO8 did not oscillate long enough to measure",
+   "steps": [],
+   "seconds": 195.5
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 51.3
+  },
+  {
+   "id": "c3-button",
+   "board": "esp32c3",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00186975,
+   "tokens": {
+    "input": 129,
+    "output": 394,
+    "reasoning": 97
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 95.1
+  },
+  {
+   "id": "c3-button",
+   "board": "esp32c3",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0028485,
+   "tokens": {
+    "input": 1758,
+    "output": 340,
+    "reasoning": 38
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 95.9
+  },
+  {
+   "id": "c3-button",
+   "board": "esp32c3",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0017082,
+   "tokens": {
+    "input": 1758,
+    "output": 317,
+    "reasoning": 41
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 108.2
+  },
+  {
+   "id": "c3-button",
+   "board": "esp32c3",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 97.2
+  },
+  {
+   "id": "c3-ledc",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00233625,
+   "tokens": {
+    "input": 121,
+    "output": 499,
+    "reasoning": 233
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 90.3
+  },
+  {
+   "id": "c3-ledc",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00223425,
+   "tokens": {
+    "input": 1731,
+    "output": 208,
+    "reasoning": 47
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 77.9
+  },
+  {
+   "id": "c3-ledc",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00098145,
+   "tokens": {
+    "input": 1731,
+    "output": 160,
+    "reasoning": 38
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 109.6
+  },
+  {
+   "id": "c3-ledc",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 82.7
+  },
+  {
+   "id": "c3-mpu6050",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00249525,
+   "tokens": {
+    "input": 111,
+    "output": 536,
+    "reasoning": 133
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 84.8
+  },
+  {
+   "id": "c3-mpu6050",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0024765,
+   "tokens": {
+    "input": 1910,
+    "output": 232,
+    "reasoning": 22
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 112.6
+  },
+  {
+   "id": "c3-mpu6050",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0011589,
+   "tokens": {
+    "input": 1910,
+    "output": 208,
+    "reasoning": 52
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 121.3
+  },
+  {
+   "id": "c3-mpu6050",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 104.3
+  },
+  {
+   "id": "c3-pot",
+   "board": "esp32c3",
+   "category": "analog",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00114,
+   "tokens": {
+    "input": 110,
+    "output": 235,
+    "reasoning": 83
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 84
+  },
+  {
+   "id": "c3-pot",
+   "board": "esp32c3",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00211125,
+   "tokens": {
+    "input": 1561,
+    "output": 209,
+    "reasoning": 79
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 105.1
+  },
+  {
+   "id": "c3-pot",
+   "board": "esp32c3",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0009403500000000001,
+   "tokens": {
+    "input": 1561,
+    "output": 160,
+    "reasoning": 27
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 110
+  },
+  {
+   "id": "c3-pot",
+   "board": "esp32c3",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 107.7
+  },
+  {
+   "id": "c3-preferences",
+   "board": "esp32c3",
+   "category": "storage",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.000912,
+   "tokens": {
+    "input": 100,
+    "output": 186,
+    "reasoning": 56
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 109.7
+  },
+  {
+   "id": "c3-preferences",
+   "board": "esp32c3",
+   "category": "storage",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0018615,
+   "tokens": {
+    "input": 1546,
+    "output": 156,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 96
+  },
+  {
+   "id": "c3-preferences",
+   "board": "esp32c3",
+   "category": "storage",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0008481000000000001,
+   "tokens": {
+    "input": 1546,
+    "output": 142,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 123.6
+  },
+  {
+   "id": "c3-preferences",
+   "board": "esp32c3",
+   "category": "storage",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 95.5
+  },
+  {
+   "id": "c3-timer",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.00470625,
+   "tokens": {
+    "input": 107,
+    "output": 1028,
+    "reasoning": 732
+   },
+   "libraries": [],
+   "error": "pin 5 frequency 2Hz ±10%: GPIO5 did not oscillate long enough to measure",
+   "seconds": 185.8
+  },
+  {
+   "id": "c3-timer",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.002736,
+   "tokens": {
+    "input": 1152,
+    "output": 416,
+    "reasoning": 235
+   },
+   "libraries": [],
+   "error": "pin 5 frequency 2Hz ±10%: GPIO5 did not oscillate long enough to measure",
+   "seconds": 187.4
+  },
+  {
+   "id": "c3-timer",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0014058,
+   "tokens": {
+    "input": 1152,
+    "output": 274,
+    "reasoning": 106
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 114.9
+  },
+  {
+   "id": "c3-timer",
+   "board": "esp32c3",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 85.3
+  },
+  {
+   "id": "c3-wifi",
+   "board": "esp32c3",
+   "category": "network",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00091275,
+   "tokens": {
+    "input": 107,
+    "output": 185,
+    "reasoning": 29
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 116.2
+  },
+  {
+   "id": "c3-wifi",
+   "board": "esp32c3",
+   "category": "network",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0020085,
+   "tokens": {
+    "input": 1682,
+    "output": 166,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 116.7
+  },
+  {
+   "id": "c3-wifi",
+   "board": "esp32c3",
+   "category": "network",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0010257,
+   "tokens": {
+    "input": 1682,
+    "output": 178,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 143.6
+  },
+  {
+   "id": "c3-wifi",
+   "board": "esp32c3",
+   "category": "network",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 91.7
+  },
+  {
+   "id": "esp32-blink-onboard",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00159825,
+   "tokens": {
+    "input": 91,
+    "output": 340,
+    "reasoning": 205
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 58.7
+  },
+  {
+   "id": "esp32-blink-onboard",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0017685,
+   "tokens": {
+    "input": 1422,
+    "output": 156,
+    "reasoning": 59
+   },
+   "libraries": [],
+   "error": null,
+   "retried": true,
+   "seconds": 186.7
+  },
+  {
+   "id": "esp32-blink-onboard",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001035,
+   "tokens": {
+    "input": 1422,
+    "output": 185,
+    "reasoning": 71
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "retried": true,
+   "seconds": 231.5
+  },
+  {
+   "id": "esp32-blink-onboard",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 55
+  },
+  {
+   "id": "esp32-button",
+   "board": "esp32",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00109725,
+   "tokens": {
+    "input": 107,
+    "output": 226,
+    "reasoning": 22
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 90.2
+  },
+  {
+   "id": "esp32-button",
+   "board": "esp32",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00236025,
+   "tokens": {
+    "input": 1515,
+    "output": 272,
+    "reasoning": 27
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 83.9
+  },
+  {
+   "id": "esp32-button",
+   "board": "esp32",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00125685,
+   "tokens": {
+    "input": 1515,
+    "output": 238,
+    "reasoning": 20
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 113.1
+  },
+  {
+   "id": "esp32-button",
+   "board": "esp32",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 77
+  },
+  {
+   "id": "esp32-espnow",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0.0016095,
+   "tokens": {
+    "input": 106,
+    "output": 340,
+    "reasoning": 55
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 61.8
+  },
+  {
+   "id": "esp32-espnow",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0.0031005,
+   "tokens": {
+    "input": 1896,
+    "output": 373,
+    "reasoning": 40
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 54.9
+  },
+  {
+   "id": "esp32-espnow",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0.0015894000000000001,
+   "tokens": {
+    "input": 1896,
+    "output": 306,
+    "reasoning": 32
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [
+    "lint rewrite: esp32-espnow-core2-callback"
+   ],
+   "seconds": 80
+  },
+  {
+   "id": "esp32-espnow",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 51.3
+  },
+  {
+   "id": "esp32-hcsr04",
+   "board": "esp32",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0015945,
+   "tokens": {
+    "input": 116,
+    "output": 335,
+    "reasoning": 41
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 127.7
+  },
+  {
+   "id": "esp32-hcsr04",
+   "board": "esp32",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0024555,
+   "tokens": {
+    "input": 1804,
+    "output": 245,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 146.4
+  },
+  {
+   "id": "esp32-hcsr04",
+   "board": "esp32",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0013817999999999999,
+   "tokens": {
+    "input": 1804,
+    "output": 256,
+    "reasoning": 14
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 148.6
+  },
+  {
+   "id": "esp32-hcsr04",
+   "board": "esp32",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 133
+  },
+  {
+   "id": "esp32-ledc",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": false,
+   "compiled": false,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.00130575,
+   "tokens": {
+    "input": 121,
+    "output": 270,
+    "reasoning": 85
+   },
+   "libraries": [],
+   "error": "did not build or run: Compile failed: esp32_ledc.ino:13:3: error: 'ledcSetup' was not declared in this scope | esp32_ledc.ino:14:3: error: 'ledcAttachPin' was not declared in this scope; did you mean 'ledcAttach'?",
+   "seconds": 68.7
+  },
+  {
+   "id": "esp32-ledc",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00214725,
+   "tokens": {
+    "input": 1681,
+    "output": 197,
+    "reasoning": 33
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 94.5
+  },
+  {
+   "id": "esp32-ledc",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00099345,
+   "tokens": {
+    "input": 1681,
+    "output": 171,
+    "reasoning": 21
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 135.4
+  },
+  {
+   "id": "esp32-ledc",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 58.1
+  },
+  {
+   "id": "esp32-mpu6050",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0028875,
+   "tokens": {
+    "input": 106,
+    "output": 624,
+    "reasoning": 67
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 129.6
+  },
+  {
+   "id": "esp32-mpu6050",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00234525,
+   "tokens": {
+    "input": 1855,
+    "output": 212,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 117.5
+  },
+  {
+   "id": "esp32-mpu6050",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00169005,
+   "tokens": {
+    "input": 1855,
+    "output": 316,
+    "reasoning": 14
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 174.3
+  },
+  {
+   "id": "esp32-mpu6050",
+   "board": "esp32",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 119.7
+  },
+  {
+   "id": "esp32-pot",
+   "board": "esp32",
+   "category": "analog",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00107475,
+   "tokens": {
+    "input": 107,
+    "output": 221,
+    "reasoning": 74
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 151
+  },
+  {
+   "id": "esp32-pot",
+   "board": "esp32",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0018825,
+   "tokens": {
+    "input": 1508,
+    "output": 167,
+    "reasoning": 44
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 149.9
+  },
+  {
+   "id": "esp32-pot",
+   "board": "esp32",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0009816,
+   "tokens": {
+    "input": 1508,
+    "output": 178,
+    "reasoning": 67
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 178.1
+  },
+  {
+   "id": "esp32-pot",
+   "board": "esp32",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 124.5
+  },
+  {
+   "id": "esp32-preferences",
+   "board": "esp32",
+   "category": "storage",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00072075,
+   "tokens": {
+    "input": 97,
+    "output": 144,
+    "reasoning": 28
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 127.2
+  },
+  {
+   "id": "esp32-preferences",
+   "board": "esp32",
+   "category": "storage",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00172575,
+   "tokens": {
+    "input": 1491,
+    "output": 135,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 123
+  },
+  {
+   "id": "esp32-preferences",
+   "board": "esp32",
+   "category": "storage",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00089325,
+   "tokens": {
+    "input": 1491,
+    "output": 142,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 165.6
+  },
+  {
+   "id": "esp32-preferences",
+   "board": "esp32",
+   "category": "storage",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 113.7
+  },
+  {
+   "id": "esp32-servo",
+   "board": "esp32",
+   "category": "actuator",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00090075,
+   "tokens": {
+    "input": 97,
+    "output": 184,
+    "reasoning": 54
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 79.2
+  },
+  {
+   "id": "esp32-servo",
+   "board": "esp32",
+   "category": "actuator",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001716,
+   "tokens": {
+    "input": 1646,
+    "output": 107,
+    "reasoning": 23
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 85.2
+  },
+  {
+   "id": "esp32-servo",
+   "board": "esp32",
+   "category": "actuator",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0008367,
+   "tokens": {
+    "input": 1646,
+    "output": 142,
+    "reasoning": 19
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 118.1
+  },
+  {
+   "id": "esp32-servo",
+   "board": "esp32",
+   "category": "actuator",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 69.3
+  },
+  {
+   "id": "esp32-timer",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.003363,
+   "tokens": {
+    "input": 104,
+    "output": 730,
+    "reasoning": 424
+   },
+   "libraries": [],
+   "error": "pin 2 frequency 2Hz ±10%: GPIO2 did not oscillate long enough to measure",
+   "seconds": 223.4
+  },
+  {
+   "id": "esp32-timer",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00199875,
+   "tokens": {
+    "input": 1099,
+    "output": 261,
+    "reasoning": 85
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 125
+  },
+  {
+   "id": "esp32-timer",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00205725,
+   "tokens": {
+    "input": 1099,
+    "output": 274,
+    "reasoning": 124
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 153.3
+  },
+  {
+   "id": "esp32-timer",
+   "board": "esp32",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 92.8
+  },
+  {
+   "id": "esp32-two-rates",
+   "board": "esp32",
+   "category": "timing",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00172275,
+   "tokens": {
+    "input": 119,
+    "output": 363,
+    "reasoning": 44
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 74.4
+  },
+  {
+   "id": "esp32-two-rates",
+   "board": "esp32",
+   "category": "timing",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0027045,
+   "tokens": {
+    "input": 1230,
+    "output": 396,
+    "reasoning": 95
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 76.8
+  },
+  {
+   "id": "esp32-two-rates",
+   "board": "esp32",
+   "category": "timing",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0018197999999999999,
+   "tokens": {
+    "input": 1230,
+    "output": 353,
+    "reasoning": 59
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 111.4
+  },
+  {
+   "id": "esp32-two-rates",
+   "board": "esp32",
+   "category": "timing",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 81.9
+  },
+  {
+   "id": "esp32-wifi",
+   "board": "esp32",
+   "category": "network",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0008295,
+   "tokens": {
+    "input": 104,
+    "output": 167,
+    "reasoning": 27
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 114.7
+  },
+  {
+   "id": "esp32-wifi",
+   "board": "esp32",
+   "category": "network",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00194025,
+   "tokens": {
+    "input": 1627,
+    "output": 160,
+    "reasoning": 11
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 138.2
+  },
+  {
+   "id": "esp32-wifi",
+   "board": "esp32",
+   "category": "network",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00101685,
+   "tokens": {
+    "input": 1627,
+    "output": 166,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 196
+  },
+  {
+   "id": "esp32-wifi",
+   "board": "esp32",
+   "category": "network",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 104.5
+  },
+  {
+   "id": "nano-blink-d2",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00060225,
+   "tokens": {
+    "input": 101,
+    "output": 117,
+    "reasoning": 32
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 46.6
+  },
+  {
+   "id": "nano-blink-d2",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00170775,
+   "tokens": {
+    "input": 1293,
+    "output": 164,
+    "reasoning": 63
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 81.9
+  },
+  {
+   "id": "nano-blink-d2",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00075015,
+   "tokens": {
+    "input": 1293,
+    "output": 124,
+    "reasoning": 17
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 109.8
+  },
+  {
+   "id": "nano-blink-d2",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 46.9
+  },
+  {
+   "id": "nano-blink-onboard",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00081075,
+   "tokens": {
+    "input": 85,
+    "output": 166,
+    "reasoning": 49
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 84.4
+  },
+  {
+   "id": "nano-blink-onboard",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00156975,
+   "tokens": {
+    "input": 1199,
+    "output": 149,
+    "reasoning": 57
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 72.4
+  },
+  {
+   "id": "nano-blink-onboard",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00098205,
+   "tokens": {
+    "input": 1199,
+    "output": 172,
+    "reasoning": 71
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 94.5
+  },
+  {
+   "id": "nano-blink-onboard",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 78.8
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.003063,
+   "tokens": {
+    "input": 118,
+    "output": 661,
+    "reasoning": 320
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 73.5
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": false,
+   "compiled": false,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.00215025,
+   "tokens": {
+    "input": 1181,
+    "output": 281,
+    "reasoning": 69
+   },
+   "libraries": [],
+   "error": "did not build or run: Compile failed: nano_ledc.ino:14:8: error: 'ledcAttach' was not declared in this scope",
+   "seconds": 62.3
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00331785,
+   "tokens": {
+    "input": 2715,
+    "output": 592,
+    "reasoning": 143
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [
+    "lint rewrite: esp32-ledc-core3-api",
+    "repair round"
+   ],
+   "seconds": 73.4
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 66.4
+  },
+  {
+   "id": "nano-preferences",
+   "board": "nanoesp32",
+   "category": "storage",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00086325,
+   "tokens": {
+    "input": 95,
+    "output": 176,
+    "reasoning": 48
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 77.8
+  },
+  {
+   "id": "nano-preferences",
+   "board": "nanoesp32",
+   "category": "storage",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00167025,
+   "tokens": {
+    "input": 1273,
+    "output": 159,
+    "reasoning": 17
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 82.1
+  },
+  {
+   "id": "nano-preferences",
+   "board": "nanoesp32",
+   "category": "storage",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00093315,
+   "tokens": {
+    "input": 1273,
+    "output": 168,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 73.8
+  },
+  {
+   "id": "nano-preferences",
+   "board": "nanoesp32",
+   "category": "storage",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 71.5
+  },
+  {
+   "id": "nano-timer",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": false,
+   "compiled": false,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.00304575,
+   "tokens": {
+    "input": 101,
+    "output": 660,
+    "reasoning": 486
+   },
+   "libraries": [],
+   "error": "did not build or run: Compile failed: nano_timer.ino:16:29: error: too few arguments to function 'hw_timer_t* timerBegin(uint8_t, uint16_t, bool)' | nano_timer.ino:17:39: error: too few arguments to function 'void timerAttachInterrupt(hw_timer_t*, void (*)(), bool)'",
+   "seconds": 48.2
+  },
+  {
+   "id": "nano-timer",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0024825,
+   "tokens": {
+    "input": 952,
+    "output": 393,
+    "reasoning": 192
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 69.2
+  },
+  {
+   "id": "nano-timer",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.002856,
+   "tokens": {
+    "input": 952,
+    "output": 476,
+    "reasoning": 249
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 101
+  },
+  {
+   "id": "nano-timer",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 63.6
+  },
+  {
+   "id": "nano-wifi",
+   "board": "nanoesp32",
+   "category": "network",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.000918,
+   "tokens": {
+    "input": 102,
+    "output": 187,
+    "reasoning": 31
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 65.6
+  },
+  {
+   "id": "nano-wifi",
+   "board": "nanoesp32",
+   "category": "network",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00161925,
+   "tokens": {
+    "input": 1409,
+    "output": 125,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 72.1
+  },
+  {
+   "id": "nano-wifi",
+   "board": "nanoesp32",
+   "category": "network",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00095775,
+   "tokens": {
+    "input": 1409,
+    "output": 170,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 105.8
+  },
+  {
+   "id": "nano-wifi",
+   "board": "nanoesp32",
+   "category": "network",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 66
+  },
+  {
+   "id": "pico-blink-gp14",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.000837,
+   "tokens": {
+    "input": 90,
+    "output": 171,
+    "reasoning": 84
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 13
+  },
+  {
+   "id": "pico-blink-gp14",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0008011499999999999,
+   "tokens": {
+    "input": 1361,
+    "output": 124,
+    "reasoning": 43
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 10.5
+  },
+  {
+   "id": "pico-blink-gp14",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00090465,
+   "tokens": {
+    "input": 1361,
+    "output": 147,
+    "reasoning": 59
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 12.7
+  },
+  {
+   "id": "pico-blink-gp14",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 10.8
+  },
+  {
+   "id": "pico-blink-onboard",
+   "board": "pico",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0009855,
+   "tokens": {
+    "input": 84,
+    "output": 205,
+    "reasoning": 128
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 51.2
+  },
+  {
+   "id": "pico-blink-onboard",
+   "board": "pico",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00175875,
+   "tokens": {
+    "input": 1277,
+    "output": 178,
+    "reasoning": 73
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 43.4
+  },
+  {
+   "id": "pico-blink-onboard",
+   "board": "pico",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00070215,
+   "tokens": {
+    "input": 1277,
+    "output": 116,
+    "reasoning": 39
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 34.9
+  },
+  {
+   "id": "pico-blink-onboard",
+   "board": "pico",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 51.7
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.001362,
+   "tokens": {
+    "input": 118,
+    "output": 283,
+    "reasoning": 45
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 7.9
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 2
+   },
+   "cost": 0.00249975,
+   "tokens": {
+    "input": 1563,
+    "output": 295,
+    "reasoning": 63
+   },
+   "libraries": [],
+   "error": "serial contains \"released\": not found in 0 chars of serial output",
+   "seconds": 111
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 2
+   },
+   "cost": 0.00136485,
+   "tokens": {
+    "input": 1563,
+    "output": 254,
+    "reasoning": 26
+   },
+   "libraries": [],
+   "error": "serial contains \"released\": not found in 0 chars of serial output",
+   "steps": [],
+   "seconds": 129.9
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 10.1
+  },
+  {
+   "id": "pico-counter-serial",
+   "board": "pico",
+   "category": "serial",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.000996,
+   "tokens": {
+    "input": 116,
+    "output": 202,
+    "reasoning": 62
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 36.1
+  },
+  {
+   "id": "pico-counter-serial",
+   "board": "pico",
+   "category": "serial",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.001659,
+   "tokens": {
+    "input": 964,
+    "output": 208,
+    "reasoning": 109
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 14
+  },
+  {
+   "id": "pico-counter-serial",
+   "board": "pico",
+   "category": "serial",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.001272,
+   "tokens": {
+    "input": 964,
+    "output": 122,
+    "reasoning": 26
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 14.8
+  },
+  {
+   "id": "pico-counter-serial",
+   "board": "pico",
+   "category": "serial",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 15.7
+  },
+  {
+   "id": "pico-dht22",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00135075,
+   "tokens": {
+    "input": 109,
+    "output": 282,
+    "reasoning": 129
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 15
+  },
+  {
+   "id": "pico-dht22",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00204375,
+   "tokens": {
+    "input": 1567,
+    "output": 193,
+    "reasoning": 44
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 17.1
+  },
+  {
+   "id": "pico-dht22",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00159735,
+   "tokens": {
+    "input": 1567,
+    "output": 305,
+    "reasoning": 165
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 21.8
+  },
+  {
+   "id": "pico-dht22",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 10.1
+  },
+  {
+   "id": "pico-hcsr04",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00213075,
+   "tokens": {
+    "input": 111,
+    "output": 455,
+    "reasoning": 104
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 12.1
+  },
+  {
+   "id": "pico-hcsr04",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.002358,
+   "tokens": {
+    "input": 1662,
+    "output": 247,
+    "reasoning": 27
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 13
+  },
+  {
+   "id": "pico-hcsr04",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0012402000000000001,
+   "tokens": {
+    "input": 1662,
+    "output": 229,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 18.1
+  },
+  {
+   "id": "pico-hcsr04",
+   "board": "pico",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 11.1
+  },
+  {
+   "id": "pico-pot",
+   "board": "pico",
+   "category": "analog",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00086925,
+   "tokens": {
+    "input": 97,
+    "output": 177,
+    "reasoning": 59
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 22.1
+  },
+  {
+   "id": "pico-pot",
+   "board": "pico",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001479,
+   "tokens": {
+    "input": 1360,
+    "output": 102,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 18.6
+  },
+  {
+   "id": "pico-pot",
+   "board": "pico",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0006879,
+   "tokens": {
+    "input": 1360,
+    "output": 99,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 17
+  },
+  {
+   "id": "pico-pot",
+   "board": "pico",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 16.2
+  },
+  {
+   "id": "pico-pwm",
+   "board": "pico",
+   "category": "analog",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00126075,
+   "tokens": {
+    "input": 91,
+    "output": 265,
+    "reasoning": 160
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 28.3
+  },
+  {
+   "id": "pico-pwm",
+   "board": "pico",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001518,
+   "tokens": {
+    "input": 1016,
+    "output": 168,
+    "reasoning": 85
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 33.6
+  },
+  {
+   "id": "pico-pwm",
+   "board": "pico",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001527,
+   "tokens": {
+    "input": 1016,
+    "output": 170,
+    "reasoning": 78
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 32.3
+  },
+  {
+   "id": "pico-pwm",
+   "board": "pico",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 31.4
+  },
+  {
+   "id": "s3-blink-gpio4",
+   "board": "esp32s3",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00100425,
+   "tokens": {
+    "input": 97,
+    "output": 207,
+    "reasoning": 85
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 82.9
+  },
+  {
+   "id": "s3-blink-gpio4",
+   "board": "esp32s3",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00118185,
+   "tokens": {
+    "input": 1655,
+    "output": 198,
+    "reasoning": 98
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 108.1
+  },
+  {
+   "id": "s3-blink-gpio4",
+   "board": "esp32s3",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0007669500000000001,
+   "tokens": {
+    "input": 1655,
+    "output": 125,
+    "reasoning": 25
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 113.9
+  },
+  {
+   "id": "s3-blink-gpio4",
+   "board": "esp32s3",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 81.6
+  },
+  {
+   "id": "s3-espnow",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0.00190425,
+   "tokens": {
+    "input": 109,
+    "output": 405,
+    "reasoning": 80
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 65.5
+  },
+  {
+   "id": "s3-espnow",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0.003063,
+   "tokens": {
+    "input": 2050,
+    "output": 339,
+    "reasoning": 46
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 54
+  },
+  {
+   "id": "s3-espnow",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0.0021405,
+   "tokens": {
+    "input": 2050,
+    "output": 422,
+    "reasoning": 72
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [
+    "lint rewrite: esp32-espnow-core2-callback"
+   ],
+   "seconds": 88.8
+  },
+  {
+   "id": "s3-espnow",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 0
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 62.2
+  },
+  {
+   "id": "s3-hcsr04",
+   "board": "esp32s3",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00181725,
+   "tokens": {
+    "input": 119,
+    "output": 384,
+    "reasoning": 42
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 119.7
+  },
+  {
+   "id": "s3-hcsr04",
+   "board": "esp32s3",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.002508,
+   "tokens": {
+    "input": 1958,
+    "output": 231,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 141.8
+  },
+  {
+   "id": "s3-hcsr04",
+   "board": "esp32s3",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0012759000000000002,
+   "tokens": {
+    "input": 1958,
+    "output": 226,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 157.1
+  },
+  {
+   "id": "s3-hcsr04",
+   "board": "esp32s3",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 145.1
+  },
+  {
+   "id": "s3-ledc",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00200775,
+   "tokens": {
+    "input": 121,
+    "output": 426,
+    "reasoning": 197
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 98.6
+  },
+  {
+   "id": "s3-ledc",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0024165,
+   "tokens": {
+    "input": 1830,
+    "output": 232,
+    "reasoning": 57
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 95.9
+  },
+  {
+   "id": "s3-ledc",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0013067999999999999,
+   "tokens": {
+    "input": 1830,
+    "output": 235,
+    "reasoning": 62
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 117.9
+  },
+  {
+   "id": "s3-ledc",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 92
+  },
+  {
+   "id": "s3-mpu6050",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00254925,
+   "tokens": {
+    "input": 111,
+    "output": 548,
+    "reasoning": 114
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 89.4
+  },
+  {
+   "id": "s3-mpu6050",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00301425,
+   "tokens": {
+    "input": 2009,
+    "output": 335,
+    "reasoning": 29
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 114.9
+  },
+  {
+   "id": "s3-mpu6050",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0013771500000000002,
+   "tokens": {
+    "input": 2009,
+    "output": 240,
+    "reasoning": 40
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 125
+  },
+  {
+   "id": "s3-mpu6050",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 89.9
+  },
+  {
+   "id": "s3-pot",
+   "board": "esp32s3",
+   "category": "analog",
+   "variant": "alone",
+   "ok": false,
+   "compiled": false,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.001095,
+   "tokens": {
+    "input": 110,
+    "output": 225,
+    "reasoning": 76
+   },
+   "libraries": [],
+   "error": "did not build or run: The ESP32 firmware didn't start in the emulator (it may be crashing at boot: see its Serial output).",
+   "seconds": 149.1
+  },
+  {
+   "id": "s3-pot",
+   "board": "esp32s3",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0021315,
+   "tokens": {
+    "input": 1660,
+    "output": 197,
+    "reasoning": 55
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 98.6
+  },
+  {
+   "id": "s3-pot",
+   "board": "esp32s3",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0010497,
+   "tokens": {
+    "input": 1660,
+    "output": 187,
+    "reasoning": 50
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 161.9
+  },
+  {
+   "id": "s3-pot",
+   "board": "esp32s3",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 102
+  },
+  {
+   "id": "s3-preferences",
+   "board": "esp32s3",
+   "category": "storage",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.000777,
+   "tokens": {
+    "input": 100,
+    "output": 156,
+    "reasoning": 31
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 104.8
+  },
+  {
+   "id": "s3-preferences",
+   "board": "esp32s3",
+   "category": "storage",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00193575,
+   "tokens": {
+    "input": 1645,
+    "output": 156,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 131.7
+  },
+  {
+   "id": "s3-preferences",
+   "board": "esp32s3",
+   "category": "storage",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0008854500000000001,
+   "tokens": {
+    "input": 1645,
+    "output": 153,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 151.2
+  },
+  {
+   "id": "s3-preferences",
+   "board": "esp32s3",
+   "category": "storage",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 99.9
+  },
+  {
+   "id": "s3-rgb",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 3
+   },
+   "cost": 0.0025875,
+   "tokens": {
+    "input": 108,
+    "output": 557,
+    "reasoning": 333
+   },
+   "libraries": [],
+   "error": "serial contains \"red\": not found in 278 chars of serial output; serial contains \"green\": not found in 278 chars of serial output; serial contains \"blue\": not found in 278 chars of serial output",
+   "seconds": 186.2
+  },
+  {
+   "id": "s3-rgb",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 3,
+    "total": 3
+   },
+   "cost": 0.002124,
+   "tokens": {
+    "input": 1590,
+    "output": 207,
+    "reasoning": 38
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 111.7
+  },
+  {
+   "id": "s3-rgb",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 3,
+    "total": 3
+   },
+   "cost": 0.0017046,
+   "tokens": {
+    "input": 1590,
+    "output": 325,
+    "reasoning": 54
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 137.1
+  },
+  {
+   "id": "s3-rgb",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 3,
+    "total": 3
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 96.1
+  },
+  {
+   "id": "s3-timer",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00363525,
+   "tokens": {
+    "input": 107,
+    "output": 790,
+    "reasoning": 516
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 108.1
+  },
+  {
+   "id": "s3-timer",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00194625,
+   "tokens": {
+    "input": 1251,
+    "output": 224,
+    "reasoning": 46
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 99.7
+  },
+  {
+   "id": "s3-timer",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00151065,
+   "tokens": {
+    "input": 1251,
+    "output": 300,
+    "reasoning": 120
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 117.8
+  },
+  {
+   "id": "s3-timer",
+   "board": "esp32s3",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 77.4
+  },
+  {
+   "id": "s3-wifi",
+   "board": "esp32s3",
+   "category": "network",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00106125,
+   "tokens": {
+    "input": 107,
+    "output": 218,
+    "reasoning": 59
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 105
+  },
+  {
+   "id": "s3-wifi",
+   "board": "esp32s3",
+   "category": "network",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00206475,
+   "tokens": {
+    "input": 1781,
+    "output": 162,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 136.9
+  },
+  {
+   "id": "s3-wifi",
+   "board": "esp32s3",
+   "category": "network",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00077955,
+   "tokens": {
+    "input": 1781,
+    "output": 126,
+    "reasoning": 10
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 177.1
+  },
+  {
+   "id": "s3-wifi",
+   "board": "esp32s3",
+   "category": "network",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 110
+  },
+  {
+   "id": "uno-blink-onboard",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0004875,
+   "tokens": {
+    "input": 92,
+    "output": 93,
+    "reasoning": 10
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 2.9
+  },
+  {
+   "id": "uno-blink-onboard",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001239,
+   "tokens": {
+    "input": 1088,
+    "output": 94,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 4.6
+  },
+  {
+   "id": "uno-blink-onboard",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001248,
+   "tokens": {
+    "input": 1088,
+    "output": 96,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 6.1
+  },
+  {
+   "id": "uno-blink-onboard",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 1.5
+  },
+  {
+   "id": "uno-blink-pin8",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00059175,
+   "tokens": {
+    "input": 105,
+    "output": 114,
+    "reasoning": 33
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 3.5
+  },
+  {
+   "id": "uno-blink-pin8",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0007735499999999999,
+   "tokens": {
+    "input": 1179,
+    "output": 129,
+    "reasoning": 29
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 4.5
+  },
+  {
+   "id": "uno-blink-pin8",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00070155,
+   "tokens": {
+    "input": 1179,
+    "output": 113,
+    "reasoning": 30
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 7.5
+  },
+  {
+   "id": "uno-blink-pin8",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 1.5
+  },
+  {
+   "id": "uno-button-pullup",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00110775,
+   "tokens": {
+    "input": 115,
+    "output": 227,
+    "reasoning": 17
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 12.3
+  },
+  {
+   "id": "uno-button-pullup",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.002607,
+   "tokens": {
+    "input": 1322,
+    "output": 359,
+    "reasoning": 41
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 13.6
+  },
+  {
+   "id": "uno-button-pullup",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0017664,
+   "tokens": {
+    "input": 1322,
+    "output": 345,
+    "reasoning": 49
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 14.5
+  },
+  {
+   "id": "uno-button-pullup",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 11.4
+  },
+  {
+   "id": "uno-counter-serial",
+   "board": "uno",
+   "category": "serial",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.000615,
+   "tokens": {
+    "input": 106,
+    "output": 119,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 6.2
+  },
+  {
+   "id": "uno-counter-serial",
+   "board": "uno",
+   "category": "serial",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00104475,
+   "tokens": {
+    "input": 769,
+    "output": 104,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 7
+  },
+  {
+   "id": "uno-counter-serial",
+   "board": "uno",
+   "category": "serial",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00104475,
+   "tokens": {
+    "input": 769,
+    "output": 104,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 8.6
+  },
+  {
+   "id": "uno-counter-serial",
+   "board": "uno",
+   "category": "serial",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 4.8
+  },
+  {
+   "id": "uno-dht22",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001218,
+   "tokens": {
+    "input": 124,
+    "output": 250,
+    "reasoning": 35
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 9.1
+  },
+  {
+   "id": "uno-dht22",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.000975,
+   "tokens": {
+    "input": 1384,
+    "output": 178,
+    "reasoning": 21
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 11.2
+  },
+  {
+   "id": "uno-dht22",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0009255,
+   "tokens": {
+    "input": 1384,
+    "output": 167,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 15.1
+  },
+  {
+   "id": "uno-dht22",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 8
+  },
+  {
+   "id": "uno-ds18b20",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0010875,
+   "tokens": {
+    "input": 112,
+    "output": 223,
+    "reasoning": 20
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 12
+  },
+  {
+   "id": "uno-ds18b20",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00181425,
+   "tokens": {
+    "input": 1417,
+    "output": 359,
+    "reasoning": 180
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 14.7
+  },
+  {
+   "id": "uno-ds18b20",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00140475,
+   "tokens": {
+    "input": 1417,
+    "output": 268,
+    "reasoning": 78
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 14.6
+  },
+  {
+   "id": "uno-ds18b20",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 10.9
+  },
+  {
+   "id": "uno-eeprom-boots",
+   "board": "uno",
+   "category": "storage",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00141225,
+   "tokens": {
+    "input": 101,
+    "output": 297,
+    "reasoning": 111
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 13.1
+  },
+  {
+   "id": "uno-eeprom-boots",
+   "board": "uno",
+   "category": "storage",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0015945,
+   "tokens": {
+    "input": 764,
+    "output": 227,
+    "reasoning": 38
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 14.8
+  },
+  {
+   "id": "uno-eeprom-boots",
+   "board": "uno",
+   "category": "storage",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0014145,
+   "tokens": {
+    "input": 764,
+    "output": 187,
+    "reasoning": 11
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 13
+  },
+  {
+   "id": "uno-eeprom-boots",
+   "board": "uno",
+   "category": "storage",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 12.5
+  },
+  {
+   "id": "uno-hcsr04",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001452,
+   "tokens": {
+    "input": 112,
+    "output": 304,
+    "reasoning": 22
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 11.2
+  },
+  {
+   "id": "uno-hcsr04",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00113925,
+   "tokens": {
+    "input": 1435,
+    "output": 206,
+    "reasoning": 10
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 10.9
+  },
+  {
+   "id": "uno-hcsr04",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00115725,
+   "tokens": {
+    "input": 1435,
+    "output": 210,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 14.4
+  },
+  {
+   "id": "uno-hcsr04",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 9.9
+  },
+  {
+   "id": "uno-hx711",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00134625,
+   "tokens": {
+    "input": 127,
+    "output": 278,
+    "reasoning": 95
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 14
+  },
+  {
+   "id": "uno-hx711",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0021285,
+   "tokens": {
+    "input": 1314,
+    "output": 254,
+    "reasoning": 62
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 14.8
+  },
+  {
+   "id": "uno-hx711",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0013014,
+   "tokens": {
+    "input": 1314,
+    "output": 243,
+    "reasoning": 56
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 16.4
+  },
+  {
+   "id": "uno-hx711",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 10.6
+  },
+  {
+   "id": "uno-interrupt-edges",
+   "board": "uno",
+   "category": "timing",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00123975,
+   "tokens": {
+    "input": 129,
+    "output": 254,
+    "reasoning": 52
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 13.5
+  },
+  {
+   "id": "uno-interrupt-edges",
+   "board": "uno",
+   "category": "timing",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0017145,
+   "tokens": {
+    "input": 840,
+    "output": 241,
+    "reasoning": 50
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 12.7
+  },
+  {
+   "id": "uno-interrupt-edges",
+   "board": "uno",
+   "category": "timing",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.001899,
+   "tokens": {
+    "input": 840,
+    "output": 282,
+    "reasoning": 76
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 12.4
+  },
+  {
+   "id": "uno-interrupt-edges",
+   "board": "uno",
+   "category": "timing",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 11.9
+  },
+  {
+   "id": "uno-mpu6050",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0023685,
+   "tokens": {
+    "input": 116,
+    "output": 507,
+    "reasoning": 75
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 18.1
+  },
+  {
+   "id": "uno-mpu6050",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00232725,
+   "tokens": {
+    "input": 1549,
+    "output": 259,
+    "reasoning": 0
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 17.5
+  },
+  {
+   "id": "uno-mpu6050",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00154335,
+   "tokens": {
+    "input": 1549,
+    "output": 296,
+    "reasoning": 14
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 23.3
+  },
+  {
+   "id": "uno-mpu6050",
+   "board": "uno",
+   "category": "sensor",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 13.7
+  },
+  {
+   "id": "uno-pot",
+   "board": "uno",
+   "category": "analog",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00064725,
+   "tokens": {
+    "input": 107,
+    "output": 126,
+    "reasoning": 8
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 8
+  },
+  {
+   "id": "uno-pot",
+   "board": "uno",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00063705,
+   "tokens": {
+    "input": 1183,
+    "output": 98,
+    "reasoning": 16
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 9
+  },
+  {
+   "id": "uno-pot",
+   "board": "uno",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0005515499999999999,
+   "tokens": {
+    "input": 1183,
+    "output": 79,
+    "reasoning": 16
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 9.2
+  },
+  {
+   "id": "uno-pot",
+   "board": "uno",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 4.6
+  },
+  {
+   "id": "uno-pot-pwm",
+   "board": "uno",
+   "category": "analog",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00070575,
+   "tokens": {
+    "input": 95,
+    "output": 141,
+    "reasoning": 22
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 7.8
+  },
+  {
+   "id": "uno-pot-pwm",
+   "board": "uno",
+   "category": "analog",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0009459,
+   "tokens": {
+    "input": 1344,
+    "output": 159,
+    "reasoning": 31
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 10.1
+  },
+  {
+   "id": "uno-pot-pwm",
+   "board": "uno",
+   "category": "analog",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0013644,
+   "tokens": {
+    "input": 1344,
+    "output": 252,
+    "reasoning": 122
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 12.5
+  },
+  {
+   "id": "uno-pot-pwm",
+   "board": "uno",
+   "category": "analog",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 5.6
+  },
+  {
+   "id": "uno-servo",
+   "board": "uno",
+   "category": "actuator",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0004545,
+   "tokens": {
+    "input": 96,
+    "output": 85,
+    "reasoning": 12
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 13.6
+  },
+  {
+   "id": "uno-servo",
+   "board": "uno",
+   "category": "actuator",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0005723999999999999,
+   "tokens": {
+    "input": 1272,
+    "output": 88,
+    "reasoning": 9
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 11.1
+  },
+  {
+   "id": "uno-servo",
+   "board": "uno",
+   "category": "actuator",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0005364,
+   "tokens": {
+    "input": 1272,
+    "output": 80,
+    "reasoning": 13
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 12.7
+  },
+  {
+   "id": "uno-servo",
+   "board": "uno",
+   "category": "actuator",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 9.9
+  },
+  {
+   "id": "uno-tone",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0004365,
+   "tokens": {
+    "input": 96,
+    "output": 81,
+    "reasoning": 14
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 9.1
+  },
+  {
+   "id": "uno-tone",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0005943,
+   "tokens": {
+    "input": 1180,
+    "output": 89,
+    "reasoning": 10
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 11.4
+  },
+  {
+   "id": "uno-tone",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0005537999999999999,
+   "tokens": {
+    "input": 1180,
+    "output": 80,
+    "reasoning": 15
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 12.2
+  },
+  {
+   "id": "uno-tone",
+   "board": "uno",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 7.9
+  },
+  {
+   "id": "uno-two-rates",
+   "board": "uno",
+   "category": "timing",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0016455,
+   "tokens": {
+    "input": 118,
+    "output": 346,
+    "reasoning": 65
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 7.3
+  },
+  {
+   "id": "uno-two-rates",
+   "board": "uno",
+   "category": "timing",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00228375,
+   "tokens": {
+    "input": 897,
+    "output": 358,
+    "reasoning": 48
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 10.4
+  },
+  {
+   "id": "uno-two-rates",
+   "board": "uno",
+   "category": "timing",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00269775,
+   "tokens": {
+    "input": 897,
+    "output": 450,
+    "reasoning": 146
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 11.9
+  },
+  {
+   "id": "uno-two-rates",
+   "board": "uno",
+   "category": "timing",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 1.5
+  }
+ ],
+ "skipped": []
+}

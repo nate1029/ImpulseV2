@@ -1,0 +1,6 @@
+# arduino:esp32:nano_nora with arduino:esp32@2.0.18-arduino.5
+<sketch>/esp32_rgbledwrite_core2.ino: In function 'void setup()':
+<sketch>/esp32_rgbledwrite_core2.ino:1:16: error: 'rgbLedWrite' was not declared in this scope
+                ^~~~~~~~~~~
+<sketch>/esp32_rgbledwrite_core2.ino:1:16: note: suggested alternative: 'timerWrite'
+                ^~~~~~~~~~~

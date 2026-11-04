@@ -1,0 +1,5 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/led_builtin_missing.ino: In function 'void setup()':
+<sketch>/led_builtin_missing.ino:1:24: error: 'LED_BUILTIN' was not declared in this scope
+    1 | void setup() { pinMode(LED_BUILTIN, OUTPUT); }
+      |                        ^~~~~~~~~~~

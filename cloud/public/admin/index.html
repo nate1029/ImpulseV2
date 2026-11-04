@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · Impulse</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/impulse.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <script type="module" src="/admin/admin.js"></script>
+</head>
+<body>
+  <div class="shell" id="shell" hidden>
+    <nav class="rail" aria-label="Admin">
+      <div class="rail-brand">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="2 12 6 12 9 3 15 21 18 12 22 12" /></svg>
+        <span class="label">Impulse admin</span>
+      </div>
+      <a href="#/overview" data-nav="overview">Overview</a>
+      <a href="#/users" data-nav="users">Users</a>
+      <a href="#/requests" data-nav="requests">Upgrade requests <span class="count" id="requestCount" hidden></span></a>
+      <a href="#/settings" data-nav="settings">Settings</a>
+      <a href="#/learning" data-nav="learning">Learning</a>
+      <a href="#/audit" data-nav="audit">Audit log</a>
+      <div class="rail-foot">
+        <span class="rail-who" id="who"></span>
+        <button type="button" class="btn ghost small" id="signOut">Sign out</button>
+      </div>
+    </nav>
+    <main class="main" id="main" tabindex="-1"></main>
+  </div>
+
+  <div class="gate" id="gate" hidden>
+    <span class="led amber pulse" id="gateLed"></span>
+    <p id="gateText">Checking your session…</p>
+    <div class="gate-actions" id="gateActions"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

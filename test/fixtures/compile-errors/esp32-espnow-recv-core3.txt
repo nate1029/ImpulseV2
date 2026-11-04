@@ -1,0 +1,8 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/esp32_espnow_recv_core3.ino: In function 'void setup()':
+<sketch>/esp32_espnow_recv_core3.ino:7:28: error: invalid conversion from 'void (*)(const uint8_t*, const uint8_t*, int)' {aka 'void (*)(const unsigned char*, const unsigned char*, int)'} to 'esp_now_recv_cb_t' {aka 'void (*)(const esp_now_recv_info*, const unsigned char*, int)'} [-fpermissive]
+    7 |   esp_now_register_recv_cb(onRecv);
+      |                            ^~~~~~
+~/Library/Arduino15/packages/esp32/tools/esp32-libs/3.3.12/include/esp_wifi/include/esp_now.h:172:54: note:   initializing argument 1 of 'esp_err_t esp_now_register_recv_cb(esp_now_recv_cb_t)'
+  172 | esp_err_t esp_now_register_recv_cb(esp_now_recv_cb_t cb);
+      |                                    ~~~~~~~~~~~~~~~~~~^~

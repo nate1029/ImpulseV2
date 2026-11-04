@@ -1,0 +1,4 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/missing_semicolon.ino: In function 'void setup()':
+<sketch>/missing_semicolon.ino:3:3: error: expected ',' or ';' before 'pinMode'
+   ^~~~~~~

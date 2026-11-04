@@ -1,0 +1,16 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/smart_quotes.ino:3:18: error: stray '\342' in program
+                  ^
+<sketch>/smart_quotes.ino:3:19: error: stray '\200' in program
+                   ^
+<sketch>/smart_quotes.ino:3:20: error: stray '\234' in program
+                    ^
+<sketch>/smart_quotes.ino:3:26: error: stray '\342' in program
+                          ^
+<sketch>/smart_quotes.ino:3:27: error: stray '\200' in program
+                           ^
+<sketch>/smart_quotes.ino:3:28: error: stray '\235' in program
+                            ^
+<sketch>/smart_quotes.ino: In function 'void setup()':
+<sketch>/smart_quotes.ino:3:21: error: 'hello' was not declared in this scope
+                     ^~~~~

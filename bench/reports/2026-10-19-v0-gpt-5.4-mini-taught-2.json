@@ -1,0 +1,325 @@
+{
+ "bench": "EmbedBench v0",
+ "date": "2026-10-19T13:33:36.314Z",
+ "model": "gpt-5.4-mini",
+ "reasoning": "low",
+ "label": "v0-gpt-5.4-mini-taught-2",
+ "summary": {
+  "reference": {
+   "tasks": 3,
+   "passed": 3,
+   "passRate": 100,
+   "compiled": 3,
+   "costUsd": 0,
+   "costPerWorkingSketchUsd": 0
+  },
+  "alone": {
+   "tasks": 3,
+   "passed": 1,
+   "passRate": 33.3,
+   "compiled": 2,
+   "costUsd": 0.0044,
+   "costPerWorkingSketchUsd": 0.0044
+  },
+  "impulse": {
+   "tasks": 3,
+   "passed": 2,
+   "passRate": 66.7,
+   "compiled": 3,
+   "costUsd": 0.0057,
+   "costPerWorkingSketchUsd": 0.0028
+  },
+  "impulse-fix": {
+   "tasks": 3,
+   "passed": 2,
+   "passRate": 66.7,
+   "compiled": 3,
+   "costUsd": 0.0069,
+   "costPerWorkingSketchUsd": 0.0035
+  }
+ },
+ "byBoard": {
+  "uno": {
+   "reference": "0/0",
+   "alone": "0/0",
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "esp32": {
+   "reference": "0/0",
+   "alone": "0/0",
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "esp32s3": {
+   "reference": "0/0",
+   "alone": "0/0",
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "esp32c3": {
+   "reference": "1/1",
+   "alone": "0/1",
+   "impulse": "1/1",
+   "impulse-fix": "1/1"
+  },
+  "pico": {
+   "reference": "1/1",
+   "alone": "1/1",
+   "impulse": "0/1",
+   "impulse-fix": "0/1"
+  },
+  "nanoesp32": {
+   "reference": "1/1",
+   "alone": "0/1",
+   "impulse": "1/1",
+   "impulse-fix": "1/1"
+  }
+ },
+ "results": [
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "alone",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.001119,
+   "tokens": {
+    "input": 100,
+    "output": 232,
+    "reasoning": 58
+   },
+   "libraries": [],
+   "error": "pin 8 frequency 2Hz ±10%: GPIO8 did not oscillate long enough to measure",
+   "seconds": 72.8
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00178395,
+   "tokens": {
+    "input": 1733,
+    "output": 338,
+    "reasoning": 175
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 33
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.00246525,
+   "tokens": {
+    "input": 1733,
+    "output": 259,
+    "reasoning": 132
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 60.5
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 30
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "alone",
+   "ok": false,
+   "compiled": false,
+   "checks": {
+    "passed": 0,
+    "total": 1
+   },
+   "cost": 0.0020055,
+   "tokens": {
+    "input": 118,
+    "output": 426,
+    "reasoning": 232
+   },
+   "libraries": [],
+   "error": "did not build or run: Compile failed: nano_ledc.ino:10:13: error: 'ledcAttach' was not declared in this scope",
+   "seconds": 36
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0020530500000000003,
+   "tokens": {
+    "input": 1181,
+    "output": 413,
+    "reasoning": 242
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 39.7
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0.0028405500000000003,
+   "tokens": {
+    "input": 1181,
+    "output": 588,
+    "reasoning": 372
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 51.4
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 1
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 39
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "alone",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.00124275,
+   "tokens": {
+    "input": 121,
+    "output": 256,
+    "reasoning": 27
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 4.6
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 2
+   },
+   "cost": 0.0018486,
+   "tokens": {
+    "input": 1566,
+    "output": 361,
+    "reasoning": 30
+   },
+   "libraries": [],
+   "error": "serial contains \"released\": not found in 0 chars of serial output",
+   "seconds": 82.8
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": false,
+   "compiled": true,
+   "checks": {
+    "passed": 1,
+    "total": 2
+   },
+   "cost": 0.0016101,
+   "tokens": {
+    "input": 1566,
+    "output": 308,
+    "reasoning": 28
+   },
+   "libraries": [],
+   "error": "serial contains \"released\": not found in 0 chars of serial output",
+   "steps": [],
+   "seconds": 79.9
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "reference",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0,
+   "tokens": null,
+   "libraries": [],
+   "error": null,
+   "seconds": 1.9
+  }
+ ],
+ "skipped": []
+}

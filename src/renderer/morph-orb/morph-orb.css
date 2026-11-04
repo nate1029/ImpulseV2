@@ -1,0 +1,650 @@
+/* MorphOrb in the AI chat (see morph-orb.js). The runtime writes the
+   animated values as custom properties on the layer (--oCenter, --sx/--sy:
+   the orb's spot), the actor (--w/--h/--r: its box; --o*: each layer's
+   opacity; --gs/--cs/--inScale: scales), the status (--sOp/--sTy) and the
+   answer message (--hOp/--dotS/--bloom). Keyframes are the component's own. */
+
+@property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes mo-spin {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@keyframes mo-drift {
+    from {
+        transform: translateX(-14%);
+    }
+    to {
+        transform: translateX(14%);
+    }
+}
+
+@keyframes mo-shimmer {
+    from {
+        background-position: 150% 0;
+    }
+    to {
+        background-position: -100% 0;
+    }
+}
+
+@keyframes mo-dot {
+    0%, 80%, 100% {
+        opacity: .25;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+
+@keyframes mo-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes mo-out {
+    from {
+        opacity: 1;
+        transform: none;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes mo-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes mo-fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes mo-shake {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    25% {
+        transform: translate(calc(-50% - 4px), -50%);
+    }
+    75% {
+        transform: translate(calc(-50% + 4px), -50%);
+    }
+}
+
+/* ── palette ── */
+:root,
+:root[data-theme="light"] {
+    --mo-ok: 16 185 129;
+    --mo-ok-hi: 52 211 153;
+    --mo-ok-lo: 4 120 87;
+    --mo-bad: 220 38 38;
+    --mo-bad-hi: 248 113 113;
+    --mo-bad-lo: 153 27 27;
+    --mo-text-ok: 4 120 87;
+    --mo-text-bad: 185 28 28;
+    --mo-pill-bg: #ffffff;
+    --mo-pill-line: #e4e4e8;
+    --mo-pill-shadow: 0 10px 28px rgb(0 0 0 / 0.08), 0 1px 2px rgb(0 0 0 / 0.04);
+    --mo-aurora-o: 0.16;
+    --mo-glow-o: 0.22;
+    --mo-ring-o: 0.55;
+    --mo-ball: radial-gradient(circle at 34% 30%, #6e737b 0%, #3f434a 42%, #1b1c1e 100%);
+    --mo-ball-glow: 0 0 22px rgb(0 0 0 / 0.18);
+    --mo-center: rgb(110 112 120 / 0.14);
+    --mo-field: #1b1c1e;
+    --mo-field-hint: #8b8f97;
+    --mo-spark: #63676e;
+    --mo-send-bg: #f0f0f2;
+    --mo-send-fg: #63676e;
+    --mo-send-ready-bg: #1b1c1e;
+    --mo-send-ready-fg: #ffffff;
+    --mo-card-bg: var(--ds-surface-3, #ffffff);
+    --mo-card-line: var(--ds-line, #e4e4e8);
+    --mo-card-shadow: 0 6px 20px rgb(0 0 0 / 0.06);
+}
+
+:root[data-theme="dark"] {
+    --mo-ok: 52 211 153;
+    --mo-ok-hi: 110 231 183;
+    --mo-ok-lo: 5 150 105;
+    --mo-bad: 248 113 113;
+    --mo-bad-hi: 252 165 165;
+    --mo-bad-lo: 220 38 38;
+    --mo-text-ok: 52 211 153;
+    --mo-text-bad: 252 165 165;
+    --mo-pill-bg: rgb(20 21 23 / 0.96);
+    --mo-pill-line: rgb(255 255 255 / 0.08);
+    --mo-pill-shadow: 0 12px 32px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.04);
+    --mo-aurora-o: 0.32;
+    --mo-glow-o: 0.3;
+    --mo-ring-o: 0.7;
+    --mo-ball: radial-gradient(circle at 34% 30%, #ffffff 0%, #e4e6ea 30%, #9da2ab 72%, #5a5f68 100%);
+    --mo-ball-glow: 0 0 26px rgb(255 255 255 / 0.18);
+    --mo-center: rgb(255 255 255 / 0.1);
+    --mo-field: #f7f8f8;
+    --mo-field-hint: #868b93;
+    --mo-spark: #9ba0a8;
+    --mo-send-bg: rgb(255 255 255 / 0.07);
+    --mo-send-fg: #9ba0a8;
+    --mo-send-ready-bg: #f7f8f8;
+    --mo-send-ready-fg: #08090a;
+    --mo-card-bg: var(--ds-surface-2, #141516);
+    --mo-card-line: rgb(255 255 255 / 0.08);
+    --mo-card-shadow: 0 10px 28px rgb(0 0 0 / 0.35);
+}
+
+.mo-root,
+.mo-msg {
+    --mo-accent: var(--mo-ok);
+    --mo-accent-hi: var(--mo-ok-hi);
+    --mo-accent-lo: var(--mo-ok-lo);
+    --mo-accent-text: var(--mo-text-ok);
+}
+
+.mo-root[data-kind="error"],
+.mo-msg[data-kind="error"] {
+    --mo-accent: var(--mo-bad);
+    --mo-accent-hi: var(--mo-bad-hi);
+    --mo-accent-lo: var(--mo-bad-lo);
+    --mo-accent-text: var(--mo-text-bad);
+}
+
+/* ── layout in the panel ── */
+.ai-panel-inner {
+    position: relative;
+}
+
+.ai-composer.mo-dock {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+    padding: 6px 0 0;
+}
+
+.ai-composer.mo-dock:focus-within {
+    border: none;
+    box-shadow: none;
+}
+
+/* Where the pill sits; the pill itself lives on the orb's layer. */
+.mo-slot {
+    height: 60px;
+    margin: 0 2px;
+}
+
+.mo-dock .ai-composer-row {
+    padding: 8px 2px 0;
+}
+
+/* The orb's room in the conversation while it works. */
+.mo-stage-slot {
+    height: 236px;
+    flex-shrink: 0;
+}
+
+.mo-root {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+    --oCenter: 0;
+    --sx: 50%;
+    --sy: 50%;
+}
+
+.mo-halo {
+    position: absolute;
+    left: var(--sx);
+    top: var(--sy);
+    width: 340px;
+    height: 340px;
+    margin: -170px 0 0 -170px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, var(--mo-center), transparent);
+    opacity: var(--oCenter);
+}
+
+.mo-mover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    will-change: transform;
+}
+
+.mo-trail {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--mo-ball);
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* ── the actor: pill → ball → orb → green disk → card ── */
+.mo-actor {
+    --w: 300px;
+    --h: 60px;
+    --r: 999px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--w);
+    height: var(--h);
+    border-radius: var(--r);
+    transform: translate(-50%, -50%);
+}
+
+/* Only the field takes the pointer. The glows, halo and pulse reach past the
+   pill (the green halo is 240 px tall) and, though invisible at rest, would
+   swallow clicks meant for the field and for the model and mode menus below. */
+.mo-actor > * {
+    pointer-events: none;
+}
+
+.mo-root[data-phase="idle"] .mo-input {
+    pointer-events: auto;
+    cursor: text;
+}
+
+.mo-root[data-phase="idle"] .mo-send {
+    cursor: pointer;
+}
+
+.mo-actor[data-shake] {
+    animation: mo-shake 260ms ease-in-out;
+}
+
+.mo-underglow {
+    position: absolute;
+    inset: 10px 8% -12px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #7c3aed, #2563eb 35%, #06b6d4 65%, #10b981);
+    filter: blur(22px);
+    opacity: calc(var(--oGlow, 1) * var(--mo-glow-o));
+    transition: opacity 0.3s ease;
+}
+
+.mo-actor[data-typing] .mo-underglow,
+.mo-actor:focus-within .mo-underglow {
+    opacity: calc(var(--oGlow, 1) * var(--mo-glow-o) * 1.6);
+}
+
+.mo-actor[data-flash] .mo-underglow {
+    background: linear-gradient(90deg, #f43f5e, #fb7185);
+    opacity: calc(var(--oGlow, 1) * 0.55);
+}
+
+.mo-halo-green {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 240px;
+    height: 240px;
+    margin: -120px 0 0 -120px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgb(var(--mo-accent) / 0.45), transparent);
+    opacity: var(--oHalo, 0);
+}
+
+.mo-surface {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--mo-pill-bg);
+    border: 1px solid var(--mo-pill-line);
+    box-shadow: var(--mo-pill-shadow);
+    overflow: hidden;
+    opacity: var(--oPill, 1);
+}
+
+.mo-aurora {
+    position: absolute;
+    inset: 0;
+    opacity: calc(var(--oAur, 1) * var(--mo-aurora-o));
+}
+
+.mo-aurora i {
+    position: absolute;
+    bottom: -60%;
+    width: 46%;
+    height: 120%;
+    border-radius: 50%;
+    filter: blur(18px);
+    animation: mo-drift 7s ease-in-out infinite alternate;
+}
+
+.mo-aurora i:nth-child(1) { left: -6%; background: #7c3aed; animation-duration: 7.5s; }
+.mo-aurora i:nth-child(2) { left: 22%; background: #2563eb; animation-duration: 6s; animation-delay: -2s; }
+.mo-aurora i:nth-child(3) { left: 48%; background: #06b6d4; animation-duration: 8s; animation-delay: -4s; }
+.mo-aurora i:nth-child(4) { left: 70%; background: #10b981; animation-duration: 6.8s; animation-delay: -1s; }
+
+.mo-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--angle), #7c3aed, #2563eb, #06b6d4, #10b981, #f472b6, #7c3aed);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: calc(var(--oRing, 1) * var(--mo-ring-o));
+    animation: mo-spin 6s linear infinite;
+}
+
+.mo-ball {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--mo-ball);
+    box-shadow: var(--mo-ball-glow);
+    opacity: var(--oBall, 0);
+}
+
+.mo-green {
+    /* Stays a disk while the box around it becomes the card. */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(var(--w), var(--h));
+    height: min(var(--w), var(--h));
+    margin: calc(min(var(--w), var(--h)) / -2) 0 0 calc(min(var(--w), var(--h)) / -2);
+    border-radius: 50%;
+    background: radial-gradient(circle at 34% 30%, rgb(var(--mo-accent-hi)) 0%, rgb(var(--mo-accent)) 55%, rgb(var(--mo-accent-lo)) 100%);
+    box-shadow: 0 0 32px rgb(var(--mo-accent) / 0.45);
+    transform: scale(var(--gs, 0.55));
+    opacity: var(--oGreen, 0);
+}
+
+.mo-card {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--mo-card-bg);
+    border: 1px solid var(--mo-card-line);
+    box-shadow: var(--mo-card-shadow);
+    transform: scale(var(--cs, 1));
+    opacity: var(--oCard, 0);
+}
+
+/* ── the pill's field ── */
+.mo-input {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 9px 0 18px;
+    opacity: var(--oInput, 1);
+    transform: scale(var(--inScale, 1));
+}
+
+.mo-spark {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--mo-spark);
+}
+
+.mo-field {
+    flex: 1;
+    min-width: 0;
+    height: 20px;
+    max-height: 120px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+    color: var(--mo-field);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    overflow-y: auto;
+}
+
+.mo-field::placeholder {
+    color: var(--mo-field-hint);
+}
+
+.mo-send {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-bottom: 9px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--mo-send-bg);
+    color: var(--mo-send-fg);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.mo-send svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mo-send[data-ready] {
+    background: var(--mo-send-ready-bg);
+    color: var(--mo-send-ready-fg);
+}
+
+.mo-send:hover[data-ready] {
+    transform: scale(1.05);
+}
+
+.mo-send:focus-visible,
+.mo-field:focus-visible {
+    outline: none;
+}
+
+.mo-send:focus-visible {
+    box-shadow: 0 0 0 2px var(--mo-pill-bg), 0 0 0 4px var(--ds-link, #70b8ff);
+}
+
+/* ── the orb ── */
+.mo-orb {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220px;
+    height: 220px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.mo-pulse {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(var(--mo-accent));
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* ── the label under the orb ── */
+.mo-status {
+    --sOp: 0;
+    --sTy: 6;
+    position: absolute;
+    left: var(--sx);
+    top: calc(var(--sy) + 86px);
+    width: 280px;
+    height: 20px;
+    margin-left: -140px;
+    opacity: var(--sOp);
+    transform: translateY(calc(var(--sTy) * 1px));
+}
+
+.mo-lab {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 510;
+    letter-spacing: -0.01em;
+}
+
+.mo-lab.mo-in {
+    animation: mo-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mo-lab.mo-out {
+    animation: mo-out 200ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.mo-lab-t {
+    background: linear-gradient(90deg, var(--ds-text-4) 0%, var(--ds-text-4) 35%, var(--ds-text) 50%, var(--ds-text-4) 65%, var(--ds-text-4) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: mo-shimmer 2.2s linear infinite;
+}
+
+.mo-dots {
+    display: inline-flex;
+    gap: 3px;
+    color: var(--ds-text-4);
+}
+
+.mo-dots i {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: mo-dot 1.2s ease-in-out infinite;
+}
+
+.mo-dots i:nth-child(2) { animation-delay: 0.15s; }
+.mo-dots i:nth-child(3) { animation-delay: 0.3s; }
+
+.mo-lab-done {
+    color: rgb(var(--mo-accent-text));
+    font-weight: 590;
+}
+
+.mo-live {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ── the answer: a card in the conversation ── */
+.ai-msg-area .ai-message.mo-msg,
+.ai-msg-area .ai-message + .ai-message.mo-msg {
+    background: var(--mo-card-bg);
+    border: 1px solid var(--mo-card-line);
+    border-radius: 20px;
+    box-shadow: var(--mo-card-shadow);
+    padding: 13px 16px 15px;
+    margin: 4px 0 18px;
+}
+
+.ai-msg-area .ai-message.mo-msg + .ai-message {
+    border-top: none;
+}
+
+.ai-msg-area .ai-message.mo-msg::before {
+    display: none;
+}
+
+.ai-msg-area .ai-message.mo-msg.mo-pending {
+    visibility: hidden;
+}
+
+.mo-a-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 590;
+    letter-spacing: -0.01em;
+    color: var(--ds-text-3);
+    opacity: var(--hOp, 1);
+}
+
+.mo-a-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgb(var(--mo-accent));
+    transform: scale(var(--dotS, 1));
+    box-shadow: 0 0 calc(var(--bloom, 0.625) * 14px) rgb(var(--mo-accent) / 0.65);
+}
+
+.mo-a-body {
+    color: var(--ds-text);
+}
+
+.mo-w {
+    display: inline-block;
+    will-change: opacity, transform, filter;
+}
+
+.mo-a-body .code-block-wrapper.mo-w {
+    display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mo-ring,
+    .mo-aurora i,
+    .mo-lab-t,
+    .mo-dots i {
+        animation: none;
+    }
+    .mo-lab-t {
+        color: var(--ds-text-3);
+        background: none;
+    }
+}

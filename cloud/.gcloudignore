@@ -1,0 +1,11 @@
+# What `gcloud run deploy --source cloud` must NOT upload to Cloud Build.
+# Above all the local .env, which holds real keys: production values live in
+# Secret Manager (see DEPLOY.md).
+.gcloudignore
+.git
+.gitignore
+.env
+.env.*
+node_modules/
+test/
+*.md

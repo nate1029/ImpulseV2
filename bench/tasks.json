@@ -1,0 +1,1732 @@
+{
+ "bench": "EmbedBench",
+ "version": 0,
+ "note": "Each task: the board, the request as a user would type it, the circuit (parts wired to board pins), the checks the simulator runs, and a reference sketch in bench/reference/<id>.ino that passes them. See bench/README.md.",
+ "tasks": [
+  {
+   "id": "uno-blink-onboard",
+   "board": "uno",
+   "category": "gpio",
+   "ask": "Blink the onboard LED: 500 ms on, 500 ms off.",
+   "expect": [
+    "pin 13 frequency 1Hz ±5%"
+   ],
+   "seconds": 3
+  },
+  {
+   "id": "uno-blink-pin8",
+   "board": "uno",
+   "category": "gpio",
+   "ask": "I wired an LED with a 220 ohm resistor to pin 8. Blink it twice per second with equal on and off times.",
+   "expect": [
+    "pin 8 frequency 2Hz ±5%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "uno:8",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-two-rates",
+   "board": "uno",
+   "category": "timing",
+   "ask": "LEDs on pins 9 and 10. Blink the one on pin 9 at 1 Hz and the one on pin 10 at 4 Hz at the same time, without blocking delays.",
+   "expect": [
+    "pin 9 frequency 1Hz ±5%",
+    "pin 10 frequency 4Hz ±5%"
+   ],
+   "seconds": 4,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     },
+     {
+      "type": "wokwi-led",
+      "id": "led2",
+      "attrs": {
+       "color": "green"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "uno:9",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "uno:GND.1"
+     ],
+     [
+      "uno:10",
+      "r2:1"
+     ],
+     [
+      "r2:2",
+      "led2:A"
+     ],
+     [
+      "led2:C",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-counter-serial",
+   "board": "uno",
+   "category": "serial",
+   "ask": "Print count=0, count=1, count=2 and so on, one line every 200 ms, at 9600 baud.",
+   "expect": [
+    "serial contains \"count=0\"",
+    "serial contains \"count=5\""
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "uno-pot",
+   "board": "uno",
+   "category": "analog",
+   "ask": "A potentiometer's wiper is on A0. Every 250 ms print pot= followed by the raw reading (0 to 1023).",
+   "expect": [
+    "serial matches /pot=5\\d\\d/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-potentiometer",
+      "id": "pot1"
+     }
+    ],
+    "connections": [
+     [
+      "pot1:SIG",
+      "uno:A0"
+     ],
+     [
+      "pot1:VCC",
+      "uno:5V"
+     ],
+     [
+      "pot1:GND",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-pot-pwm",
+   "board": "uno",
+   "category": "analog",
+   "ask": "Dim the LED on pin 9 with the potentiometer on A0, using PWM.",
+   "expect": [
+    "pin 9 frequency 490Hz ±5%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-potentiometer",
+      "id": "pot1"
+     },
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "pot1:SIG",
+      "uno:A0"
+     ],
+     [
+      "pot1:VCC",
+      "uno:5V"
+     ],
+     [
+      "pot1:GND",
+      "uno:GND.1"
+     ],
+     [
+      "uno:9",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-dht22",
+   "board": "uno",
+   "category": "sensor",
+   "ask": "DHT22 data pin on pin 2. Every 2 seconds print the reading exactly as T=<degrees C, one decimal> H=<percent, one decimal>, for example T=21.5 H=48.0.",
+   "expect": [
+    "serial contains \"T=24.0 H=40.0\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-dht22",
+      "id": "dht1"
+     }
+    ],
+    "connections": [
+     [
+      "dht1:SDA",
+      "uno:2"
+     ],
+     [
+      "dht1:VCC",
+      "uno:5V"
+     ],
+     [
+      "dht1:GND",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-hcsr04",
+   "board": "uno",
+   "category": "sensor",
+   "ask": "HC-SR04 ultrasonic sensor: TRIG on pin 9, ECHO on pin 10. Every 500 ms print Distance: <whole centimetres> cm.",
+   "expect": [
+    "serial matches /Distance: (99|100|101) cm/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar1"
+     }
+    ],
+    "connections": [
+     [
+      "sonar1:TRIG",
+      "uno:9"
+     ],
+     [
+      "sonar1:ECHO",
+      "uno:10"
+     ],
+     [
+      "sonar1:VCC",
+      "uno:5V"
+     ],
+     [
+      "sonar1:GND",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-ds18b20",
+   "board": "uno",
+   "category": "sensor",
+   "ask": "DS18B20 temperature sensor on pin 2 with its 4.7 kΩ pull-up. Every second print Temperature: <degrees C, one decimal> C.",
+   "expect": [
+    "serial matches /Temperature: \\d+\\.\\d C/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "impulse-ds18b20",
+      "id": "temp1"
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "rp",
+      "attrs": {
+       "value": "4700"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "temp1:DQ",
+      "rp:1"
+     ],
+     [
+      "rp:1",
+      "uno:2"
+     ],
+     [
+      "temp1:VCC",
+      "rp:2"
+     ],
+     [
+      "rp:2",
+      "uno:5V"
+     ],
+     [
+      "temp1:GND",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-tone",
+   "board": "uno",
+   "category": "gpio",
+   "ask": "A piezo buzzer is on pin 8. Play a continuous 440 Hz tone.",
+   "expect": [
+    "pin 8 frequency 440Hz ±3%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-buzzer",
+      "id": "bz1"
+     }
+    ],
+    "connections": [
+     [
+      "bz1:2",
+      "uno:8"
+     ],
+     [
+      "bz1:1",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-servo",
+   "board": "uno",
+   "category": "actuator",
+   "ask": "Servo signal wire on pin 9. Move it to 90 degrees and hold it there.",
+   "expect": [
+    "pin 9 frequency 50Hz ±5%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-servo",
+      "id": "servo1"
+     }
+    ],
+    "connections": [
+     [
+      "servo1:PWM",
+      "uno:9"
+     ],
+     [
+      "servo1:V+",
+      "uno:5V"
+     ],
+     [
+      "servo1:GND",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-button-pullup",
+   "board": "uno",
+   "category": "gpio",
+   "ask": "A push button connects pin 2 to GND, with no external resistor. Light the onboard LED while the button is held. Print pressed or released at startup and whenever the state changes.",
+   "expect": [
+    "pin 13 low",
+    "serial contains \"released\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-pushbutton",
+      "id": "btn1"
+     }
+    ],
+    "connections": [
+     [
+      "btn1:1.l",
+      "uno:2"
+     ],
+     [
+      "btn1:2.l",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-mpu6050",
+   "board": "uno",
+   "category": "sensor",
+   "ask": "MPU6050 on the Uno's I2C pins. Once it is initialised print MPU6050 ready, then the accelerometer's X, Y and Z every 500 ms.",
+   "expect": [
+    "serial contains \"MPU6050 ready\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-mpu6050",
+      "id": "imu1"
+     }
+    ],
+    "connections": [
+     [
+      "imu1:SDA",
+      "uno:A4"
+     ],
+     [
+      "imu1:SCL",
+      "uno:A5"
+     ],
+     [
+      "imu1:VCC",
+      "uno:5V"
+     ],
+     [
+      "imu1:GND",
+      "uno:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-hx711",
+   "board": "uno",
+   "category": "sensor",
+   "ask": "HX711 load cell amplifier: DT on pin 3, SCK on pin 2. Tare at startup, then every 500 ms print Weight: <grams, one decimal> g. The calibration factor is 420 counts per gram.",
+   "expect": [
+    "serial matches /Weight: -?0\\.0 g/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-hx711",
+      "id": "cell1"
+     }
+    ],
+    "connections": [
+     [
+      "cell1:DT",
+      "uno:3"
+     ],
+     [
+      "cell1:SCK",
+      "uno:2"
+     ],
+     [
+      "cell1:VCC",
+      "uno:5V"
+     ],
+     [
+      "cell1:GND",
+      "uno:GND.2"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "uno-eeprom-boots",
+   "board": "uno",
+   "category": "storage",
+   "ask": "Count how many times the board has started, keeping the count in EEPROM, and print boot <n> at startup.",
+   "expect": [
+    "serial matches /boot \\d+/"
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "uno-interrupt-edges",
+   "board": "uno",
+   "category": "timing",
+   "ask": "Pin 9 is wired to pin 2. Put a PWM signal on pin 9 with analogWrite(9, 128), count its rising edges on pin 2 with an interrupt, and once per second print edges/s: followed by the count.",
+   "expect": [
+    "serial matches /edges\\/s: 4[89]\\d/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [],
+    "connections": [
+     [
+      "uno:9",
+      "uno:2"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "esp32-blink-onboard",
+   "board": "esp32",
+   "category": "board-facts",
+   "ask": "Blink the DevKit's blue onboard LED twice per second.",
+   "expect": [
+    "pin 2 frequency 2Hz ±10%"
+   ],
+   "seconds": 3,
+   "why": "The DevKit V1 LED is on GPIO 2; the model must know or look it up."
+  },
+  {
+   "id": "esp32-ledc",
+   "board": "esp32",
+   "category": "core-api",
+   "ask": "Use the ESP32's LEDC peripheral to drive an LED on GPIO 4 with 5 kHz PWM, 8-bit resolution, at 50% duty. Print PWM on once it is running.",
+   "expect": [
+    "serial contains \"PWM on\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "esp:D4",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "esp:GND.1"
+     ]
+    ]
+   },
+   "why": "Core 3 replaced ledcSetup/ledcAttachPin with ledcAttach."
+  },
+  {
+   "id": "esp32-timer",
+   "board": "esp32",
+   "category": "core-api",
+   "ask": "Toggle GPIO 2 from a hardware timer interrupt every 250 ms (a 2 Hz blink). Leave loop() empty.",
+   "expect": [
+    "pin 2 frequency 2Hz ±10%"
+   ],
+   "seconds": 3,
+   "why": "Core 3 changed timerBegin, timerAttachInterrupt and the alarm calls."
+  },
+  {
+   "id": "esp32-wifi",
+   "board": "esp32",
+   "category": "network",
+   "ask": "Connect to the Wi-Fi network ImpulseNet with the password impulse123, then print IP: followed by the IP address.",
+   "expect": [
+    "serial contains \"IP: 10.0.2.15\""
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "esp32-preferences",
+   "board": "esp32",
+   "category": "storage",
+   "ask": "Count the boots in flash with the Preferences library and print boots=<n> at startup.",
+   "expect": [
+    "serial matches /boots=\\d+/"
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "esp32-pot",
+   "board": "esp32",
+   "category": "analog",
+   "ask": "Potentiometer wiper on GPIO 34. Every 250 ms print raw=<12-bit reading> mv=<millivolts>.",
+   "expect": [
+    "serial matches /raw=\\d+ mv=\\d+/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-potentiometer",
+      "id": "pot1"
+     }
+    ],
+    "connections": [
+     [
+      "pot1:SIG",
+      "esp:D34"
+     ],
+     [
+      "pot1:VCC",
+      "esp:3V3"
+     ],
+     [
+      "pot1:GND",
+      "esp:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "esp32-mpu6050",
+   "board": "esp32",
+   "category": "board-facts",
+   "ask": "MPU6050 wired to the DevKit's default I2C pins. Print MPU6050 ready once it is initialised.",
+   "expect": [
+    "serial contains \"MPU6050 ready\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-mpu6050",
+      "id": "imu1"
+     }
+    ],
+    "connections": [
+     [
+      "imu1:SDA",
+      "esp:D21"
+     ],
+     [
+      "imu1:SCL",
+      "esp:D22"
+     ],
+     [
+      "imu1:VCC",
+      "esp:3V3"
+     ],
+     [
+      "imu1:GND",
+      "esp:GND.1"
+     ]
+    ]
+   },
+   "why": "The default I2C pins are SDA 21, SCL 22 on the classic ESP32."
+  },
+  {
+   "id": "esp32-hcsr04",
+   "board": "esp32",
+   "category": "sensor",
+   "ask": "HC-SR04 with TRIG on GPIO 5 and ECHO on GPIO 18 (through a divider). Every 500 ms print Distance: <whole centimetres> cm.",
+   "expect": [
+    "serial matches /Distance: (99|100|101) cm/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar1"
+     }
+    ],
+    "connections": [
+     [
+      "sonar1:TRIG",
+      "esp:D5"
+     ],
+     [
+      "sonar1:ECHO",
+      "esp:D18"
+     ],
+     [
+      "sonar1:VCC",
+      "esp:VIN"
+     ],
+     [
+      "sonar1:GND",
+      "esp:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "esp32-espnow",
+   "board": "esp32",
+   "category": "core-api",
+   "ask": "Set up ESP-NOW to receive messages and print each sender's MAC address. Print ESP-NOW ready after it is initialised.",
+   "expect": [],
+   "seconds": 3,
+   "compileOnly": true,
+   "why": "The receive callback signature changed in core 3. Compile-only: the simulator has no ESP-NOW."
+  },
+  {
+   "id": "esp32-servo",
+   "board": "esp32",
+   "category": "actuator",
+   "ask": "Servo signal on GPIO 13. Move it to 90 degrees and hold it there.",
+   "expect": [
+    "pin 13 frequency 50Hz ±10%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-servo",
+      "id": "servo1"
+     }
+    ],
+    "connections": [
+     [
+      "servo1:PWM",
+      "esp:D13"
+     ],
+     [
+      "servo1:V+",
+      "esp:VIN"
+     ],
+     [
+      "servo1:GND",
+      "esp:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "esp32-two-rates",
+   "board": "esp32",
+   "category": "timing",
+   "ask": "LEDs on GPIO 25 and GPIO 26. Blink the one on 25 at 1 Hz and the one on 26 at 5 Hz at the same time, without blocking delays.",
+   "expect": [
+    "pin 25 frequency 1Hz ±10%",
+    "pin 26 frequency 5Hz ±10%"
+   ],
+   "seconds": 4,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     },
+     {
+      "type": "wokwi-led",
+      "id": "led2",
+      "attrs": {
+       "color": "green"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "esp:D25",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "esp:GND.1"
+     ],
+     [
+      "esp:D26",
+      "r2:1"
+     ],
+     [
+      "r2:2",
+      "led2:A"
+     ],
+     [
+      "led2:C",
+      "esp:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "esp32-button",
+   "board": "esp32",
+   "category": "gpio",
+   "ask": "A push button connects GPIO 15 to GND, with no external resistor. Print pressed or released at startup and whenever the state changes.",
+   "expect": [
+    "serial contains \"released\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-pushbutton",
+      "id": "btn1"
+     }
+    ],
+    "connections": [
+     [
+      "btn1:1.l",
+      "esp:D15"
+     ],
+     [
+      "btn1:2.l",
+      "esp:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s3-rgb",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "ask": "Cycle the onboard RGB LED through red, green and blue, one second each, and print the colour name each time it changes.",
+   "expect": [
+    "serial matches /red/i",
+    "serial matches /green/i",
+    "serial matches /blue/i"
+   ],
+   "seconds": 5,
+   "why": "The S3 DevKitC LED is a WS2812 on GPIO 48 (RGB_BUILTIN); core 3 drives it with rgbLedWrite."
+  },
+  {
+   "id": "s3-blink-gpio4",
+   "board": "esp32s3",
+   "category": "gpio",
+   "ask": "LED with a resistor on GPIO 4. Blink it twice per second.",
+   "expect": [
+    "pin 4 frequency 2Hz ±10%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "esp:4",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s3-mpu6050",
+   "board": "esp32s3",
+   "category": "board-facts",
+   "ask": "MPU6050 wired to the ESP32-S3's default I2C pins. Print MPU6050 ready once it is initialised.",
+   "expect": [
+    "serial contains \"MPU6050 ready\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-mpu6050",
+      "id": "imu1"
+     }
+    ],
+    "connections": [
+     [
+      "imu1:SDA",
+      "esp:8"
+     ],
+     [
+      "imu1:SCL",
+      "esp:9"
+     ],
+     [
+      "imu1:VCC",
+      "esp:3V3"
+     ],
+     [
+      "imu1:GND",
+      "esp:GND"
+     ]
+    ]
+   },
+   "why": "On the S3 the default I2C pins are SDA 8, SCL 9, not 21/22."
+  },
+  {
+   "id": "s3-timer",
+   "board": "esp32s3",
+   "category": "core-api",
+   "ask": "Toggle GPIO 5 from a hardware timer interrupt every 250 ms (a 2 Hz blink). Leave loop() empty.",
+   "expect": [
+    "pin 5 frequency 2Hz ±10%"
+   ],
+   "seconds": 3
+  },
+  {
+   "id": "s3-ledc",
+   "board": "esp32s3",
+   "category": "core-api",
+   "ask": "Use the LEDC peripheral to drive an LED on GPIO 6 with 1 kHz PWM, 10-bit resolution, at 25% duty. Print PWM on once it is running.",
+   "expect": [
+    "serial contains \"PWM on\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "esp:6",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s3-wifi",
+   "board": "esp32s3",
+   "category": "network",
+   "ask": "Connect to the Wi-Fi network ImpulseNet with the password impulse123, then print IP: followed by the IP address.",
+   "expect": [
+    "serial contains \"IP: 10.0.2.15\""
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "s3-preferences",
+   "board": "esp32s3",
+   "category": "storage",
+   "ask": "Count the boots in flash with the Preferences library and print boots=<n> at startup.",
+   "expect": [
+    "serial matches /boots=\\d+/"
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "s3-pot",
+   "board": "esp32s3",
+   "category": "analog",
+   "ask": "Potentiometer wiper on GPIO 1. Every 250 ms print raw=<12-bit reading> mv=<millivolts>.",
+   "expect": [
+    "serial matches /raw=\\d+ mv=\\d+/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-potentiometer",
+      "id": "pot1"
+     }
+    ],
+    "connections": [
+     [
+      "pot1:SIG",
+      "esp:1"
+     ],
+     [
+      "pot1:VCC",
+      "esp:3V3"
+     ],
+     [
+      "pot1:GND",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s3-hcsr04",
+   "board": "esp32s3",
+   "category": "sensor",
+   "ask": "HC-SR04 with TRIG on GPIO 4 and ECHO on GPIO 5 (through a divider). Every 500 ms print Distance: <whole centimetres> cm.",
+   "expect": [
+    "serial matches /Distance: (99|100|101) cm/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar1"
+     }
+    ],
+    "connections": [
+     [
+      "sonar1:TRIG",
+      "esp:4"
+     ],
+     [
+      "sonar1:ECHO",
+      "esp:5"
+     ],
+     [
+      "sonar1:VCC",
+      "esp:5V"
+     ],
+     [
+      "sonar1:GND",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s3-espnow",
+   "board": "esp32s3",
+   "category": "core-api",
+   "ask": "Set up ESP-NOW to receive messages and print each sender's MAC address. Print ESP-NOW ready after it is initialised.",
+   "expect": [],
+   "seconds": 3,
+   "compileOnly": true,
+   "why": "Compile-only: the simulator has no ESP-NOW."
+  },
+  {
+   "id": "c3-blink-onboard",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "ask": "Blink the SuperMini's onboard blue LED twice per second.",
+   "expect": [
+    "pin 8 frequency 2Hz ±10%"
+   ],
+   "seconds": 3,
+   "boardName": "ESP32-C3 SuperMini (selected as ESP32C3 Dev Module)",
+   "why": "The SuperMini LED is on GPIO 8, active low."
+  },
+  {
+   "id": "c3-ledc",
+   "board": "esp32c3",
+   "category": "core-api",
+   "ask": "Use the LEDC peripheral to drive an LED on GPIO 4 with 5 kHz PWM, 8-bit resolution, at 50% duty. Print PWM on once it is running.",
+   "expect": [
+    "serial contains \"PWM on\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "esp:4",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "c3-timer",
+   "board": "esp32c3",
+   "category": "core-api",
+   "ask": "Toggle GPIO 5 from a hardware timer interrupt every 250 ms (a 2 Hz blink). Leave loop() empty.",
+   "expect": [
+    "pin 5 frequency 2Hz ±10%"
+   ],
+   "seconds": 3
+  },
+  {
+   "id": "c3-mpu6050",
+   "board": "esp32c3",
+   "category": "board-facts",
+   "ask": "MPU6050 wired to the ESP32-C3's default I2C pins. Print MPU6050 ready once it is initialised.",
+   "expect": [
+    "serial contains \"MPU6050 ready\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-mpu6050",
+      "id": "imu1"
+     }
+    ],
+    "connections": [
+     [
+      "imu1:SDA",
+      "esp:8"
+     ],
+     [
+      "imu1:SCL",
+      "esp:9"
+     ],
+     [
+      "imu1:VCC",
+      "esp:3V3"
+     ],
+     [
+      "imu1:GND",
+      "esp:GND"
+     ]
+    ]
+   },
+   "why": "On the C3 the default I2C pins are SDA 8, SCL 9."
+  },
+  {
+   "id": "c3-pot",
+   "board": "esp32c3",
+   "category": "analog",
+   "ask": "Potentiometer wiper on GPIO 2. Every 250 ms print raw=<12-bit reading> mv=<millivolts>.",
+   "expect": [
+    "serial matches /raw=\\d+ mv=\\d+/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-potentiometer",
+      "id": "pot1"
+     }
+    ],
+    "connections": [
+     [
+      "pot1:SIG",
+      "esp:2"
+     ],
+     [
+      "pot1:VCC",
+      "esp:3V3"
+     ],
+     [
+      "pot1:GND",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "c3-wifi",
+   "board": "esp32c3",
+   "category": "network",
+   "ask": "Connect to the Wi-Fi network ImpulseNet with the password impulse123, then print IP: followed by the IP address.",
+   "expect": [
+    "serial contains \"IP: 10.0.2.15\""
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "c3-preferences",
+   "board": "esp32c3",
+   "category": "storage",
+   "ask": "Count the boots in flash with the Preferences library and print boots=<n> at startup.",
+   "expect": [
+    "serial matches /boots=\\d+/"
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "c3-button",
+   "board": "esp32c3",
+   "category": "gpio",
+   "ask": "A push button connects GPIO 3 to GND, with no external resistor, and an LED is on GPIO 5. Light the LED while the button is held, and print pressed or released at startup and whenever the state changes.",
+   "expect": [
+    "pin 5 low",
+    "serial contains \"released\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-pushbutton",
+      "id": "btn1"
+     },
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "btn1:1.l",
+      "esp:3"
+     ],
+     [
+      "btn1:2.l",
+      "esp:GND"
+     ],
+     [
+      "esp:5",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "esp:GND"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pico-blink-onboard",
+   "board": "pico",
+   "category": "board-facts",
+   "ask": "Blink the onboard LED twice per second.",
+   "expect": [
+    "pin LED_BUILTIN frequency 2Hz ±5%"
+   ],
+   "seconds": 3
+  },
+  {
+   "id": "pico-pwm",
+   "board": "pico",
+   "category": "analog",
+   "ask": "Put a 50% duty PWM signal on GP15 with analogWrite.",
+   "expect": [
+    "pin 15 toggles"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "pico:GP15",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "pico:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pico-pot",
+   "board": "pico",
+   "category": "analog",
+   "ask": "Potentiometer wiper on GP26. Every 250 ms print raw= followed by the reading.",
+   "expect": [
+    "serial matches /raw=\\d+/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-potentiometer",
+      "id": "pot1"
+     }
+    ],
+    "connections": [
+     [
+      "pot1:SIG",
+      "pico:GP26"
+     ],
+     [
+      "pot1:VCC",
+      "pico:3V3"
+     ],
+     [
+      "pot1:GND",
+      "pico:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pico-counter-serial",
+   "board": "pico",
+   "category": "serial",
+   "ask": "Print count=0, count=1, count=2 and so on, one line every 200 ms. The first line, count=0, must show up on the serial monitor too.",
+   "expect": [
+    "serial contains \"count=0\"",
+    "serial contains \"count=5\""
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "pico-dht22",
+   "board": "pico",
+   "category": "sensor",
+   "ask": "DHT22 data pin on GP2. Every 2 seconds print the reading exactly as T=<degrees C, one decimal> H=<percent, one decimal>.",
+   "expect": [
+    "serial contains \"T=24.0 H=40.0\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-dht22",
+      "id": "dht1"
+     }
+    ],
+    "connections": [
+     [
+      "dht1:SDA",
+      "pico:GP2"
+     ],
+     [
+      "dht1:VCC",
+      "pico:3V3"
+     ],
+     [
+      "dht1:GND",
+      "pico:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pico-hcsr04",
+   "board": "pico",
+   "category": "sensor",
+   "ask": "HC-SR04 with TRIG on GP3 and ECHO on GP4 (through a divider). Every 500 ms print Distance: <whole centimetres> cm.",
+   "expect": [
+    "serial matches /Distance: (99|100|101) cm/"
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar1"
+     }
+    ],
+    "connections": [
+     [
+      "sonar1:TRIG",
+      "pico:GP3"
+     ],
+     [
+      "sonar1:ECHO",
+      "pico:GP4"
+     ],
+     [
+      "sonar1:VCC",
+      "pico:VBUS"
+     ],
+     [
+      "sonar1:GND",
+      "pico:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pico-blink-gp14",
+   "board": "pico",
+   "category": "gpio",
+   "ask": "LED with a resistor on GP14. Blink it twice per second.",
+   "expect": [
+    "pin 14 frequency 2Hz ±5%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "pico:GP14",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "pico:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "ask": "A push button connects GP14 to GND, with no external resistor, and an LED is on GP15. Light the LED while the button is held, and print pressed or released at startup and whenever the state changes.",
+   "expect": [
+    "pin 15 low",
+    "serial contains \"released\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-pushbutton",
+      "id": "btn1"
+     },
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "btn1:1.l",
+      "pico:GP14"
+     ],
+     [
+      "btn1:2.l",
+      "pico:GND.1"
+     ],
+     [
+      "pico:GP15",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "pico:GND.1"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "nano-blink-d2",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "ask": "LED with a resistor on pin D2. Blink it once per second (500 ms on, 500 ms off).",
+   "expect": [
+    "pin 2 frequency 1Hz ±10%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "nano:2",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "nano:GND.1"
+     ]
+    ]
+   },
+   "why": "The Nano ESP32 uses Arduino pin numbers (D2), not GPIO numbers."
+  },
+  {
+   "id": "nano-blink-onboard",
+   "board": "nanoesp32",
+   "category": "board-facts",
+   "ask": "Blink the onboard LED twice per second.",
+   "expect": [
+    "pin LED_BUILTIN frequency 2Hz ±10%"
+   ],
+   "seconds": 3
+  },
+  {
+   "id": "nano-ledc",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "ask": "Use the ESP32's LEDC peripheral to drive an LED on D3 with 5 kHz PWM, 8-bit resolution, at 50% duty. Print PWM on once it is running.",
+   "expect": [
+    "serial contains \"PWM on\""
+   ],
+   "seconds": 5,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "nano:3",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "nano:GND.1"
+     ]
+    ]
+   },
+   "why": "Arduino's Nano ESP32 core is 2.0.x: the old LEDC API, not core 3's ledcAttach."
+  },
+  {
+   "id": "nano-timer",
+   "board": "nanoesp32",
+   "category": "core-api",
+   "ask": "Toggle D4 from a hardware timer interrupt every 250 ms (a 2 Hz blink). Leave loop() empty.",
+   "expect": [
+    "pin 4 frequency 2Hz ±10%"
+   ],
+   "seconds": 3,
+   "circuit": {
+    "parts": [
+     {
+      "type": "wokwi-led",
+      "id": "led1",
+      "attrs": {
+       "color": "red"
+      }
+     },
+     {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "attrs": {
+       "value": "220"
+      }
+     }
+    ],
+    "connections": [
+     [
+      "nano:4",
+      "r1:1"
+     ],
+     [
+      "r1:2",
+      "led1:A"
+     ],
+     [
+      "led1:C",
+      "nano:GND.1"
+     ]
+    ]
+   },
+   "why": "Arduino's Nano ESP32 core is 2.0.x: the old timer API."
+  },
+  {
+   "id": "nano-wifi",
+   "board": "nanoesp32",
+   "category": "network",
+   "ask": "Connect to the Wi-Fi network ImpulseNet with the password impulse123, then print IP: followed by the IP address.",
+   "expect": [
+    "serial contains \"IP: 10.0.2.15\""
+   ],
+   "seconds": 5
+  },
+  {
+   "id": "nano-preferences",
+   "board": "nanoesp32",
+   "category": "storage",
+   "ask": "Count the boots in flash with the Preferences library and print boots=<n> at startup.",
+   "expect": [
+    "serial matches /boots=\\d+/"
+   ],
+   "seconds": 5
+  }
+ ]
+}

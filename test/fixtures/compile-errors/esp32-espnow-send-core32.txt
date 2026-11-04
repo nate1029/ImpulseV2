@@ -1,0 +1,8 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/esp32_espnow_send_core32.ino: In function 'void setup()':
+<sketch>/esp32_espnow_send_core32.ino:7:28: error: invalid conversion from 'void (*)(const uint8_t*, esp_now_send_status_t)' {aka 'void (*)(const unsigned char*, esp_now_send_status_t)'} to 'esp_now_send_cb_t' {aka 'void (*)(const wifi_tx_info_t*, esp_now_send_status_t)'} [-fpermissive]
+    7 |   esp_now_register_send_cb(onSent);
+      |                            ^~~~~~
+~/Library/Arduino15/packages/esp32/tools/esp32-libs/3.3.12/include/esp_wifi/include/esp_now.h:193:54: note:   initializing argument 1 of 'esp_err_t esp_now_register_send_cb(esp_now_send_cb_t)'
+  193 | esp_err_t esp_now_register_send_cb(esp_now_send_cb_t cb);
+      |                                    ~~~~~~~~~~~~~~~~~~^~

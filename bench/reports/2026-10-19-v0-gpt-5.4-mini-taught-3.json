@@ -1,0 +1,97 @@
+{
+ "bench": "EmbedBench v0",
+ "date": "2026-10-19T13:35:09.725Z",
+ "model": "gpt-5.4-mini",
+ "reasoning": "low",
+ "label": "v0-gpt-5.4-mini-taught-3",
+ "summary": {
+  "impulse": {
+   "tasks": 1,
+   "passed": 1,
+   "passRate": 100,
+   "compiled": 1,
+   "costUsd": 0.002,
+   "costPerWorkingSketchUsd": 0.002
+  },
+  "impulse-fix": {
+   "tasks": 1,
+   "passed": 1,
+   "passRate": 100,
+   "compiled": 1,
+   "costUsd": 0.0022,
+   "costPerWorkingSketchUsd": 0.0022
+  }
+ },
+ "byBoard": {
+  "uno": {
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "esp32": {
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "esp32s3": {
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "esp32c3": {
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  },
+  "pico": {
+   "impulse": "1/1",
+   "impulse-fix": "1/1"
+  },
+  "nanoesp32": {
+   "impulse": "0/0",
+   "impulse-fix": "0/0"
+  }
+ },
+ "results": [
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0020285999999999998,
+   "tokens": {
+    "input": 1566,
+    "output": 401,
+    "reasoning": 92
+   },
+   "libraries": [],
+   "error": null,
+   "seconds": 44.1
+  },
+  {
+   "id": "pico-button",
+   "board": "pico",
+   "category": "gpio",
+   "variant": "impulse-fix",
+   "ok": true,
+   "compiled": true,
+   "checks": {
+    "passed": 2,
+    "total": 2
+   },
+   "cost": 0.0021681,
+   "tokens": {
+    "input": 1566,
+    "output": 432,
+    "reasoning": 80
+   },
+   "libraries": [],
+   "error": null,
+   "steps": [],
+   "seconds": 35.8
+  }
+ ],
+ "skipped": []
+}

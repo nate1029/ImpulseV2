@@ -1,0 +1,6 @@
+# arduino:esp32:nano_nora with arduino:esp32@2.0.18-arduino.5
+<sketch>/esp32_ledc_core2.ino: In function 'void setup()':
+<sketch>/esp32_ledc_core2.ino:2:3: error: 'ledcAttach' was not declared in this scope
+   ^~~~~~~~~~
+<sketch>/esp32_ledc_core2.ino:2:3: note: suggested alternative: 'ledcAttachPin'
+   ^~~~~~~~~~

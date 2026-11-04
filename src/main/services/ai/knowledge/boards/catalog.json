@@ -1,0 +1,2032 @@
+{
+  "version": 1,
+  "scope": "The boards students and industry in India use most, ranked. Impulse's board picker shows these first; the knowledge layer has notes for each.",
+  "boards": [
+    {
+      "id": "uno",
+      "name": "Arduino Uno R3",
+      "fqbn": "arduino:avr:uno",
+      "platform": "arduino:avr",
+      "family": "avr-atmega328p",
+      "rank": 1,
+      "tags": [
+        "student",
+        "robotics"
+      ],
+      "aliases": [
+        "uno r3",
+        "uno smd",
+        "uno clone",
+        "ch340 uno",
+        "arduino uno"
+      ],
+      "options": {},
+      "india": "The first board of almost every Indian student; CH340 clones upload exactly like the original.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nano",
+      "name": "Arduino Nano (ATmega328P)",
+      "fqbn": "arduino:avr:nano",
+      "platform": "arduino:avr",
+      "family": "avr-atmega328p",
+      "rank": 2,
+      "tags": [
+        "student",
+        "robotics",
+        "wearable"
+      ],
+      "aliases": [
+        "nano v3",
+        "nano clone",
+        "ch340 nano",
+        "nano 328p"
+      ],
+      "options": {
+        "cpu": "atmega328old"
+      },
+      "india": "Most Nano clones sold in India ship the old bootloader: Impulse selects ATmega328P (Old Bootloader) by default; switch to ATmega328P if the upload fails.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp32-devkit-v1",
+      "name": "ESP32 DevKit V1 (DOIT, 30-pin)",
+      "fqbn": "esp32:esp32:esp32doit-devkit-v1",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 3,
+      "tags": [
+        "iot",
+        "student",
+        "robotics"
+      ],
+      "aliases": [
+        "esp32 devkit",
+        "doit esp32",
+        "esp32 30 pin",
+        "esp32 wroom devkit v1"
+      ],
+      "options": {},
+      "india": "The ESP32 board most Indian sellers ship. Onboard LED on GPIO2; CP2102 or CH340 USB-serial; some boards need BOOT held while connecting.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nodemcu-v2",
+      "name": "NodeMCU 1.0 (ESP-12E / ESP-12F)",
+      "fqbn": "esp8266:esp8266:nodemcuv2",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 4,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "nodemcu",
+        "nodemcu v3",
+        "nodemcu esp8266",
+        "esp8266 nodemcu",
+        "lolin nodemcu",
+        "amica nodemcu"
+      ],
+      "options": {},
+      "india": "The classic Indian IoT board (CP2102 or CH340 'V3' clones, both are this board). Use D-pin names; LED on D4 (GPIO2, active-LOW), a second LED on GPIO16 on some boards. VIN is 5 V from USB.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "mega",
+      "name": "Arduino Mega 2560",
+      "fqbn": "arduino:avr:mega",
+      "platform": "arduino:avr",
+      "family": "avr-atmega2560",
+      "rank": 5,
+      "tags": [
+        "student",
+        "robotics",
+        "industry"
+      ],
+      "aliases": [
+        "mega 2560",
+        "mega2560",
+        "mega clone"
+      ],
+      "options": {},
+      "india": "Common in college projects that need many pins (RAMPS 3D printers, LCD shields, multi-sensor rigs).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp32-dev-module",
+      "name": "ESP32 Dev Module (38-pin / generic WROOM)",
+      "fqbn": "esp32:esp32:esp32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 6,
+      "tags": [
+        "iot",
+        "industry"
+      ],
+      "aliases": [
+        "esp32 dev module",
+        "esp32 38 pin",
+        "esp32 wroom-32",
+        "esp-wroom-32",
+        "esp32 devkitc"
+      ],
+      "options": {},
+      "india": "The safe choice for any ESP32-WROOM board; also what ESP32 DevKitC and most unbranded 38-pin boards are.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "d1-mini",
+      "name": "Wemos / LOLIN D1 mini",
+      "fqbn": "esp8266:esp8266:d1_mini",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 7,
+      "tags": [
+        "iot",
+        "wearable",
+        "student"
+      ],
+      "aliases": [
+        "d1 mini",
+        "wemos d1 mini",
+        "lolin d1 mini",
+        "d1 mini clone"
+      ],
+      "options": {},
+      "india": "Tiny ESP8266 with stackable shields; LED on D4 (GPIO2, active-LOW); 5 V pin from USB; A0 reads 0–3.3 V through the onboard divider.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "esp32-cam",
+      "name": "ESP32-CAM (AI Thinker)",
+      "fqbn": "esp32:esp32:esp32cam",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 8,
+      "tags": [
+        "camera",
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "esp32cam",
+        "ai thinker esp32-cam",
+        "esp32 camera"
+      ],
+      "options": {},
+      "india": "No USB: upload through an ESP32-CAM-MB adapter or an FTDI on U0R/U0T with GPIO0 tied to GND, then remove the jumper and reset. Needs a solid 5 V supply.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "pico",
+      "name": "Raspberry Pi Pico",
+      "fqbn": "rp2040:rp2040:rpipico",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 9,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "pico",
+        "raspberry pi pico",
+        "rp2040 pico"
+      ],
+      "options": {},
+      "india": "3.3 V logic. First upload: hold BOOTSEL while plugging in (a drive appears); afterwards the core resets it by itself. LED on GPIO25.",
+      "verified": "index",
+      "sim": true
+    },
+    {
+      "id": "pro-mini-5v",
+      "name": "Arduino Pro Mini 5 V / 16 MHz",
+      "fqbn": "arduino:avr:pro",
+      "platform": "arduino:avr",
+      "family": "avr-atmega328p",
+      "rank": 10,
+      "tags": [
+        "student",
+        "wearable"
+      ],
+      "aliases": [
+        "pro mini",
+        "promini 5v"
+      ],
+      "options": {
+        "cpu": "16MHzatmega328"
+      },
+      "india": "No USB: upload through an FTDI/CH340 USB-to-serial adapter on the 6-pin header (DTR to DTR for auto-reset).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp32-c3-supermini",
+      "name": "ESP32-C3 SuperMini",
+      "fqbn": "esp32:esp32:nologo_esp32c3_super_mini",
+      "platform": "esp32:esp32",
+      "family": "esp32-c3",
+      "rank": 11,
+      "tags": [
+        "iot",
+        "student",
+        "wearable"
+      ],
+      "aliases": [
+        "c3 supermini",
+        "esp32 c3 mini",
+        "c3 super mini"
+      ],
+      "options": {},
+      "india": "The cheapest Wi-Fi board on Indian marketplaces. Native USB only (no UART chip): enable USB CDC On Boot for Serial; LED on GPIO8 (active-LOW); BOOT on GPIO9. GPIO2 and 8 and 9 are strapping pins.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "blue-pill",
+      "name": "STM32F103C8 Blue Pill",
+      "fqbn": "STMicroelectronics:stm32:GenF1",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 12,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "blue pill",
+        "stm32f103",
+        "stm32f103c8t6",
+        "bluepill"
+      ],
+      "options": {
+        "pnum": "BLUEPILL_F103C8"
+      },
+      "india": "Very common in Indian colleges. Upload with an ST-Link V2 clone (SWD: SWDIO, SWCLK, GND, 3.3 V) or through a USB-serial adapter on PA9/PA10 with BOOT0 jumper set to 1. LED on PC13 (active-LOW). Many boards carry CKS32/CS32 clone chips that an ST-Link may refuse; pick 'STM32CubeProgrammer (SWD)' or 'Serial' as the upload method.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "esp32-s3-devkitc",
+      "name": "ESP32-S3 DevKitC-1 (S3 Dev Module)",
+      "fqbn": "esp32:esp32:esp32s3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 13,
+      "tags": [
+        "iot",
+        "ml",
+        "camera"
+      ],
+      "aliases": [
+        "esp32 s3",
+        "esp32-s3 devkitc",
+        "s3 dev module",
+        "esp32s3 n16r8",
+        "esp32s3 n8r8"
+      ],
+      "options": {},
+      "india": "Two USB-C ports: UART (CP2102) for the usual serial, and the native USB. Serial prints go where USB CDC On Boot says; Impulse sets it from the port you pick. RGB LED on GPIO48 (GPIO38 on some clones).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "uno-r4-wifi",
+      "name": "Arduino Uno R4 WiFi",
+      "fqbn": "arduino:renesas_uno:unor4wifi",
+      "platform": "arduino:renesas_uno",
+      "family": "renesas-ra4m1",
+      "rank": 14,
+      "tags": [
+        "student",
+        "iot"
+      ],
+      "aliases": [
+        "uno r4 wifi",
+        "r4 wifi"
+      ],
+      "options": {},
+      "india": "Uno R4 with an ESP32-S3 Wi-Fi module and a 12×8 LED matrix; Wi-Fi uses the WiFiS3 library, not WiFiNINA.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "pico-w",
+      "name": "Raspberry Pi Pico W",
+      "fqbn": "rp2040:rp2040:rpipicow",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 15,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "pico w",
+        "pico wifi"
+      ],
+      "options": {},
+      "india": "Pico with Wi-Fi/BLE (CYW43439). The LED hangs off the Wi-Fi chip, so LED_BUILTIN works only through the Pico W board selection; Wi-Fi uses WiFi.h (not WiFiNINA).",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "leonardo",
+      "name": "Arduino Leonardo",
+      "fqbn": "arduino:avr:leonardo",
+      "platform": "arduino:avr",
+      "family": "avr-atmega32u4",
+      "rank": 16,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "leonardo r3"
+      ],
+      "options": {},
+      "india": "Native USB: Keyboard/Mouse projects; the serial port disappears for a moment at upload (normal).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "d1-r32",
+      "name": "Wemos D1 R32 (ESP32, Uno form)",
+      "fqbn": "esp32:esp32:d1_uno32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 17,
+      "tags": [
+        "student",
+        "robotics"
+      ],
+      "aliases": [
+        "d1 r32",
+        "wemos esp32 uno",
+        "esp32 uno form",
+        "uno r32"
+      ],
+      "options": {},
+      "india": "ESP32 in the Uno shape so shields fit, but it is 3.3 V and the Uno pin numbers map to GPIOs (D13 = GPIO18, A0 = GPIO2); motor shields need 5 V logic adapters.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nodemcu-32s",
+      "name": "NodeMCU-32S (ESP32)",
+      "fqbn": "esp32:esp32:nodemcu-32s",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 18,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "nodemcu 32s",
+        "nodemcu esp32"
+      ],
+      "options": {},
+      "india": "38-pin ESP32 in the NodeMCU layout; LED on GPIO2.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp-01",
+      "name": "ESP-01 / ESP-01S module",
+      "fqbn": "esp8266:esp8266:generic",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 19,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "esp-01",
+        "esp01",
+        "esp8266-01",
+        "esp 01s"
+      ],
+      "options": {},
+      "india": "Only GPIO0 and GPIO2 (plus TX/RX). Upload through a USB adapter with GPIO0 to GND at reset (programmer adapters have a switch). Needs 3.3 V at 300 mA or more; the Uno's 3.3 V pin is not enough. Often used as a Wi-Fi modem for an Uno over AT commands.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "lolin32-lite",
+      "name": "Wemos LOLIN32 Lite",
+      "fqbn": "esp32:esp32:lolin32-lite",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 20,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "lolin32 lite",
+        "wemos lolin32 lite"
+      ],
+      "options": {},
+      "india": "Cheap ESP32 with a LiPo connector and charger; LED on GPIO22 (active-LOW); no 5 V pin.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "uno-r4-minima",
+      "name": "Arduino Uno R4 Minima",
+      "fqbn": "arduino:renesas_uno:minima",
+      "platform": "arduino:renesas_uno",
+      "family": "renesas-ra4m1",
+      "rank": 21,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "uno r4",
+        "r4 minima"
+      ],
+      "options": {},
+      "india": "32-bit successor of the Uno R3: 5 V logic, 14-bit ADC, 12-bit DAC on A0, same shield footprint.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "esp32-wrover",
+      "name": "ESP32-WROVER Module",
+      "fqbn": "esp32:esp32:esp32wrover",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 22,
+      "tags": [
+        "iot",
+        "camera"
+      ],
+      "aliases": [
+        "esp32 wrover",
+        "wrover-b",
+        "wrover-e",
+        "esp32 psram"
+      ],
+      "options": {},
+      "india": "ESP32 with 8 MB PSRAM: GPIO16 and GPIO17 belong to the PSRAM and are not available.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nano-every",
+      "name": "Arduino Nano Every",
+      "fqbn": "arduino:megaavr:nona4809",
+      "platform": "arduino:megaavr",
+      "family": "megaavr-atmega4809",
+      "rank": 23,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "nano every",
+        "atmega4809"
+      ],
+      "options": {},
+      "india": "Pin-compatible with the Nano but a different chip: Serial1 on pins 0/1, 5 V logic, 48 KB flash.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "micro",
+      "name": "Arduino Micro",
+      "fqbn": "arduino:avr:micro",
+      "platform": "arduino:avr",
+      "family": "avr-atmega32u4",
+      "rank": 24,
+      "tags": [
+        "student",
+        "wearable"
+      ],
+      "aliases": [
+        "arduino micro"
+      ],
+      "options": {},
+      "india": "Same chip as the Leonardo in a small breadboard-friendly form.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "pro-micro",
+      "name": "SparkFun Pro Micro (5 V clone)",
+      "fqbn": "arduino:avr:leonardo",
+      "platform": "arduino:avr",
+      "family": "avr-atmega32u4",
+      "rank": 25,
+      "tags": [
+        "student",
+        "wearable"
+      ],
+      "aliases": [
+        "pro micro",
+        "promicro",
+        "32u4 clone"
+      ],
+      "options": {},
+      "india": "Clones sold as Pro Micro are programmed as Arduino Leonardo (same chip and pin numbers; the clone has no pin 11/12/13 headers but D14–D16 for SPI).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "black-pill-f411",
+      "name": "STM32F411CE Black Pill (WeAct)",
+      "fqbn": "STMicroelectronics:stm32:GenF4",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 26,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "black pill",
+        "stm32f411",
+        "blackpill f411",
+        "weact f411"
+      ],
+      "options": {
+        "pnum": "BLACKPILL_F411CE"
+      },
+      "india": "USB-C Black Pill: hold BOOT0, tap NRST, release BOOT0 to enter DFU, then upload over USB (upload method 'STM32CubeProgrammer (DFU)'); or use an ST-Link. LED on PC13 (active-LOW), KEY button on PA0. For Serial over USB pick USB support 'CDC (generic Serial supersede U(S)ART)'.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "esp32-c3-devkitm",
+      "name": "ESP32-C3 DevKitM-1 (C3 Dev Module)",
+      "fqbn": "esp32:esp32:esp32c3",
+      "platform": "esp32:esp32",
+      "family": "esp32-c3",
+      "rank": 27,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "esp32 c3",
+        "c3 devkitm",
+        "esp32c3 dev module"
+      ],
+      "options": {},
+      "india": "RISC-V ESP32 with Wi-Fi + BLE 5; RGB LED on GPIO8; native USB and (on DevKitC) a UART bridge.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "d1-mini-pro",
+      "name": "Wemos / LOLIN D1 mini Pro",
+      "fqbn": "esp8266:esp8266:d1_mini_pro",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 28,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "d1 mini pro"
+      ],
+      "options": {},
+      "india": "D1 mini with 16 MB flash and an external antenna connector (move the zero-ohm resistor to use it).",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "xiao-esp32c3",
+      "name": "Seeed Studio XIAO ESP32-C3",
+      "fqbn": "esp32:esp32:XIAO_ESP32C3",
+      "platform": "esp32:esp32",
+      "family": "esp32-c3",
+      "rank": 29,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "xiao esp32c3",
+        "xiao c3"
+      ],
+      "options": {},
+      "india": "Thumb-sized C3 with an external antenna connector and battery pads; no user LED; pins are labelled D0–D10 (use the D constants).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "xiao-esp32s3",
+      "name": "Seeed Studio XIAO ESP32-S3 / Sense",
+      "fqbn": "esp32:esp32:XIAO_ESP32S3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 30,
+      "tags": [
+        "iot",
+        "ml",
+        "camera",
+        "wearable"
+      ],
+      "aliases": [
+        "xiao esp32s3",
+        "xiao s3",
+        "xiao esp32s3 sense"
+      ],
+      "options": {},
+      "india": "User LED on GPIO21 (active-LOW), 8 MB PSRAM; the Sense add-on carries the OV2640 camera and a mic. Native USB: USB CDC On Boot stays enabled.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nucleo-f401re",
+      "name": "ST Nucleo-F401RE",
+      "fqbn": "STMicroelectronics:stm32:Nucleo_64",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 31,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "nucleo f401re",
+        "nucleo-f401"
+      ],
+      "options": {
+        "pnum": "NUCLEO_F401RE"
+      },
+      "india": "Common in ST-sponsored college labs. Onboard ST-Link: just plug in and upload (method 'Mass Storage' or 'SWD'); Serial goes through the ST-Link's virtual COM port (PA2/PA3). LED LD2 on PA5, user button on PC13.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "pro-mini-3v3",
+      "name": "Arduino Pro Mini 3.3 V / 8 MHz",
+      "fqbn": "arduino:avr:pro",
+      "platform": "arduino:avr",
+      "family": "avr-atmega328p",
+      "rank": 32,
+      "tags": [
+        "wearable",
+        "iot"
+      ],
+      "aliases": [
+        "pro mini 3.3v",
+        "promini 8mhz"
+      ],
+      "options": {
+        "cpu": "8MHzatmega328"
+      },
+      "india": "3.3 V logic for sensors and radios (nRF24L01, LoRa modules); upload with a 3.3 V adapter.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp32-c6-devkitc",
+      "name": "ESP32-C6 DevKitC-1 (C6 Dev Module)",
+      "fqbn": "esp32:esp32:esp32c6",
+      "platform": "esp32:esp32",
+      "family": "esp32-c6",
+      "rank": 33,
+      "tags": [
+        "iot",
+        "industry"
+      ],
+      "aliases": [
+        "esp32 c6",
+        "c6 devkitc",
+        "esp32c6 dev module"
+      ],
+      "options": {},
+      "india": "Wi-Fi 6, BLE 5, Zigbee/Thread (802.15.4). RGB LED on GPIO8; two USB-C ports like the S3 kit.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "pico2",
+      "name": "Raspberry Pi Pico 2",
+      "fqbn": "rp2040:rp2040:rpipico2",
+      "platform": "rp2040:rp2040",
+      "family": "rp2350",
+      "rank": 34,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "pico 2",
+        "rp2350 pico"
+      ],
+      "options": {},
+      "india": "RP2350: faster, more RAM; same pinout as the Pico. Needs core 4.0 or later.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "nano-33-iot",
+      "name": "Arduino Nano 33 IoT",
+      "fqbn": "arduino:samd:nano_33_iot",
+      "platform": "arduino:samd",
+      "family": "samd21",
+      "rank": 35,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "nano 33 iot"
+      ],
+      "options": {},
+      "india": "3.3 V only (5 V on a pin damages it); Wi-Fi/BLE through WiFiNINA.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "digispark",
+      "name": "Digispark ATtiny85 (USB)",
+      "fqbn": "digistump:avr:digispark-tiny",
+      "platform": "digistump:avr",
+      "family": "attiny-x5",
+      "rank": 36,
+      "tags": [
+        "student",
+        "wearable"
+      ],
+      "aliases": [
+        "digispark",
+        "attiny85 usb",
+        "digispark tiny"
+      ],
+      "options": {},
+      "india": "Plug the board in only AFTER clicking Upload (the Micronucleus bootloader waits 5 s at power-up). P1 drives the LED; P3 and P4 are the USB pins (P3 has a 1.5 kΩ pull-up). Needs the Digistump driver on Windows.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "esp32-s3-supermini",
+      "name": "ESP32-S3 SuperMini",
+      "fqbn": "esp32:esp32:esp32s3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 37,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "s3 supermini",
+        "esp32 s3 mini",
+        "s3 zero"
+      ],
+      "options": {},
+      "india": "Tiny S3 with native USB only: USB CDC On Boot must be enabled for Serial; RGB LED on GPIO48; hold BOOT (GPIO0) while plugging in if the port does not appear.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lilygo-t-display",
+      "name": "LilyGO TTGO T-Display (ESP32)",
+      "fqbn": "esp32:esp32:lilygo_t_display",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 38,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "ttgo t-display",
+        "t display",
+        "lilygo t-display"
+      ],
+      "options": {},
+      "india": "1.14″ ST7789 TFT on GPIO 19 (MOSI), 18 (SCLK), 5 (CS), 16 (DC), 23 (RST), 4 (backlight); buttons GPIO0 and GPIO35; battery voltage on GPIO34. Use TFT_eSPI with the T-Display setup.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "heltec-wifi-lora-32-v3",
+      "name": "Heltec WiFi LoRa 32 (V3)",
+      "fqbn": "esp32:esp32:heltec_wifi_lora_32_V3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 39,
+      "tags": [
+        "iot",
+        "industry"
+      ],
+      "aliases": [
+        "heltec lora v3",
+        "heltec wifi lora 32 v3",
+        "heltec esp32 lora"
+      ],
+      "options": {},
+      "india": "ESP32-S3 with SX1262 LoRa (NSS 8, SCK 9, MOSI 10, MISO 11, RST 12, BUSY 13, DIO1 14) and an OLED on SDA 17 / SCL 18 / RST 21, powered through Vext (GPIO36, active-LOW). LED on GPIO35. Use RadioLib or Heltec's library; 865–867 MHz in India.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "atmega328p-bare",
+      "name": "Bare ATmega328P (Uno bootloader)",
+      "fqbn": "arduino:avr:uno",
+      "platform": "arduino:avr",
+      "family": "avr-atmega328p",
+      "rank": 40,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "atmega328p chip",
+        "328p on breadboard",
+        "standalone atmega"
+      ],
+      "options": {},
+      "india": "A chip pulled from an Uno or bought with the Optiboot bootloader: wire a 16 MHz crystal, upload through an Uno used as a serial bridge or a USB-serial adapter.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nano-esp32",
+      "name": "Arduino Nano ESP32",
+      "fqbn": "arduino:esp32:nano_nora",
+      "platform": "arduino:esp32",
+      "family": "esp32-s3",
+      "rank": 41,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "nano esp32"
+      ],
+      "options": {},
+      "india": "ESP32-S3 in the Nano form. Tools › Pin Numbering decides whether 13 means D13 or GPIO13: Impulse reads the setting.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "nano-33-ble",
+      "name": "Arduino Nano 33 BLE / BLE Sense",
+      "fqbn": "arduino:mbed_nano:nano33ble",
+      "platform": "arduino:mbed_nano",
+      "family": "nrf52840",
+      "rank": 42,
+      "tags": [
+        "iot",
+        "wearable",
+        "ml"
+      ],
+      "aliases": [
+        "nano 33 ble",
+        "nano 33 ble sense",
+        "ble sense rev2"
+      ],
+      "options": {},
+      "india": "3.3 V only. BLE through ArduinoBLE; the Sense carries IMU, mic, environment sensors (Rev2 uses different sensor chips and libraries).",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "esp32-wrover-kit",
+      "name": "ESP32-WROVER-KIT",
+      "fqbn": "esp32:esp32:esp32wroverkit",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 43,
+      "tags": [
+        "camera"
+      ],
+      "aliases": [
+        "wrover kit"
+      ],
+      "options": {},
+      "india": "Espressif's camera/LCD dev kit around the WROVER module.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lolin32",
+      "name": "Wemos LOLIN32",
+      "fqbn": "esp32:esp32:lolin32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 44,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "lolin32"
+      ],
+      "options": {},
+      "india": "LOLIN32 with battery charger; LED on GPIO5.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "d1-mini32",
+      "name": "Wemos D1 Mini ESP32",
+      "fqbn": "esp32:esp32:d1_mini32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 45,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "d1 mini esp32",
+        "d1 mini32"
+      ],
+      "options": {},
+      "india": "ESP32 in the D1 mini footprint (D1 mini shields fit).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lolin-d32",
+      "name": "Wemos LOLIN D32",
+      "fqbn": "esp32:esp32:d32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 46,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "lolin d32",
+        "d32"
+      ],
+      "options": {},
+      "india": "ESP32 with LiPo charger and battery voltage on GPIO35 (divider /2).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nucleo-f446re",
+      "name": "ST Nucleo-F446RE",
+      "fqbn": "STMicroelectronics:stm32:Nucleo_64",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 47,
+      "tags": [
+        "student",
+        "industry"
+      ],
+      "aliases": [
+        "nucleo f446re",
+        "nucleo-f446"
+      ],
+      "options": {
+        "pnum": "NUCLEO_F446RE"
+      },
+      "india": "Same board shape and pins as the F401RE with a faster F446 (180 MHz).",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "attiny85",
+      "name": "ATtiny85 (ATTinyCore, via ISP)",
+      "fqbn": "ATTinyCore:avr:attinyx5",
+      "platform": "ATTinyCore:avr",
+      "family": "attiny-x5",
+      "rank": 48,
+      "tags": [
+        "student",
+        "wearable"
+      ],
+      "aliases": [
+        "attiny85",
+        "attiny 85",
+        "attiny45"
+      ],
+      "options": {
+        "chip": "85"
+      },
+      "india": "Programmed with an Arduino as ISP or a USBasp: set Tools › Programmer and use Upload Using Programmer. Internal 8 MHz clock by default (Burn Bootloader sets the fuses).",
+      "verified": "index",
+      "sim": true
+    },
+    {
+      "id": "xiao-rp2040",
+      "name": "Seeed Studio XIAO RP2040",
+      "fqbn": "rp2040:rp2040:seeed_xiao_rp2040",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 49,
+      "tags": [
+        "wearable",
+        "student"
+      ],
+      "aliases": [
+        "xiao rp2040"
+      ],
+      "options": {},
+      "india": "Thumb-sized RP2040; user LED (GPIO25 red, 16 green, 17 blue, active-LOW) and a NeoPixel on GPIO12 powered by GPIO11.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "rp2040-zero",
+      "name": "Waveshare RP2040-Zero",
+      "fqbn": "rp2040:rp2040:waveshare_rp2040_zero",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 50,
+      "tags": [
+        "wearable",
+        "student"
+      ],
+      "aliases": [
+        "rp2040 zero",
+        "waveshare zero"
+      ],
+      "options": {},
+      "india": "Very cheap RP2040 with a WS2812 LED on GPIO16 and USB-C; hold BOOT while plugging in for the first upload.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "esp-12f",
+      "name": "ESP-12F / ESP-12E bare module",
+      "fqbn": "esp8266:esp8266:generic",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 51,
+      "tags": [
+        "iot",
+        "industry"
+      ],
+      "aliases": [
+        "esp-12f",
+        "esp12f",
+        "esp-12e module",
+        "esp8266 module"
+      ],
+      "options": {},
+      "india": "The module on a custom PCB: GPIO15 to GND, EN and GPIO0/GPIO2 pulled up (GPIO0 low to flash), 3.3 V only.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "esp32-s2-devkit",
+      "name": "ESP32-S2 Dev Module (Saola-1)",
+      "fqbn": "esp32:esp32:esp32s2",
+      "platform": "esp32:esp32",
+      "family": "esp32-s2",
+      "rank": 52,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "esp32 s2",
+        "saola"
+      ],
+      "options": {},
+      "india": "Single-core, Wi-Fi only, native USB (no Bluetooth).",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lolin-s2-mini",
+      "name": "Wemos LOLIN S2 Mini",
+      "fqbn": "esp32:esp32:lolin_s2_mini",
+      "platform": "esp32:esp32",
+      "family": "esp32-s2",
+      "rank": 53,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "lolin s2 mini",
+        "s2 mini"
+      ],
+      "options": {},
+      "india": "Cheap S2 in the D1 mini footprint; LED on GPIO15; BOOT on GPIO0.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lolin-c3-mini",
+      "name": "Wemos LOLIN C3 Mini",
+      "fqbn": "esp32:esp32:lolin_c3_mini",
+      "platform": "esp32:esp32",
+      "family": "esp32-c3",
+      "rank": 54,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "lolin c3 mini",
+        "c3 mini"
+      ],
+      "options": {},
+      "india": "D1 mini footprint with an ESP32-C3; RGB LED on GPIO7.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lolin-s3-mini",
+      "name": "Wemos LOLIN S3 Mini",
+      "fqbn": "esp32:esp32:lolin_s3_mini",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 55,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "lolin s3 mini",
+        "s3 mini"
+      ],
+      "options": {},
+      "india": "D1 mini footprint with an ESP32-S3; RGB LED on GPIO47.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "pico2-w",
+      "name": "Raspberry Pi Pico 2 W",
+      "fqbn": "rp2040:rp2040:rpipico2w",
+      "platform": "rp2040:rp2040",
+      "family": "rp2350",
+      "rank": 56,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "pico 2 w"
+      ],
+      "options": {},
+      "india": "Pico 2 with Wi-Fi/BLE; same notes as the Pico W.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "teensy40",
+      "name": "Teensy 4.0",
+      "fqbn": "teensy:avr:teensy40",
+      "platform": "teensy:avr",
+      "family": "teensy4",
+      "rank": 57,
+      "tags": [
+        "audio",
+        "industry"
+      ],
+      "aliases": [
+        "teensy 4.0"
+      ],
+      "options": {},
+      "india": "600 MHz Cortex-M7, 3.3 V and NOT 5 V tolerant. Press the button on the board if the upload does not start (Teensy Loader).",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "teensy41",
+      "name": "Teensy 4.1",
+      "fqbn": "teensy:avr:teensy41",
+      "platform": "teensy:avr",
+      "family": "teensy4",
+      "rank": 58,
+      "tags": [
+        "audio",
+        "industry"
+      ],
+      "aliases": [
+        "teensy 4.1"
+      ],
+      "options": {},
+      "india": "Teensy 4.0 with more pins, SD slot, Ethernet pads and PSRAM pads.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "ttgo-lora32",
+      "name": "LilyGO TTGO LoRa32 (OLED)",
+      "fqbn": "esp32:esp32:ttgo-lora32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 59,
+      "tags": [
+        "iot",
+        "industry"
+      ],
+      "aliases": [
+        "ttgo lora32",
+        "lora32 oled",
+        "ttgo lora"
+      ],
+      "options": {},
+      "india": "SX1276/78 LoRa on SPI (SCK 5, MISO 19, MOSI 27, CS 18, RST 14, DIO0 26) and a 0.96″ SSD1306 OLED on SDA 21 / SCL 22 (V1: SDA 4 / SCL 15, RST 16). India uses 865–867 MHz.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "heltec-wifi-kit-32-v3",
+      "name": "Heltec WiFi Kit 32 (V3)",
+      "fqbn": "esp32:esp32:heltec_wifi_kit_32_V3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 60,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "heltec wifi kit 32",
+        "wifi kit 32 v3"
+      ],
+      "options": {},
+      "india": "ESP32-S3 with an OLED on SDA 17 / SCL 18 / RST 21 (Vext GPIO36 must be LOW to power it); LED on GPIO35.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp32-c6-supermini",
+      "name": "ESP32-C6 SuperMini",
+      "fqbn": "esp32:esp32:esp32c6",
+      "platform": "esp32:esp32",
+      "family": "esp32-c6",
+      "rank": 61,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "c6 supermini",
+        "esp32 c6 mini"
+      ],
+      "options": {},
+      "india": "Native USB only: enable USB CDC On Boot; LED on GPIO8 (varies by seller), BOOT on GPIO9.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "xiao-esp32c6",
+      "name": "Seeed Studio XIAO ESP32-C6",
+      "fqbn": "esp32:esp32:XIAO_ESP32C6",
+      "platform": "esp32:esp32",
+      "family": "esp32-c6",
+      "rank": 62,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "xiao c6",
+        "xiao esp32c6"
+      ],
+      "options": {},
+      "india": "C6 in the XIAO footprint; antenna switch pins GPIO3 and GPIO14 are used by the board.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "firebeetle2-esp32e",
+      "name": "DFRobot FireBeetle 2 ESP32-E",
+      "fqbn": "esp32:esp32:dfrobot_firebeetle2_esp32e",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 63,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "firebeetle 2",
+        "firebeetle esp32-e"
+      ],
+      "options": {},
+      "india": "Low-power ESP32 with charger; LED on GPIO2.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "esp32-pico-d4",
+      "name": "ESP32-PICO-KIT (PICO-D4)",
+      "fqbn": "esp32:esp32:pico32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 64,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "pico d4",
+        "esp32 pico kit"
+      ],
+      "options": {},
+      "india": "ESP32 system-in-package dev kit.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "mkr-wifi-1010",
+      "name": "Arduino MKR WiFi 1010",
+      "fqbn": "arduino:samd:mkrwifi1010",
+      "platform": "arduino:samd",
+      "family": "samd21",
+      "rank": 65,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "mkr wifi 1010",
+        "mkr1010"
+      ],
+      "options": {},
+      "india": "3.3 V MKR form factor; WiFiNINA; LiPo charger onboard.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "nano-rp2040-connect",
+      "name": "Arduino Nano RP2040 Connect",
+      "fqbn": "arduino:mbed_nano:nanorp2040connect",
+      "platform": "arduino:mbed_nano",
+      "family": "rp2040",
+      "rank": 66,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "nano rp2040 connect"
+      ],
+      "options": {},
+      "india": "RP2040 with a u-blox Wi-Fi module (WiFiNINA), IMU and mic.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "xiao-samd21",
+      "name": "Seeed Studio XIAO SAMD21",
+      "fqbn": "Seeeduino:samd:seeed_XIAO_m0",
+      "platform": "Seeeduino:samd",
+      "family": "samd21",
+      "rank": 67,
+      "tags": [
+        "wearable",
+        "student"
+      ],
+      "aliases": [
+        "xiao",
+        "seeeduino xiao",
+        "xiao m0"
+      ],
+      "options": {},
+      "india": "Tiny 3.3 V board; double-tap RESET pads to enter the bootloader if an upload fails.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "lilypad",
+      "name": "LilyPad Arduino",
+      "fqbn": "arduino:avr:lilypad",
+      "platform": "arduino:avr",
+      "family": "avr-atmega328p",
+      "rank": 68,
+      "tags": [
+        "wearable"
+      ],
+      "aliases": [
+        "lilypad 328"
+      ],
+      "options": {
+        "cpu": "atmega328"
+      },
+      "india": "E-textile projects; needs an FTDI adapter to upload.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "atmega2560-bare",
+      "name": "Bare ATmega2560 (Mega bootloader)",
+      "fqbn": "arduino:avr:mega",
+      "platform": "arduino:avr",
+      "family": "avr-atmega2560",
+      "rank": 69,
+      "tags": [
+        "industry"
+      ],
+      "aliases": [
+        "atmega2560 chip"
+      ],
+      "options": {},
+      "india": "The chip of the Mega on a custom PCB; programmed like the Mega.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "nucleo-l476rg",
+      "name": "ST Nucleo-L476RG",
+      "fqbn": "STMicroelectronics:stm32:Nucleo_64",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 70,
+      "tags": [
+        "industry"
+      ],
+      "aliases": [
+        "nucleo l476rg",
+        "nucleo-l476"
+      ],
+      "options": {
+        "pnum": "NUCLEO_L476RG"
+      },
+      "india": "Low-power L4 Nucleo used in battery projects; same layout as the F401RE.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "disco-f407",
+      "name": "STM32F407 Discovery (STM32F4DISCOVERY)",
+      "fqbn": "STMicroelectronics:stm32:Disco",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 71,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "stm32f4 discovery",
+        "disco f407",
+        "stm32f407vg"
+      ],
+      "options": {
+        "pnum": "DISCO_F407VG"
+      },
+      "india": "Four user LEDs (PD12–PD15), accelerometer, audio codec; onboard ST-Link uploads.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "black-pill-f401",
+      "name": "STM32F401CC Black Pill (WeAct)",
+      "fqbn": "STMicroelectronics:stm32:GenF4",
+      "platform": "STMicroelectronics:stm32",
+      "family": "stm32",
+      "rank": 72,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "black pill f401",
+        "stm32f401",
+        "blackpill f401"
+      ],
+      "options": {
+        "pnum": "BLACKPILL_F401CC"
+      },
+      "india": "The cheaper Black Pill (256 KB flash, 64 KB RAM); same upload notes as the F411.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "m5stack-core2",
+      "name": "M5Stack Core2",
+      "fqbn": "esp32:esp32:m5stack_core2",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 73,
+      "tags": [
+        "iot",
+        "student"
+      ],
+      "aliases": [
+        "m5core2",
+        "m5stack core2"
+      ],
+      "options": {},
+      "india": "Touch display, speaker, IMU, AXP192 power chip: use the M5Core2 / M5Unified library, which configures all of it.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "m5stack-atoms3",
+      "name": "M5Stack AtomS3",
+      "fqbn": "esp32:esp32:m5stack_atoms3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 74,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "atoms3",
+        "m5 atom s3"
+      ],
+      "options": {},
+      "india": "Tiny S3 with a 0.85″ screen and IMU; use M5Unified / M5AtomS3.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "lilygo-t-display-s3",
+      "name": "LilyGO T-Display-S3",
+      "fqbn": "esp32:esp32:lilygo_t_display_s3",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 75,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "t-display s3",
+        "t display s3"
+      ],
+      "options": {},
+      "india": "1.9″ parallel ST7789 display (8-bit bus GPIO39–48 region), buttons GPIO0 and GPIO14; USB native; TFT_eSPI needs the T-Display-S3 setup.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "xiao-nrf52840",
+      "name": "Seeed Studio XIAO nRF52840",
+      "fqbn": "Seeeduino:nrf52:xiaonRF52840",
+      "platform": "Seeeduino:nrf52",
+      "family": "nrf52840",
+      "rank": 76,
+      "tags": [
+        "wearable",
+        "iot"
+      ],
+      "aliases": [
+        "xiao nrf52840",
+        "xiao ble"
+      ],
+      "options": {},
+      "india": "BLE wearables; charger onboard; use the 'Seeed nRF52 Boards' core (not the mbed one) unless a library needs mbed.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "xiao-nrf52840-sense",
+      "name": "Seeed Studio XIAO nRF52840 Sense",
+      "fqbn": "Seeeduino:nrf52:xiaonRF52840Sense",
+      "platform": "Seeeduino:nrf52",
+      "family": "nrf52840",
+      "rank": 77,
+      "tags": [
+        "wearable",
+        "ml"
+      ],
+      "aliases": [
+        "xiao nrf52840 sense",
+        "xiao ble sense"
+      ],
+      "options": {},
+      "india": "Adds an IMU (LSM6DS3) and a PDM microphone to the XIAO nRF52840.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "feather-esp32-v2",
+      "name": "Adafruit Feather ESP32 V2",
+      "fqbn": "esp32:esp32:adafruit_feather_esp32_v2",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 78,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "feather esp32 v2"
+      ],
+      "options": {},
+      "india": "NeoPixel on GPIO0, STEMMA QT connector, I2C power pin.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "feather-esp32",
+      "name": "Adafruit ESP32 Feather",
+      "fqbn": "esp32:esp32:featheresp32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 79,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "huzzah32",
+        "adafruit esp32 feather"
+      ],
+      "options": {},
+      "india": "Imported; Feather pin names (A0–A5 differ from GPIO numbers), battery on A13.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "qtpy-esp32s3",
+      "name": "Adafruit QT Py ESP32-S3",
+      "fqbn": "esp32:esp32:adafruit_qtpy_esp32s3_nopsram",
+      "platform": "esp32:esp32",
+      "family": "esp32-s3",
+      "rank": 80,
+      "tags": [
+        "iot",
+        "wearable"
+      ],
+      "aliases": [
+        "qt py esp32-s3"
+      ],
+      "options": {},
+      "india": "Imported; NeoPixel on GPIO39 with power on GPIO38; STEMMA QT connector.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "feather-rp2040",
+      "name": "Adafruit Feather RP2040",
+      "fqbn": "rp2040:rp2040:adafruit_feather",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 81,
+      "tags": [
+        "wearable"
+      ],
+      "aliases": [
+        "feather rp2040"
+      ],
+      "options": {},
+      "india": "Imported; NeoPixel on GPIO16, LED on GPIO13, STEMMA QT.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "pro-micro-rp2040",
+      "name": "SparkFun Pro Micro RP2040",
+      "fqbn": "rp2040:rp2040:sparkfun_promicrorp2040",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 82,
+      "tags": [
+        "wearable"
+      ],
+      "aliases": [
+        "pro micro rp2040"
+      ],
+      "options": {},
+      "india": "Pro Micro footprint; WS2812 on GPIO25.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "rp2040-generic",
+      "name": "Generic RP2040 board",
+      "fqbn": "rp2040:rp2040:generic",
+      "platform": "rp2040:rp2040",
+      "family": "rp2040",
+      "rank": 83,
+      "tags": [
+        "industry"
+      ],
+      "aliases": [
+        "generic rp2040",
+        "rp2040 module"
+      ],
+      "options": {},
+      "india": "Any RP2040 board without its own entry (set the flash size in Board Options).",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "due",
+      "name": "Arduino Due",
+      "fqbn": "arduino:sam:arduino_due_x_dbg",
+      "platform": "arduino:sam",
+      "family": "general",
+      "rank": 84,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "arduino due"
+      ],
+      "options": {},
+      "india": "3.3 V SAM3X; two USB ports (Programming port for uploads).",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "zero",
+      "name": "Arduino Zero",
+      "fqbn": "arduino:samd:arduino_zero_native",
+      "platform": "arduino:samd",
+      "family": "samd21",
+      "rank": 85,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "arduino zero"
+      ],
+      "options": {},
+      "india": "SAMD21 with an onboard debugger (EDBG port).",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "mkr-zero",
+      "name": "Arduino MKR Zero",
+      "fqbn": "arduino:samd:mkrzero",
+      "platform": "arduino:samd",
+      "family": "samd21",
+      "rank": 86,
+      "tags": [
+        "audio"
+      ],
+      "aliases": [
+        "mkr zero"
+      ],
+      "options": {},
+      "india": "SAMD21 with an SD slot and I2S for audio.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "mkr1000",
+      "name": "Arduino MKR1000",
+      "fqbn": "arduino:samd:mkr1000",
+      "platform": "arduino:samd",
+      "family": "samd21",
+      "rank": 87,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "mkr1000"
+      ],
+      "options": {},
+      "india": "Older MKR Wi-Fi board (WiFi101 library).",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "uno-wifi-rev2",
+      "name": "Arduino Uno WiFi Rev2",
+      "fqbn": "arduino:megaavr:uno2018",
+      "platform": "arduino:megaavr",
+      "family": "megaavr-atmega4809",
+      "rank": 88,
+      "tags": [
+        "student",
+        "iot"
+      ],
+      "aliases": [
+        "uno wifi rev2"
+      ],
+      "options": {},
+      "india": "Rare in India; WiFiNINA library for the u-blox module.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "wio-terminal",
+      "name": "Seeed Studio Wio Terminal",
+      "fqbn": "Seeeduino:samd:seeed_wio_terminal",
+      "platform": "Seeeduino:samd",
+      "family": "samd51",
+      "rank": 89,
+      "tags": [
+        "student",
+        "iot"
+      ],
+      "aliases": [
+        "wio terminal"
+      ],
+      "options": {},
+      "india": "SAMD51 with a 2.4″ screen, buttons, Wi-Fi/BLE via RTL8720; used in some school programs.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "esp32-poe",
+      "name": "Olimex ESP32-POE",
+      "fqbn": "esp32:esp32:esp32-poe",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 90,
+      "tags": [
+        "industry",
+        "iot"
+      ],
+      "aliases": [
+        "esp32 poe",
+        "olimex poe"
+      ],
+      "options": {},
+      "india": "Ethernet with Power-over-Ethernet for industrial installs; Ethernet uses the LAN8720 PHY on fixed pins.",
+      "verified": "doc",
+      "sim": true
+    },
+    {
+      "id": "firebeetle-esp32",
+      "name": "DFRobot FireBeetle ESP32",
+      "fqbn": "esp32:esp32:firebeetle32",
+      "platform": "esp32:esp32",
+      "family": "esp32",
+      "rank": 91,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "firebeetle esp32"
+      ],
+      "options": {},
+      "india": "Earlier FireBeetle; LED on GPIO2.",
+      "verified": "core",
+      "sim": true
+    },
+    {
+      "id": "huzzah-esp8266",
+      "name": "Adafruit Feather HUZZAH ESP8266",
+      "fqbn": "esp8266:esp8266:huzzah",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 92,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "huzzah",
+        "feather huzzah"
+      ],
+      "options": {},
+      "india": "Imported; LED on GPIO0 (active-LOW) and GPIO2; LiPo charger.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "nodemcu-v1",
+      "name": "NodeMCU 0.9 (ESP-12)",
+      "fqbn": "esp8266:esp8266:nodemcu",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 93,
+      "tags": [
+        "iot"
+      ],
+      "aliases": [
+        "nodemcu 0.9",
+        "nodemcu v1"
+      ],
+      "options": {},
+      "india": "The wide first NodeMCU; same pins as 1.0 but it does not fit a breadboard.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "d1-r1",
+      "name": "Wemos D1 R1 (ESP8266, Uno form, old)",
+      "fqbn": "esp8266:esp8266:d1",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 94,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "wemos d1 r1",
+        "d1 r1"
+      ],
+      "options": {},
+      "india": "The first Uno-shaped Wemos; its D-pin mapping differs from the D1 mini, so pick R1 only for the old board.",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "d1-r2",
+      "name": "Wemos D1 R2 (ESP8266, Uno form)",
+      "fqbn": "esp8266:esp8266:d1_mini",
+      "platform": "esp8266:esp8266",
+      "family": "esp8266",
+      "rank": 95,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "wemos d1 r2",
+        "d1 r2 uno"
+      ],
+      "options": {},
+      "india": "ESP8266 in the Uno shape; programmed as the D1 mini (same pin mapping, 3.3 V logic).",
+      "verified": "core",
+      "sim": false
+    },
+    {
+      "id": "feather-nrf52840",
+      "name": "Adafruit Feather nRF52840 Express",
+      "fqbn": "adafruit:nrf52:feather52840",
+      "platform": "adafruit:nrf52",
+      "family": "nrf52840",
+      "rank": 96,
+      "tags": [
+        "wearable"
+      ],
+      "aliases": [
+        "feather nrf52840"
+      ],
+      "options": {},
+      "india": "Imported; Bluefruit library; NeoPixel on pin 8.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "nrf52840-dk",
+      "name": "Nordic nRF52840 DK (PCA10056)",
+      "fqbn": "adafruit:nrf52:pca10056",
+      "platform": "adafruit:nrf52",
+      "family": "nrf52840",
+      "rank": 97,
+      "tags": [
+        "industry"
+      ],
+      "aliases": [
+        "nrf52840 dk",
+        "pca10056"
+      ],
+      "options": {},
+      "india": "Nordic's dev kit, programmed through the Adafruit nRF52 core with its onboard J-Link.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "attiny84",
+      "name": "ATtiny84 (ATTinyCore, via ISP)",
+      "fqbn": "ATTinyCore:avr:attinyx4",
+      "platform": "ATTinyCore:avr",
+      "family": "attiny-x5",
+      "rank": 98,
+      "tags": [
+        "student"
+      ],
+      "aliases": [
+        "attiny84",
+        "attiny 84",
+        "attiny44"
+      ],
+      "options": {
+        "chip": "84"
+      },
+      "india": "14-pin ATtiny with more I/O; programmed like the ATtiny85.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "attiny1614",
+      "name": "ATtiny1614 (megaTinyCore, UPDI)",
+      "fqbn": "megaTinyCore:megaavr:atxy4",
+      "platform": "megaTinyCore:megaavr",
+      "family": "attiny-modern",
+      "rank": 99,
+      "tags": [
+        "industry",
+        "wearable"
+      ],
+      "aliases": [
+        "attiny1614",
+        "tiny1614",
+        "attiny 1-series"
+      ],
+      "options": {
+        "chip": "1614"
+      },
+      "india": "Modern tinyAVR programmed over one UPDI pin with a cheap USB-serial adapter and a 4.7 kΩ resistor (SerialUPDI). 16 KB flash, 2 KB RAM, 20 MHz.",
+      "verified": "index",
+      "sim": false
+    },
+    {
+      "id": "attiny1616",
+      "name": "ATtiny1616 (megaTinyCore, UPDI)",
+      "fqbn": "megaTinyCore:megaavr:atxy6",
+      "platform": "megaTinyCore:megaavr",
+      "family": "attiny-modern",
+      "rank": 100,
+      "tags": [
+        "industry"
+      ],
+      "aliases": [
+        "attiny1616",
+        "tiny1616"
+      ],
+      "options": {
+        "chip": "1616"
+      },
+      "india": "20-pin tinyAVR 1-series; same UPDI programming as the ATtiny1614.",
+      "verified": "index",
+      "sim": false
+    }
+  ]
+}

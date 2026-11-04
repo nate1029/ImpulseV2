@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/avr_serial1.ino: In function 'void setup()':
+<sketch>/avr_serial1.ino:1:16: error: 'Serial1' was not declared in this scope
+                ^~~~~~~
+<sketch>/avr_serial1.ino:1:16: note: suggested alternative: 'Serial'
+                ^~~~~~~

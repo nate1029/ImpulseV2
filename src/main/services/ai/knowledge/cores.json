@@ -1,0 +1,334 @@
+{
+ "esp32:esp32": {
+  "name": "Espressif ESP32 Arduino core",
+  "versions": [
+   {
+    "from": "3.0.0",
+    "summary": "Core 3.x (ESP-IDF 5): several APIs changed from 2.x.",
+    "changes": [
+     {
+      "what": "LEDC PWM",
+      "old": "ledcSetup(ch, freq, bits); ledcAttachPin(pin, ch); ledcWrite(ch, duty)",
+      "new": "ledcAttach(pin, freq, bits); ledcWrite(pin, duty) — pins replace channels; analogWrite(pin, v) also works",
+      "error": "'ledcSetup' was not declared in this scope"
+     },
+     {
+      "what": "ESP-NOW receive callback",
+      "old": "void onRecv(const uint8_t *mac, const uint8_t *data, int len)",
+      "new": "void onRecv(const esp_now_recv_info_t *info, const uint8_t *data, int len) — the sender's MAC is info->src_addr",
+      "error": "invalid conversion from 'void (*)(const uint8_t*, const uint8_t*, int)' to 'esp_now_recv_cb_t'"
+     },
+     {
+      "what": "Hardware timers",
+      "old": "timerBegin(0, 80, true); timerAttachInterrupt(t, &isr, true); timerAlarmWrite(t, 1000000, true); timerAlarmEnable(t)",
+      "new": "hw_timer_t *t = timerBegin(1000000); timerAttachInterrupt(t, &isr); timerAlarm(t, 1000000, true, 0)",
+      "error": "too many arguments to function 'hw_timer_t* timerBegin(uint32_t)'"
+     },
+     {
+      "what": "Onboard RGB LED",
+      "old": "neopixelWrite(pin, r, g, b)",
+      "new": "rgbLedWrite(pin, r, g, b) is the new name; neopixelWrite still compiles on 3.3 as the old name",
+      "error": ""
+     },
+     {
+      "what": "Removed functions",
+      "old": "hallRead(), analogSetClockDiv(), adcAttachPin(), analogSetVRefPin()",
+      "new": "no replacement (no Hall sensor support); use analogRead/analogSetAttenuation",
+      "error": "'hallRead' was not declared in this scope"
+     },
+     {
+      "what": "I2S and RMT",
+      "old": "driver/i2s.h and the old RMT API",
+      "new": "ESP_I2S.h (I2SClass) and the new RMT driver (rmtInit/rmtWrite)",
+      "error": "i2s_driver_install was not declared / rmtInit arguments mismatch"
+     },
+     {
+      "what": "Default UART pins",
+      "old": "ESP32 UART1 on 9/10, UART2 on 16/17",
+      "new": "UART1 RX 26 / TX 27, UART2 RX 4 / TX 25 unless Serial1.begin(baud, SERIAL_8N1, rx, tx) names the pins",
+      "error": ""
+     },
+     {
+      "what": "WiFiServer",
+      "old": "server.available(); client.flush() to drop received data",
+      "new": "server.accept(); client.clear() to drop received data (flush() waits for sent data)",
+      "error": "'available' is deprecated"
+     }
+    ]
+   },
+   {
+    "from": "3.2.0",
+    "summary": "Core 3.2+ (ESP-IDF 5.4) changed the ESP-NOW send callback.",
+    "changes": [
+     {
+      "what": "ESP-NOW send callback",
+      "old": "void onSent(const uint8_t *mac, esp_now_send_status_t status)",
+      "new": "void onSent(const wifi_tx_info_t *info, esp_now_send_status_t status) — the peer MAC is info->des_addr",
+      "error": "invalid conversion from 'void (*)(const uint8_t*, esp_now_send_status_t)' to 'esp_now_send_cb_t'"
+     }
+    ]
+   },
+   {
+    "from": "2.0.0",
+    "summary": "Core 2.x (ESP-IDF 4.4): the older API set.",
+    "changes": [
+     {
+      "what": "PWM",
+      "old": "",
+      "new": "ledcSetup/ledcAttachPin/ledcWrite with channels (analogWrite exists since 2.0.0)",
+      "error": "'ledcAttach' was not declared in this scope"
+     },
+     {
+      "what": "ESP-NOW callbacks",
+      "old": "",
+      "new": "const uint8_t *mac pointers in both callbacks; esp_now_recv_info_t does not exist",
+      "error": "'esp_now_recv_info_t' does not name a type"
+     },
+     {
+      "what": "Boards",
+      "old": "",
+      "new": "No ESP32-C6, H2 or P4 support: those need core 3.x",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ },
+ "esp8266:esp8266": {
+  "name": "ESP8266 Arduino core",
+  "versions": [
+   {
+    "from": "3.0.0",
+    "summary": "Core 3.x: C++17, LittleFS preferred, analogWrite range 0–255.",
+    "changes": [
+     {
+      "what": "analogWrite range",
+      "old": "0–1023 by default",
+      "new": "0–255 by default; analogWriteRange(1023) restores the old scale",
+      "error": ""
+     },
+     {
+      "what": "File system",
+      "old": "SPIFFS.begin()",
+      "new": "LittleFS.begin() from <LittleFS.h> (SPIFFS still compiles with a deprecation warning)",
+      "error": "'SPIFFS' is deprecated"
+     },
+     {
+      "what": "Hostname",
+      "old": "WiFi.hostname(\"name\")",
+      "new": "WiFi.setHostname(\"name\") before WiFi.begin()",
+      "error": ""
+     },
+     {
+      "what": "Serial.flush",
+      "old": "",
+      "new": "flush() waits for transmission; nothing clears the receive buffer except reading it",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ },
+ "rp2040:rp2040": {
+  "name": "Arduino-Pico (Earle Philhower)",
+  "versions": [
+   {
+    "from": "4.0.0",
+    "summary": "Core 4.x adds RP2350 (Pico 2) and changes a few Wi-Fi details.",
+    "changes": [
+     {
+      "what": "Pico 2 / RP2350",
+      "old": "",
+      "new": "Supported from 4.0.0 (rpipico2, rpipico2w); older cores do not list them",
+      "error": ""
+     },
+     {
+      "what": "Pin setters",
+      "old": "",
+      "new": "Serial1.setRX(pin)/setTX(pin), Wire.setSDA/setSCL, SPI.setRX/setTX/setSCK must be called before begin()",
+      "error": ""
+     },
+     {
+      "what": "Wi-Fi on the Pico W",
+      "old": "WiFiNINA",
+      "new": "#include <WiFi.h> (the core's own, lwIP + CYW43); WiFiClientSecure uses BearSSL",
+      "error": "WiFiNINA.h: No such file or directory"
+     }
+    ]
+   }
+  ]
+ },
+ "arduino:avr": {
+  "name": "Arduino AVR Boards",
+  "versions": [
+   {
+    "from": "1.8.0",
+    "summary": "Stable for years; nothing to migrate.",
+    "changes": [
+     {
+      "what": "Memory",
+      "old": "",
+      "new": "Wrap literals in F() and use PROGMEM; 'Low memory available' warnings matter on 2 KB of RAM",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ },
+ "arduino:renesas_uno": {
+  "name": "Arduino UNO R4 Boards",
+  "versions": [
+   {
+    "from": "1.0.0",
+    "summary": "Renesas RA4M1 core: a few library names differ from the R3 and the SAMD boards.",
+    "changes": [
+     {
+      "what": "Wi-Fi (R4 WiFi)",
+      "old": "WiFiNINA / WiFi101",
+      "new": "#include <WiFiS3.h>",
+      "error": "WiFiNINA.h: No such file or directory"
+     },
+     {
+      "what": "ADC/DAC",
+      "old": "",
+      "new": "analogReadResolution(14); analogWriteResolution(12) for the DAC on A0; analogWave for waveforms",
+      "error": ""
+     },
+     {
+      "what": "AVR register code",
+      "old": "TCCR1A, PORTB, ISR(TIMER1_COMPA_vect)",
+      "new": "Not available: use FspTimer (R4 timers) or the Arduino API",
+      "error": "'TCCR1A' was not declared in this scope"
+     }
+    ]
+   }
+  ]
+ },
+ "arduino:samd": {
+  "name": "Arduino SAMD Boards",
+  "versions": [
+   {
+    "from": "1.8.0",
+    "summary": "SAMD21: no EEPROM, 3.3 V, USB Serial.",
+    "changes": [
+     {
+      "what": "EEPROM",
+      "old": "EEPROM.h",
+      "new": "FlashStorage or FlashStorage_SAMD",
+      "error": "EEPROM.h: No such file or directory"
+     },
+     {
+      "what": "Serial",
+      "old": "",
+      "new": "Serial is USB (while (!Serial) blocks until a monitor opens); Serial1 is the UART",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ },
+ "arduino:megaavr": {
+  "name": "Arduino megaAVR Boards (Nano Every, Uno WiFi Rev2)",
+  "versions": [
+   {
+    "from": "1.8.0",
+    "summary": "ATmega4809: new-style registers, Serial1 on 0/1.",
+    "changes": [
+     {
+      "what": "Timer registers",
+      "old": "TCCR1A/TCCR1B, TIMSK1, ISR(TIMER1_COMPA_vect)",
+      "new": "TCB0.CTRLA, TCA0.SINGLE…, ISR(TCB0_INT_vect); or the Servo/tone libraries",
+      "error": "'TCCR1A' was not declared in this scope"
+     },
+     {
+      "what": "Ports",
+      "old": "PORTB |= (1 << PB5)",
+      "new": "PORTE.OUTSET = PIN2_bm (pin 13 is PE2 on the Nano Every) or digitalWrite",
+      "error": "'PB5' was not declared in this scope"
+     }
+    ]
+   }
+  ]
+ },
+ "arduino:mbed_nano": {
+  "name": "Arduino Mbed OS Nano Boards (Nano 33 BLE, Nano RP2040 Connect)",
+  "versions": [
+   {
+    "from": "4.0.0",
+    "summary": "Mbed-based core: different storage and timing APIs.",
+    "changes": [
+     {
+      "what": "EEPROM",
+      "old": "EEPROM.h",
+      "new": "KVStore / FlashIAPBlockDevice (mbed) or a library like Arduino_KVStore",
+      "error": "EEPROM.h: No such file or directory"
+     },
+     {
+      "what": "Interrupt timing",
+      "old": "",
+      "new": "No noInterrupts()-based bit-banging guarantees; use mbed Ticker or the Arduino API",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ },
+ "STMicroelectronics:stm32": {
+  "name": "STM32duino core",
+  "versions": [
+   {
+    "from": "2.0.0",
+    "summary": "Pin names and peripherals are chosen in code and Board Options.",
+    "changes": [
+     {
+      "what": "Pin names",
+      "old": "digitalWrite(13, HIGH) on Blue/Black Pill",
+      "new": "digitalWrite(PC13, HIGH); plain numbers are Arduino-header aliases on Nucleo/Arduino-shaped boards only",
+      "error": ""
+     },
+     {
+      "what": "Extra UARTs",
+      "old": "",
+      "new": "HardwareSerial Serial2(PA3, PA2); or Serial1.setRx/setTx before begin()",
+      "error": ""
+     },
+     {
+      "what": "Serial over USB",
+      "old": "",
+      "new": "Board Option USB support = CDC (generic Serial supersede U(S)ART); otherwise Serial is the UART",
+      "error": ""
+     },
+     {
+      "what": "PWM frequency",
+      "old": "",
+      "new": "analogWriteFrequency(freq) before analogWrite",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ },
+ "teensy:avr": {
+  "name": "Teensy (Teensyduino)",
+  "versions": [
+   {
+    "from": "1.58.0",
+    "summary": "Teensy 4.x specifics.",
+    "changes": [
+     {
+      "what": "Serial",
+      "old": "",
+      "new": "Serial is USB at full speed regardless of baud; Serial1–Serial8 are hardware UARTs",
+      "error": ""
+     },
+     {
+      "what": "Timers",
+      "old": "TimerOne",
+      "new": "IntervalTimer (built in)",
+      "error": ""
+     }
+    ]
+   }
+  ]
+ }
+}

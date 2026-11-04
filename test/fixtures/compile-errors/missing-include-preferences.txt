@@ -1,0 +1,8 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/missing_include_preferences.ino:1:1: error: 'Preferences' does not name a type
+    1 | Preferences prefs;
+      | ^~~~~~~~~~~
+<sketch>/missing_include_preferences.ino: In function 'void setup()':
+<sketch>/missing_include_preferences.ino:2:16: error: 'prefs' was not declared in this scope
+    2 | void setup() { prefs.begin("app", false); }
+      |                ^~~~~

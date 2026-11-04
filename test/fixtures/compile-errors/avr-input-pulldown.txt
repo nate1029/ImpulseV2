@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/avr_input_pulldown.ino: In function 'void setup()':
+<sketch>/avr_input_pulldown.ino:1:27: error: 'INPUT_PULLDOWN' was not declared in this scope
+                           ^~~~~~~~~~~~~~
+<sketch>/avr_input_pulldown.ino:1:27: note: suggested alternative: 'INPUT_PULLUP'
+                           ^~~~~~~~~~~~~~

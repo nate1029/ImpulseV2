@@ -1,0 +1,4 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/else_without_if.ino: In function 'void loop()':
+<sketch>/else_without_if.ino:6:3: error: 'else' without a previous 'if'
+   ^~~~

@@ -1,0 +1,227 @@
+{
+  "name": "impulse-ide",
+  "productName": "Impulse IDE",
+  "version": "2.0.0-beta.2",
+  "description": "AI-assisted Arduino IDE with a built-in AVR simulator, hardware tests and a pin-aware editor",
+  "main": "src/main/main.js",
+  "bin": {
+    "impulse-test": "bin/impulse-test.mjs"
+  },
+  "author": {
+    "name": "Meet Chauhan",
+    "email": "meetsc03@gmail.com"
+  },
+  "homepage": "https://github.com/Meet-1010/Impulse-IDE-v2#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meet-1010/Impulse-IDE-v2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Meet-1010/Impulse-IDE-v2/issues"
+  },
+  "impulse": {
+    "cloudUrl": "https://impulse-cloud-1008821972739.us-west1.run.app"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prestart": "vite build",
+    "start": "electron .",
+    "dev": "concurrently --kill-others \"vite\" \"wait-on http://localhost:5173 && electron . --dev\"",
+    "dev:renderer": "vite",
+    "build:renderer": "vite build",
+    "build": "npm run build:renderer && electron-builder",
+    "build:win": "npm run build:renderer && electron-builder --win",
+    "build:mac": "npm run build:renderer && electron-builder --mac",
+    "build:linux": "npm run build:renderer && electron-builder --linux",
+    "build:all": "npm run build:renderer && electron-builder --win --mac --linux",
+    "install:mac": "node scripts/install-mac.mjs",
+    "test": "jest",
+    "lint": "eslint src/ scripts/ test/ bin/ cloud/src/ cloud/scripts/ cloud/test/ cloud/public/ --ext .js,.mjs",
+    "lint:fix": "eslint src/ scripts/ test/ bin/ cloud/src/ cloud/scripts/ cloud/test/ cloud/public/ --ext .js,.mjs --fix",
+    "audit": "npm audit --omit=dev",
+    "test:smoke": "node scripts/smoke.mjs",
+    "notices": "node scripts/third-party-notices.mjs",
+    "test:e2e": "node scripts/e2e.mjs",
+    "build:cli": "node scripts/build-cli.mjs",
+    "field-lab": "node scripts/build-field-lab.mjs",
+    "knowledge:probe": "node scripts/knowledge-probe.mjs",
+    "knowledge:audit": "node scripts/knowledge-audit.mjs",
+    "knowledge:recipes": "node scripts/knowledge-recipes.mjs",
+    "knowledge:errors": "node scripts/knowledge-errors.mjs",
+    "bench": "node scripts/embedbench.mjs"
+  },
+  "keywords": [
+    "arduino",
+    "simulator",
+    "avr",
+    "embedded",
+    "iot",
+    "ide",
+    "electron"
+  ],
+  "devDependencies": {
+    "@babel/core": "^8.0.6",
+    "@babel/preset-env": "^8.0.6",
+    "@rollup/rollup-win32-x64-msvc": "^4.64.12",
+    "axe-core": "^4.14.0",
+    "concurrently": "^9.2.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.25.12",
+    "eslint": "^8.57.0",
+    "eslint-plugin-security": "^3.0.1",
+    "jest": "^30.5.2",
+    "vite": "^6.4.1",
+    "wait-on": "^9.0.4"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@neon/config": "^1.10.1",
+    "@neon/env": "^1.6.9",
+    "@serialport/parser-readline": "^12.0.0",
+    "@wokwi/elements": "^1.9.2",
+    "avr8js": "^0.21.0",
+    "codemirror": "^5.65.18",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.7.3",
+    "rp2040js": "1.4.0",
+    "serialport": "^12.0.0",
+    "zod": "^3.23.8"
+  },
+  "allowScripts": {
+    "@serialport/bindings-cpp@12.0.1": true,
+    "esbuild@0.25.12": true,
+    "fsevents@2.3.3": true,
+    "electron@44.5.1": true,
+    "electron-winstaller@5.4.0": true,
+    "@parcel/watcher@2.6.0": true,
+    "unrs-resolver@1.12.2": true
+  },
+  "build": {
+    "appId": "com.impulseide.app",
+    "productName": "Impulse IDE",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/main/**/*",
+      "dist-renderer/**/*",
+      "assets/**/*",
+      "THIRD_PARTY_NOTICES.md",
+      "PRIVACY.md",
+      "!**/*.map",
+      "!node_modules/@wokwi/**",
+      "!node_modules/avr8js/**",
+      "!node_modules/rp2040js/**",
+      "!node_modules/codemirror/**",
+      "!node_modules/@fontsource-variable/**",
+      "!node_modules/lit/**",
+      "!node_modules/lit-html/**",
+      "!node_modules/lit-element/**",
+      "!node_modules/@lit/**",
+      "!node_modules/@lit-labs/**",
+      "!node_modules/@types/**",
+      "!node_modules/csstype/**"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "Meet-1010",
+      "repo": "Impulse-IDE-v2"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "signAndEditExecutable": true,
+      "signtoolOptions": {
+        "signingHashAlgorithms": [
+          "sha256"
+        ]
+      }
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "differentialPackage": true,
+      "artifactName": "Impulse-IDE-Setup-${version}.${ext}"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "artifactName": "Impulse-IDE-${version}-${arch}-mac.${ext}",
+      "extraResources": [
+        {
+          "from": "build/qemu-${arch}",
+          "to": "qemu",
+          "filter": [
+            "**/*",
+            "!.stamp"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "artifactName": "Impulse-IDE-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Development",
+      "desktop": {
+        "entry": {
+          "StartupWMClass": "impulse-ide"
+        }
+      },
+      "artifactName": "impulse-ide_${version}_${arch}.${ext}"
+    },
+    "appImage": {
+      "artifactName": "Impulse-IDE-${version}-${arch}.${ext}"
+    },
+    "npmRebuild": false,
+    "afterPack": "build/afterPack.cjs"
+  }
+}

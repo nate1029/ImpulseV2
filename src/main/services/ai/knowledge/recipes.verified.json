@@ -1,0 +1,3143 @@
+{
+ "note": "Written by npm run knowledge:recipes. A recipe is called known-good for a family only when it is listed here.",
+ "updated": "2026-10-19",
+ "results": {
+  "acs712": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "d519e33d8913"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "37c83fc79d0b"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "58acec3fcf03"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "58acec3fcf03"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "128da40a8f92"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "128da40a8f92"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "16f420eff07f"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "ce23b47f75a4"
+   }
+  },
+  "ads1115": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "bc1fcb0a984d"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bc1fcb0a984d"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bc1fcb0a984d"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bc1fcb0a984d"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bc1fcb0a984d"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bc1fcb0a984d"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "bc1fcb0a984d"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "bc1fcb0a984d"
+   }
+  },
+  "adxl345": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "0078569fabb9"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0078569fabb9"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0078569fabb9"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0078569fabb9"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0078569fabb9"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0078569fabb9"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "0078569fabb9"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "0078569fabb9"
+   }
+  },
+  "aht20": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "6462261bfffe"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6462261bfffe"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6462261bfffe"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6462261bfffe"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6462261bfffe"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6462261bfffe"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "6462261bfffe"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "6462261bfffe"
+   }
+  },
+  "bh1750": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "2fcb4b508906"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2fcb4b508906"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2fcb4b508906"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2fcb4b508906"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2fcb4b508906"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2fcb4b508906"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "2fcb4b508906"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "2fcb4b508906"
+   }
+  },
+  "bme280": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "8c9434dc7b02"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8c9434dc7b02"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8c9434dc7b02"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8c9434dc7b02"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8c9434dc7b02"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8c9434dc7b02"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "8c9434dc7b02"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "8c9434dc7b02"
+   }
+  },
+  "bmp180": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "b9b779f19ecf"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b9b779f19ecf"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b9b779f19ecf"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b9b779f19ecf"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b9b779f19ecf"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b9b779f19ecf"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "b9b779f19ecf"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "b9b779f19ecf"
+   }
+  },
+  "button": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "5f0bfabb5702"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a1381f839e69"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a1381f839e69"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "55c0cb5a7c24"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a1381f839e69"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a1381f839e69"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "5f0bfabb5702"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "5f0bfabb5702"
+   }
+  },
+  "buzzer": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "be9e5289ab98"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5f05b9db411b"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "70afc4cdf83c"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "eec93de4ff31"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5f05b9db411b"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5f05b9db411b"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "be9e5289ab98"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "be9e5289ab98"
+   }
+  },
+  "can": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "50a37bb015a3"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f0a2838bc0bb"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f345b1834669"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "62b60b8e2f37"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f345b1834669"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f345b1834669"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "5d03834eb366"
+   }
+  },
+  "compass": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "9e5a8459bbf8"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9e5a8459bbf8"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9e5a8459bbf8"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9e5a8459bbf8"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9e5a8459bbf8"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9e5a8459bbf8"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "9e5a8459bbf8"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "9e5a8459bbf8"
+   }
+  },
+  "dc-motor-driver": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "2c8c494dff7d"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2938810fe284"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b90da10b7d1b"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2c078a830111"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2938810fe284"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2938810fe284"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "2c8c494dff7d"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "2c8c494dff7d"
+   }
+  },
+  "dht": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "eceec42d630d"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f1a4def2ba6c"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f1a4def2ba6c"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "eceec42d630d"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f1a4def2ba6c"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f1a4def2ba6c"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "eceec42d630d"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "eceec42d630d"
+   }
+  },
+  "ds18b20": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "c87aad3c8845"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3c012fe08368"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3c012fe08368"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d011de880885"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3c012fe08368"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3c012fe08368"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "c87aad3c8845"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "c87aad3c8845"
+   }
+  },
+  "eeprom-i2c": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "d768a1a039a1"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d768a1a039a1"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d768a1a039a1"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d768a1a039a1"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d768a1a039a1"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d768a1a039a1"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "d768a1a039a1"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "d768a1a039a1"
+   }
+  },
+  "epaper": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "4292044458be"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a0fb046c7458"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a46d0a9e5ec1"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d8977c5b71f3"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9806712e4c14"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "df785f012a43"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "7af4349d85ec"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "f8e7d06cf1f8"
+   }
+  },
+  "esp-now": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0fa06f9e6214"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0fa06f9e6214"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0fa06f9e6214"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0fa06f9e6214"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0fa06f9e6214"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "0fa06f9e6214"
+   }
+  },
+  "esp32-ble": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f36c17a5a054"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f36c17a5a054"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f36c17a5a054"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f36c17a5a054"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "f36c17a5a054"
+   }
+  },
+  "esp32-bt-serial": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "951678bdc8c0"
+   }
+  },
+  "esp32-cam": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "ed79ac228050"
+   }
+  },
+  "esp32-deep-sleep": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7f9390ee05ed"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7f9390ee05ed"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7f9390ee05ed"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7f9390ee05ed"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7f9390ee05ed"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "7f9390ee05ed"
+   }
+  },
+  "esp32-https": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "874cbfb57f73"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "874cbfb57f73"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "874cbfb57f73"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "874cbfb57f73"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "874cbfb57f73"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "874cbfb57f73"
+   }
+  },
+  "esp32-ledc": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d56cb0451182"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d56cb0451182"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "e953b0428c8b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d56cb0451182"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d56cb0451182"
+   }
+  },
+  "esp32-littlefs": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "20f90a50b065"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "20f90a50b065"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "20f90a50b065"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "20f90a50b065"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "20f90a50b065"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "20f90a50b065"
+   }
+  },
+  "esp32-mqtt": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6bfb1e2d9cf4"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6bfb1e2d9cf4"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6bfb1e2d9cf4"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6bfb1e2d9cf4"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6bfb1e2d9cf4"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "6bfb1e2d9cf4"
+   }
+  },
+  "esp32-ntp": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9988ae671b0b"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9988ae671b0b"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9988ae671b0b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9988ae671b0b"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9988ae671b0b"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "9988ae671b0b"
+   }
+  },
+  "esp32-ota": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c2aa71e08a1e"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c2aa71e08a1e"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c2aa71e08a1e"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c2aa71e08a1e"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c2aa71e08a1e"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "c2aa71e08a1e"
+   }
+  },
+  "esp32-preferences": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "780cb2e2013a"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "780cb2e2013a"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "780cb2e2013a"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "780cb2e2013a"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "780cb2e2013a"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "780cb2e2013a"
+   }
+  },
+  "esp32-touch": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "03160fa799c0"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "516760baa249"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "516760baa249"
+   }
+  },
+  "esp32-webserver": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "632e8261abcd"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "632e8261abcd"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a3beb90d248f"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "632e8261abcd"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "632e8261abcd"
+   }
+  },
+  "esp32-websocket": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5fbda66bf650"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5fbda66bf650"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5fbda66bf650"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5fbda66bf650"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5fbda66bf650"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "5fbda66bf650"
+   }
+  },
+  "esp32-wifi": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "006461f42adf"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "006461f42adf"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "006461f42adf"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "006461f42adf"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "006461f42adf"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "006461f42adf"
+   }
+  },
+  "ethernet-w5500": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "dc7fcc799f79"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b1de0d41a369"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c18ff7f100d0"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7d454ea296c3"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "63f3c9f8f416"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "cb6803cf5e1b"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "a31cc7d67853"
+   }
+  },
+  "gps": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "03bb6a7e1143"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "52ad9ea0800a"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f1420244953d"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6322570c9219"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "52ad9ea0800a"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "52ad9ea0800a"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "5431b5fa762b"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "03bb6a7e1143"
+   }
+  },
+  "hc-sr04": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "c6b29e18b368"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c38288b4484f"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "4375e592f2ce"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "21f3fcd82602"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "4375e592f2ce"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "4375e592f2ce"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "c6b29e18b368"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "fa261c3be66a"
+   }
+  },
+  "hc05": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "0321465d4297"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a4a6dad44385"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "24d18bfc37ca"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d988da28036b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a4a6dad44385"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a4a6dad44385"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "0472f50304e2"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "0321465d4297"
+   }
+  },
+  "hx711": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "b95c4160c436"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9d418ed08efe"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a013707dd204"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8182d520c34f"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9d418ed08efe"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9d418ed08efe"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "b95c4160c436"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "b95c4160c436"
+   }
+  },
+  "i2s-audio": {
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6162dee667e5"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9745b935cc9e"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8969ab22c40a"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9745b935cc9e"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9745b935cc9e"
+   }
+  },
+  "ili9341": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "0cbdfd28d482"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f7b7ad56b309"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "522278179c81"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "602231c21e0a"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "505689913008"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "de510971eb4f"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "0cbdfd28d482"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "da93dfdf5fbb"
+   }
+  },
+  "ina219": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "06c054d20b6b"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06c054d20b6b"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06c054d20b6b"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06c054d20b6b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06c054d20b6b"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06c054d20b6b"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "06c054d20b6b"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "06c054d20b6b"
+   }
+  },
+  "io-expander": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "02e0f0834002"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "02e0f0834002"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "02e0f0834002"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "02e0f0834002"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "02e0f0834002"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "02e0f0834002"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "02e0f0834002"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "02e0f0834002"
+   }
+  },
+  "ir-receiver": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "908143bb257d"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c93f06a4c3f"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c93f06a4c3f"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "908143bb257d"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c93f06a4c3f"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c93f06a4c3f"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "908143bb257d"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "908143bb257d"
+   }
+  },
+  "joystick": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "cbeb62d9059c"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "ee586699eae5"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9fddd8b022de"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c89239821a2e"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06246959177a"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06246959177a"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "cbeb62d9059c"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "9dbafc6d7b9b"
+   }
+  },
+  "keypad": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "2c7d662da1a3"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1740b93886fa"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "efc81de94611"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d33bfaab4243"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d426dd3a6f4c"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3b3e422a0daf"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "2c7d662da1a3"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "2c7d662da1a3"
+   }
+  },
+  "lcd-i2c": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "35fcb40b8d38"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "35fcb40b8d38"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "35fcb40b8d38"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "35fcb40b8d38"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "35fcb40b8d38"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "35fcb40b8d38"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "35fcb40b8d38"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "35fcb40b8d38"
+   }
+  },
+  "lcd-parallel": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "2bbc4ea203bf"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d18a78437887"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9135bf04fdf6"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "253f788105f6"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d18a78437887"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d18a78437887"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "2bbc4ea203bf"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "2bbc4ea203bf"
+   }
+  },
+  "ldr": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "941b69646b28"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "95076c9d58fd"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "4519662e7cec"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "4519662e7cec"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "391457392e01"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "391457392e01"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "941b69646b28"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "c16370e563b0"
+   }
+  },
+  "led": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "81342c1d5dce"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "aaa6de5eb5e6"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "aaa6de5eb5e6"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2e0bc40fdc7e"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "aaa6de5eb5e6"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "aaa6de5eb5e6"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "81342c1d5dce"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "81342c1d5dce"
+   }
+  },
+  "lis3dh": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "d5bbcdabb57e"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d5bbcdabb57e"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d5bbcdabb57e"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d5bbcdabb57e"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d5bbcdabb57e"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d5bbcdabb57e"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "d5bbcdabb57e"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "d5bbcdabb57e"
+   }
+  },
+  "max7219": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "9388f8dc4146"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1287c07f8313"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "014dad9f3f82"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "86fc06d5ef29"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1287c07f8313"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1287c07f8313"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "9388f8dc4146"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "9388f8dc4146"
+   }
+  },
+  "mfrc522": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "a98768c0d3ed"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7f10092fee2f"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "ca2a2b036419"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "827ee570836a"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "37cec6691315"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a98768c0d3ed"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "a98768c0d3ed"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "d7f6297f9a60"
+   }
+  },
+  "mlx90614": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "f9d99b51b39a"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f9d99b51b39a"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f9d99b51b39a"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f9d99b51b39a"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f9d99b51b39a"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f9d99b51b39a"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "f9d99b51b39a"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "f9d99b51b39a"
+   }
+  },
+  "mosfet": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "d9e2faa4dff0"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5bf8f1908832"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5bf8f1908832"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5af97115c7f7"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5bf8f1908832"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5bf8f1908832"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "d9e2faa4dff0"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "a57da9d9b0e2"
+   }
+  },
+  "mpu6050": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "6f6bf677d30b"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6f6bf677d30b"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6f6bf677d30b"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6f6bf677d30b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6f6bf677d30b"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6f6bf677d30b"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "6f6bf677d30b"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "6f6bf677d30b"
+   }
+  },
+  "mq-gas": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "27b2577899fd"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "527659acc297"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9cd18775c6f4"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9cd18775c6f4"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "62511997be22"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "62511997be22"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "27b2577899fd"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "7acc2fe75180"
+   }
+  },
+  "neopixel": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "7a83480efcea"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "527dcf9e86d7"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "527dcf9e86d7"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9fb5c8eb17a7"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "527dcf9e86d7"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "527dcf9e86d7"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "7a83480efcea"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "7a83480efcea"
+   }
+  },
+  "nrf24l01": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "180adfc15b34"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "cd330bc0e4de"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a03a60021b62"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "db09225cc104"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d904758dc011"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "dbb0d2c585cd"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "180adfc15b34"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "8db0957eaa64"
+   }
+  },
+  "pca9685": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "2034efb8cb45"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2034efb8cb45"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2034efb8cb45"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2034efb8cb45"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2034efb8cb45"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2034efb8cb45"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "2034efb8cb45"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "2034efb8cb45"
+   }
+  },
+  "pir": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "09f8740d6a8f"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5c6ce69f0cb4"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5c6ce69f0cb4"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3fb3caa4b812"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5c6ce69f0cb4"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5c6ce69f0cb4"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "09f8740d6a8f"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "09f8740d6a8f"
+   }
+  },
+  "pn532": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "2e5a494b5d2e"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2285003910f4"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "20350b3fe365"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "2e5a494b5d2e"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06512c75d151"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06512c75d151"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "2e5a494b5d2e"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "49daddcb1954"
+   }
+  },
+  "potentiometer": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "360bf80b512b"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7c75852a7ca5"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "10ca14d3d230"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "10ca14d3d230"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "e15cdce4b561"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "e15cdce4b561"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "fcc39304ef37"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "46b7fb415c55"
+   }
+  },
+  "pulse-oximeter": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "55cf3a2689a3"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "55cf3a2689a3"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "55cf3a2689a3"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "55cf3a2689a3"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "55cf3a2689a3"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "55cf3a2689a3"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "55cf3a2689a3"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "55cf3a2689a3"
+   }
+  },
+  "relay": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "d1dc6f879865"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c3651100325"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c3651100325"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3dfa64bdc496"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c3651100325"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9c3651100325"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "d1dc6f879865"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "d1dc6f879865"
+   }
+  },
+  "rotary-encoder": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "f1870bb79d0f"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9151980ca9ec"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9495b63d2e40"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bb3d25fad72b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9151980ca9ec"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9151980ca9ec"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "f1870bb79d0f"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "f1870bb79d0f"
+   }
+  },
+  "rs485": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "234e7522a1b0"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "0cf324dbe486"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "63dfea89828c"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5c2d170e55c5"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "329e25f68866"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "329e25f68866"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "799ae698252a"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "839978bc11b4"
+   }
+  },
+  "rtc": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "1e7433bb8ed7"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1e7433bb8ed7"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1e7433bb8ed7"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1e7433bb8ed7"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1e7433bb8ed7"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1e7433bb8ed7"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "1e7433bb8ed7"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "1e7433bb8ed7"
+   }
+  },
+  "scd4x": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "7fdb4d7e9d48"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "7fdb4d7e9d48"
+   }
+  },
+  "sd-card": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "e0e6253a6a58"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "8750a899b7fa"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "e2506418292f"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "42da819476c9"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6b2aa2d1fc13"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5232100635d8"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "5232100635d8"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "300f0e07b77a"
+   }
+  },
+  "servo": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "04680c91282e"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d908037cf444"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "06679ed96bbe"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d908037cf444"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d908037cf444"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "d908037cf444"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "d2c9ced911bc"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "04680c91282e"
+   }
+  },
+  "seven-segment": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "c78e82474866"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7c45c7334dd6"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "92981c9a9a10"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "85823cd9737d"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "134b8fc75fdc"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "02030a026951"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "c78e82474866"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "c78e82474866"
+   }
+  },
+  "sh1106": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "26c07cb9f223"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "26c07cb9f223"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "26c07cb9f223"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "26c07cb9f223"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "26c07cb9f223"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "26c07cb9f223"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "26c07cb9f223"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "26c07cb9f223"
+   }
+  },
+  "shift-register": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "46121749096c"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b42cd16da14f"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "ba980599d303"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "bbd73e5d24af"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b42cd16da14f"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "b42cd16da14f"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "46121749096c"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "46121749096c"
+   }
+  },
+  "sht3x": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "6aacd64b8a91"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6aacd64b8a91"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6aacd64b8a91"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6aacd64b8a91"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6aacd64b8a91"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "6aacd64b8a91"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "6aacd64b8a91"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "6aacd64b8a91"
+   }
+  },
+  "sim800": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "af00b88de6b4"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "45136504987a"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "9df02c069a92"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "5fc4af1294d4"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1666d2fc4a24"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1666d2fc4a24"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "882840217198"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "b5eeee0187f0"
+   }
+  },
+  "soil-moisture": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "6a09083f9f52"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "efe22f4fb19a"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "95310703ef9a"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "95310703ef9a"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "60bf20fa487d"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "60bf20fa487d"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "ae444e52bca2"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "66a4c008b3fd"
+   }
+  },
+  "ssd1306": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "a2710640e132"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a2710640e132"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a2710640e132"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a2710640e132"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a2710640e132"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "a2710640e132"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "a2710640e132"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "a2710640e132"
+   }
+  },
+  "stepper-28byj48": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "62798312f570"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "36d89fa09eb4"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "201d1fa9c31f"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7a446aa85bab"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "36d89fa09eb4"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "36d89fa09eb4"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "62798312f570"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "62798312f570"
+   }
+  },
+  "stepper-driver": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "7ab85a0d2ad4"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "84c57d49f0f4"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "ab4c2a118278"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c3c0ee3fab33"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "84c57d49f0f4"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "84c57d49f0f4"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "7ab85a0d2ad4"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "7ab85a0d2ad4"
+   }
+  },
+  "thermocouple": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "3342227e3832"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "588e6b718689"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "4e1404ac8f3c"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "7d539d8f0ef2"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3342227e3832"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "3342227e3832"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "3342227e3832"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "b6195ff8a6e6"
+   }
+  },
+  "tm1637": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "22cf4d09d105"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c4477007e4d1"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "f66ea8d8e902"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "22cf4d09d105"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c4477007e4d1"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "c4477007e4d1"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "22cf4d09d105"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "22cf4d09d105"
+   }
+  },
+  "vl53l0x": {
+   "avr": {
+    "fqbn": "arduino:avr:uno",
+    "core": "arduino:avr@1.8.8",
+    "sketch": "1376e262d27b"
+   },
+   "esp32": {
+    "fqbn": "esp32:esp32:esp32",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1376e262d27b"
+   },
+   "esp32c3": {
+    "fqbn": "esp32:esp32:esp32c3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1376e262d27b"
+   },
+   "esp32c6": {
+    "fqbn": "esp32:esp32:esp32c6",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1376e262d27b"
+   },
+   "esp32s2": {
+    "fqbn": "esp32:esp32:esp32s2",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1376e262d27b"
+   },
+   "esp32s3": {
+    "fqbn": "esp32:esp32:esp32s3",
+    "core": "esp32:esp32@3.3.12",
+    "sketch": "1376e262d27b"
+   },
+   "nano-esp32": {
+    "fqbn": "arduino:esp32:nano_nora",
+    "core": "arduino:esp32@2.0.18-arduino.5",
+    "sketch": "1376e262d27b"
+   },
+   "rp2040": {
+    "fqbn": "rp2040:rp2040:rpipico",
+    "core": "rp2040:rp2040@6.3.0",
+    "sketch": "1376e262d27b"
+   }
+  }
+ }
+}

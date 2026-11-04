@@ -1,0 +1,1251 @@
+{
+ "uno": {
+  "onboard": [
+   "LED on 13 (active HIGH, with a 1 kΩ resistor)",
+   "TX/RX LEDs driven by the USB chip",
+   "RESET button"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "A0–A5 double as digital 14–19."
+  ]
+ },
+ "nano": {
+  "onboard": [
+   "LED on 13",
+   "TX/RX/PWR LEDs"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "A6 and A7 are analog-only (no digitalRead/Write, no pull-up).",
+   "Impulse defaults to the old bootloader (57600); if the upload says 'not in sync', switch Processor to ATmega328P in Board Options."
+  ]
+ },
+ "mega": {
+  "onboard": [
+   "LED on 13"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Three extra hardware UARTs: Serial1 (19/18), Serial2 (17/16), Serial3 (15/14)."
+  ]
+ },
+ "pro-mini-5v": {
+  "onboard": [
+   "LED on 13"
+  ],
+  "taken": [],
+  "upload": [
+   "FTDI/CH340 adapter on the 6-pin end header: GND, GND(CTS), VCC, RX→TX, TX→RX, DTR. Without DTR, press RESET as 'Uploading' starts."
+  ],
+  "notes": [
+   "No USB chip, so Serial is the FTDI header; A4/A5 (I2C) sit on inner pads, A6/A7 analog-only."
+  ]
+ },
+ "pro-mini-3v3": {
+  "onboard": [
+   "LED on 13"
+  ],
+  "taken": [],
+  "upload": [
+   "Same adapter as the 5 V version, set to 3.3 V."
+  ],
+  "notes": [
+   "8 MHz: SoftwareSerial tops out around 38400; delays and PWM are the same as at 16 MHz because the core compensates."
+  ]
+ },
+ "leonardo": {
+  "onboard": [
+   "LED on 13",
+   "RX LED (PB0, RXLED1), TX LED (PD5, TXLED1)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Serial is USB CDC; Serial1 is the UART on 0/1; SDA/SCL are on pins 2/3 (not A4/A5)."
+  ]
+ },
+ "micro": {
+  "onboard": [
+   "LED on 13",
+   "RX/TX LEDs"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same pin notes as the Leonardo; SDA 2, SCL 3."
+  ]
+ },
+ "pro-micro": {
+  "onboard": [
+   "RX LED (PB0) and TX LED (PD5) only: no LED_BUILTIN LED"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Pins 2 (SDA) and 3 (SCL) for I2C; SPI on 14/15/16; A0–A3 and A6–A10 (A6 = pin 4, A7 = 6, A8 = 8, A9 = 9, A10 = 10).",
+   "Programmed as Arduino Leonardo; a 3.3 V/8 MHz clone needs the 3.3 V build (SparkFun core) or runs at half speed."
+  ]
+ },
+ "nano-every": {
+  "onboard": [
+   "LED on 13"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Serial = USB, Serial1 = pins 0/1; 5 V logic; AREF, A6/A7 are usable digital pins here (unlike the Nano)."
+  ]
+ },
+ "uno-r4-minima": {
+  "onboard": [
+   "LED on 13, TX/RX LEDs",
+   "RESET button"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "DAC on A0 (analogWrite(A0, 0–4095) after analogWriteResolution(12)); CAN on D4/D5 (D10/D13 on some revisions); no Wi-Fi."
+  ]
+ },
+ "uno-r4-wifi": {
+  "onboard": [
+   "12×8 LED matrix (Arduino_LED_Matrix)",
+   "LED on 13, TX/RX LEDs",
+   "ESP32-S3-MINI Wi-Fi/BLE module (WiFiS3)",
+   "Qwiic connector (Wire1, 3.3 V)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Wi-Fi example: #include <WiFiS3.h>; WiFi.begin(ssid, pass). WiFiNINA does not work here.",
+   "The ESP32-S3's UART bridge means Serial is USB CDC on the RA4M1 itself."
+  ]
+ },
+ "nano-33-iot": {
+  "onboard": [
+   "LED on 13",
+   "u-blox NINA-W102 (WiFiNINA, ArduinoBLE)",
+   "LSM6DS3 IMU (Arduino_LSM6DS3, I2C 0x6A)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "3.3 V only; VUSB pad must be soldered to get 5 V on the VUSB pin."
+  ]
+ },
+ "nano-33-ble": {
+  "onboard": [
+   "LED on 13, RGB LED (LEDR/LEDG/LEDB, active-LOW)",
+   "Sense: LSM9DS1 (Rev1) or BMI270+BMM150 (Rev2) IMU, HTS221/HS3003 humidity, LPS22HB pressure, APDS9960 light/gesture, MP34DT05 PDM mic"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "3.3 V only; no EEPROM; analogWrite resolution up to 12 bits; Serial1 on 0/1."
+  ]
+ },
+ "nano-esp32": {
+  "onboard": [
+   "RGB LED (LED_RED/LED_GREEN/LED_BLUE, active-LOW)",
+   "LED on 13",
+   "16 MB flash, 8 MB PSRAM"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Tools › Pin Numbering: 'By Arduino pin' makes 13 mean D13; 'By GPIO number' makes 13 mean GPIO13 (which is D10). Impulse reports which is set.",
+   "Pins are 3.3 V despite the Nano shape."
+  ]
+ },
+ "xiao-samd21": {
+  "onboard": [
+   "User LED (pin 13, active-LOW), RX/TX LEDs"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Pins D0–D10; A0–A10 share them; 3.3 V only; DAC on A0."
+  ]
+ },
+ "esp32-devkit-v1": {
+  "onboard": [
+   "Blue LED on GPIO2 (active HIGH)",
+   "BOOT button on GPIO0, EN (reset) button",
+   "CP2102 or CH340 USB-serial"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "30-pin: GPIO 6–11 (flash) are not broken out; GPIO34–39 input-only; VIN is 5 V from USB.",
+   "I2C default SDA 21 / SCL 22; VSPI MOSI 23 / MISO 19 / SCK 18 / CS 5; UART2 on 16/17 (RX2/TX2 labels)."
+  ]
+ },
+ "esp32-dev-module": {
+  "onboard": [
+   "LED on GPIO2 on most boards (none on some DevKitC)",
+   "BOOT (GPIO0) and EN buttons"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "38-pin boards expose GPIO 6–11 (flash) and the input-only 34–39; leave 6–11 unconnected.",
+   "Flash size defaults to 4 MB; set Board Options for 8/16 MB modules (WROOM-32E N8/N16)."
+  ]
+ },
+ "nodemcu-32s": {
+  "onboard": [
+   "LED on GPIO2",
+   "BOOT/EN buttons",
+   "CP2102"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same GPIO notes as the Dev Module."
+  ]
+ },
+ "esp32-wrover": {
+  "onboard": [
+   "8 MB PSRAM on GPIO16/17 (do not use those pins)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Enable PSRAM in Board Options when a library needs it (camera frames, large buffers)."
+  ]
+ },
+ "esp32-cam": {
+  "onboard": [
+   "OV2640 camera on GPIO 0, 5, 18, 19, 21, 22, 23, 25, 26, 27, 32, 34, 35, 36, 39 (CAMERA_MODEL_AI_THINKER)",
+   "White flash LED on GPIO4 (shared with SD data 1)",
+   "Red LED on GPIO33 (active-LOW)",
+   "microSD on GPIO 2, 4, 12, 13, 14, 15 (1-bit mode frees 4, 12, 13)"
+  ],
+  "taken": [
+   "0",
+   "2",
+   "4",
+   "5",
+   "12",
+   "13",
+   "14",
+   "15",
+   "18",
+   "19",
+   "21",
+   "22",
+   "23",
+   "25",
+   "26",
+   "27",
+   "32",
+   "34",
+   "35",
+   "36",
+   "39"
+  ],
+  "upload": [
+   "No USB chip: use the ESP32-CAM-MB adapter (press its IO0 button while connecting) or an FTDI at 5 V on U0R/U0T with GPIO0 wired to GND; remove the GPIO0 wire and press RST to run. Choose 'AI Thinker ESP32-CAM' so PSRAM is on.",
+   "Brownouts are the usual failure: 5 V from a real supply, not the FTDI's 3.3 V."
+  ],
+  "notes": [
+   "Free pins: only GPIO 1 and 3 (the UART), 12–16 when the SD card is not used (GPIO12 must be LOW at boot). Serial.print works while flashing is off."
+  ]
+ },
+ "d1-r32": {
+  "onboard": [
+   "LED on GPIO2",
+   "CH340"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Uno header mapping: D0 = GPIO3, D1 = GPIO1, D2 = GPIO26, D3 = GPIO25, D4 = GPIO17, D5 = GPIO16, D6 = GPIO27, D7 = GPIO14, D8 = GPIO12, D9 = GPIO13, D10 = GPIO5, D11 = GPIO23, D12 = GPIO19, D13 = GPIO18, A0 = GPIO2, A1 = GPIO4, A2 = GPIO35, A3 = GPIO34, A4 = GPIO36, A5 = GPIO39; SDA 21, SCL 22. Everything is 3.3 V."
+  ]
+ },
+ "lolin32-lite": {
+  "onboard": [
+   "LED on GPIO22 (active-LOW)",
+   "LiPo connector with charger (no 5 V pin)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Battery boards: power sensors from 3V3 only."
+  ]
+ },
+ "lolin-d32": {
+  "onboard": [
+   "LED on GPIO5 (active-LOW)",
+   "Battery voltage on GPIO35 through a 100k/100k divider (analogRead × 2 × 3.3 / 4095)",
+   "LiPo charger"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "esp32-s3-devkitc": {
+  "onboard": [
+   "RGB LED (WS2812) on GPIO48 (GPIO38 on some clones): rgbLedWrite(48, r, g, b) or RGB_BUILTIN",
+   "BOOT (GPIO0) and RESET buttons",
+   "Two USB-C ports: UART (CP2102) and native USB"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "N16R8 boards: 16 MB flash + 8 MB octal PSRAM (GPIO35–37 taken); set Flash Size and PSRAM in Board Options.",
+   "Serial prints on the port USB CDC On Boot points to; Impulse sets it to match the port you connect."
+  ]
+ },
+ "esp32-s3-supermini": {
+  "onboard": [
+   "RGB LED (WS2812) on GPIO48",
+   "BOOT (GPIO0) and RESET buttons",
+   "Native USB only"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Enable USB CDC On Boot for Serial; strapping GPIO0 and 45/46 are exposed, keep them free at boot."
+  ]
+ },
+ "esp32-c3-supermini": {
+  "onboard": [
+   "Blue LED on GPIO8 (active-LOW)",
+   "BOOT button on GPIO9, RESET button",
+   "Native USB only (no UART chip)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "GPIO0–10, 20, 21 are exposed; GPIO2, 8, 9 are strapping pins (8 must be HIGH, 9 HIGH for normal boot). GPIO20/21 are UART0 RX/TX if you need a second serial. ADC on GPIO0–4.",
+   "Enable USB CDC On Boot for Serial over the USB-C port."
+  ]
+ },
+ "esp32-c3-devkitm": {
+  "onboard": [
+   "RGB LED (WS2812) on GPIO8",
+   "BOOT (GPIO9) and RESET buttons"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Serial through the UART bridge on DevKitC-02, or native USB with USB CDC On Boot."
+  ]
+ },
+ "xiao-esp32c3": {
+  "onboard": [
+   "No user LED (only charge LED)",
+   "BOOT button on GPIO9, RESET button",
+   "U.FL antenna connector",
+   "Battery pads with charger"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Labels D0–D10 = GPIO 2, 3, 4, 5, 6, 7, 21, 20, 8, 9, 10; A0–A2 = GPIO2–4; SDA D4 (GPIO6), SCL D5 (GPIO7); TX D6 (GPIO21), RX D7 (GPIO20). Use the D-constants."
+  ]
+ },
+ "xiao-esp32s3": {
+  "onboard": [
+   "User LED on GPIO21 (active-LOW)",
+   "BOOT (GPIO0) and RESET buttons",
+   "8 MB PSRAM, 8 MB flash",
+   "Sense add-on: OV2640 camera, PDM mic, microSD"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D0–D10 = GPIO 1, 2, 3, 4, 5, 6, 43, 44, 7, 8, 9; SDA D4 (GPIO5), SCL D5 (GPIO6); the Sense camera takes GPIO 10–18, 38–40, 47, 48.",
+   "Enable PSRAM (OPI) in Board Options for the camera."
+  ]
+ },
+ "esp32-c6-devkitc": {
+  "onboard": [
+   "RGB LED (WS2812) on GPIO8",
+   "BOOT (GPIO9) and RESET buttons",
+   "Two USB-C ports: UART and native USB"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Needs ESP32 Arduino core 3.0+."
+  ]
+ },
+ "esp32-c6-supermini": {
+  "onboard": [
+   "LED on GPIO8 on most sellers' boards",
+   "BOOT (GPIO9) and RESET buttons",
+   "Native USB only"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Enable USB CDC On Boot for Serial."
+  ]
+ },
+ "xiao-esp32c6": {
+  "onboard": [
+   "User LED on GPIO15 (active-LOW)",
+   "BOOT (GPIO9) and RESET buttons",
+   "Antenna switch: GPIO3 (enable, LOW) and GPIO14 (select) are used by the board"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D0–D10 = GPIO 0, 1, 2, 21, 22, 23, 16, 17, 19, 20, 18; needs core 3.0+."
+  ]
+ },
+ "esp32-s2-devkit": {
+  "onboard": [
+   "RGB LED on GPIO18 (Saola-1)",
+   "BOOT (GPIO0) and RESET buttons",
+   "Native USB and a UART chip"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "lolin-s2-mini": {
+  "onboard": [
+   "LED on GPIO15 (active HIGH)",
+   "BOOT button on GPIO0",
+   "Native USB only"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Enable USB CDC On Boot for Serial; D1 mini footprint pins differ from the ESP8266 D1 mini (check the LOLIN pinout)."
+  ]
+ },
+ "lolin-s3-mini": {
+  "onboard": [
+   "RGB LED on GPIO47",
+   "BOOT (GPIO0) button"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Native USB; enable USB CDC On Boot."
+  ]
+ },
+ "lolin-c3-mini": {
+  "onboard": [
+   "RGB LED on GPIO7",
+   "BOOT button on GPIO9"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Native USB; enable USB CDC On Boot."
+  ]
+ },
+ "lilygo-t-display": {
+  "onboard": [
+   "1.14″ ST7789 135×240 TFT: MOSI 19, SCLK 18, CS 5, DC 16, RST 23, backlight 4",
+   "Buttons on GPIO0 and GPIO35 (active-LOW)",
+   "Battery voltage on GPIO34 (divider /2), charger",
+   "ADC power enable on GPIO14"
+  ],
+  "taken": [
+   "4",
+   "5",
+   "16",
+   "18",
+   "19",
+   "23"
+  ],
+  "upload": [],
+  "notes": [
+   "TFT_eSPI with the Setup25_TTGO_T_Display setup (or the lilygo_t_display board's defines); CP2104 USB."
+  ]
+ },
+ "lilygo-t-display-s3": {
+  "onboard": [
+   "1.9″ ST7789 170×320 TFT on an 8-bit parallel bus (GPIO39–48 region, RD 9, WR 8, DC 7, CS 6, RST 5, backlight 38, power 15)",
+   "Buttons GPIO0 and GPIO14",
+   "Battery voltage on GPIO4"
+  ],
+  "taken": [
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "15",
+   "38",
+   "39",
+   "40",
+   "41",
+   "42",
+   "45",
+   "46",
+   "47",
+   "48"
+  ],
+  "upload": [],
+  "notes": [
+   "TFT_eSPI needs the T-Display-S3 setup; native USB (USB CDC On Boot on)."
+  ]
+ },
+ "ttgo-lora32": {
+  "onboard": [
+   "SX1276/78 LoRa: SCK 5, MISO 19, MOSI 27, CS 18, RST 14 (23 on some), DIO0 26",
+   "0.96″ SSD1306 OLED: SDA 21, SCL 22 (V1: SDA 4, SCL 15, RST 16)",
+   "LED on the pin the core calls LED_BUILTIN: GPIO2 on V1, GPIO25 on V2/V2.1",
+   "microSD on 13/15/2/14 (V2.1)"
+  ],
+  "taken": [
+   "5",
+   "18",
+   "19",
+   "26",
+   "27",
+   "14",
+   "21",
+   "22"
+  ],
+  "upload": [],
+  "notes": [
+   "Use the 865–867 MHz band in India (LoRa.begin(866E6)); match the version (V1/V2/V2.1) because pins moved between them."
+  ]
+ },
+ "heltec-wifi-lora-32-v3": {
+  "onboard": [
+   "SX1262 LoRa: NSS 8, SCK 9, MOSI 10, MISO 11, RST 12, BUSY 13, DIO1 14",
+   "0.96″ SSD1306 OLED: SDA 17, SCL 18, RST 21; Vext on GPIO36 (LOW = power on) feeds the OLED",
+   "LED on GPIO35",
+   "PRG (BOOT) button GPIO0",
+   "Battery ADC on GPIO1 with control GPIO37"
+  ],
+  "taken": [
+   "8",
+   "9",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "17",
+   "18",
+   "21",
+   "35",
+   "36"
+  ],
+  "upload": [],
+  "notes": [
+   "RadioLib (SX1262 radio = new Module(8, 14, 12, 13)) or Heltec's library; 865–867 MHz in India. Drive Vext LOW before using the OLED."
+  ]
+ },
+ "heltec-wifi-kit-32-v3": {
+  "onboard": [
+   "0.96″ SSD1306 OLED: SDA 17, SCL 18, RST 21; Vext GPIO36 (LOW = on)",
+   "LED on GPIO35",
+   "PRG button GPIO0"
+  ],
+  "taken": [
+   "17",
+   "18",
+   "21",
+   "36"
+  ],
+  "upload": [],
+  "notes": []
+ },
+ "m5stack-core2": {
+  "onboard": [
+   "2″ ILI9342C touch display, speaker, mic, MPU6886 IMU, AXP192 power manager, SD slot, vibration motor"
+  ],
+  "taken": [
+   "5",
+   "15",
+   "18",
+   "23",
+   "38",
+   "32",
+   "33",
+   "21",
+   "22",
+   "25",
+   "0",
+   "34",
+   "4"
+  ],
+  "upload": [],
+  "notes": [
+   "Use the M5Core2 or M5Unified library (M5.begin()) which sets up the AXP192; raw digitalWrite on the display pins does nothing useful. Grove port A on GPIO32/33 (I2C), B on 26/36, C on 13/14."
+  ]
+ },
+ "m5stack-atoms3": {
+  "onboard": [
+   "0.85″ 128×128 display, IMU (MPU6886), button under the screen (GPIO41), IR LED (GPIO4)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "M5Unified / M5AtomS3 library; native USB (USB CDC On Boot on); Grove port GPIO1/2."
+  ]
+ },
+ "feather-esp32": {
+  "onboard": [
+   "LED on GPIO13",
+   "Battery voltage on A13 (GPIO35, divider /2)",
+   "LiPo charger"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Feather pin names: A0 = GPIO26, A1 = 25, A2 = 34, A3 = 39, A4 = 36, A5 = 4; SDA 23, SCL 22."
+  ]
+ },
+ "feather-esp32-v2": {
+  "onboard": [
+   "NeoPixel on GPIO0 (power on GPIO2)",
+   "LED on GPIO13",
+   "STEMMA QT connector (SDA 22, SCL 20, power GPIO2)",
+   "Battery monitor (MAX17048) on I2C"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "qtpy-esp32s3": {
+  "onboard": [
+   "NeoPixel on GPIO39 (power GPIO38)",
+   "BOOT button GPIO0",
+   "STEMMA QT (SDA 41, SCL 40)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "firebeetle2-esp32e": {
+  "onboard": [
+   "LED on GPIO2",
+   "Battery connector with charger",
+   "Low-power design (deep sleep around 10 µA)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "esp32-poe": {
+  "onboard": [
+   "LAN8720 Ethernet PHY: MDC 23, MDIO 18, clock on GPIO17, power on GPIO12",
+   "PoE power input",
+   "microSD, UEXT connector"
+  ],
+  "taken": [
+   "12",
+   "17",
+   "18",
+   "19",
+   "21",
+   "22",
+   "23",
+   "25",
+   "26",
+   "27"
+  ],
+  "upload": [],
+  "notes": [
+   "ETH.begin() with the Olimex ESP32-POE defaults (ETH_PHY_LAN8720, address 0, power 12, MDC 23, MDIO 18, clock GPIO17_OUT)."
+  ]
+ },
+ "nodemcu-v2": {
+  "onboard": [
+   "LED on D4 (GPIO2, active-LOW); many boards have a second LED on GPIO16 (D0)",
+   "FLASH button on D3 (GPIO0), RST button",
+   "CP2102 (Amica) or CH340 (LoLin V3)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D0 = 16, D1 = 5 (SCL), D2 = 4 (SDA), D3 = 0, D4 = 2, D5 = 14 (SCK), D6 = 12 (MISO), D7 = 13 (MOSI), D8 = 15, RX = 3, TX = 1; A0 reads 0–3.3 V. D3, D4 and D8 are boot pins: nothing that pulls D3/D4 low or D8 high at reset.",
+   "VIN (and VU on V3 boards) is 5 V from USB; the 3V3 pins supply about 500 mA."
+  ]
+ },
+ "nodemcu-v1": {
+  "onboard": [
+   "LED on GPIO16 and D4 (GPIO2)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same D-pin mapping as NodeMCU 1.0; too wide for one breadboard."
+  ]
+ },
+ "d1-mini": {
+  "onboard": [
+   "LED on D4 (GPIO2, active-LOW)",
+   "RST button",
+   "CH340"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D0 = 16, D1 = 5 (SCL), D2 = 4 (SDA), D3 = 0, D4 = 2, D5 = 14, D6 = 12, D7 = 13, D8 = 15; A0 0–3.3 V; 5V pin is USB power; shields stack (OLED shield at 0x3C, relay shield on D1, DHT shield on D4)."
+  ]
+ },
+ "d1-mini-pro": {
+  "onboard": [
+   "LED on D4 (GPIO2)",
+   "16 MB flash",
+   "External antenna connector (move the 0 Ω resistor)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same pin mapping as the D1 mini."
+  ]
+ },
+ "d1-r2": {
+  "onboard": [],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Programmed as the D1 mini: Uno header labels do not match GPIO numbers; use D-constants (D1 = GPIO5 … ) and remember it is 3.3 V."
+  ]
+ },
+ "d1-r1": {
+  "onboard": [],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Old R1 mapping differs from the D1 mini: pick this board only for the original Wemos D1 (R1)."
+  ]
+ },
+ "esp-01": {
+  "onboard": [
+   "Blue LED on GPIO2 (ESP-01S) or on TX (ESP-01, blinks with serial)"
+  ],
+  "taken": [],
+  "upload": [
+   "USB adapter (ESP-01 programmer) with its switch in PROG, or an FTDI at 3.3 V with GPIO0 to GND, CH_PD/EN to 3.3 V; power from a 3.3 V regulator able to give 300 mA."
+  ],
+  "notes": [
+   "Only GPIO0 and GPIO2 (both must be HIGH at boot) plus TX (GPIO1) and RX (GPIO3); 'generic' board, 1 MB flash on most ESP-01S (set Flash Size); A0 is not available.",
+   "As a Wi-Fi modem for an Uno: AT firmware, Uno RX through a divider, SoftwareSerial at 9600 or 115200."
+  ]
+ },
+ "esp-12f": {
+  "onboard": [
+   "LED on GPIO2 on the module"
+  ],
+  "taken": [],
+  "upload": [
+   "GPIO0 LOW at reset for flashing; GPIO15 to GND, EN and GPIO2 pulled up at all times."
+  ],
+  "notes": []
+ },
+ "pico": {
+  "onboard": [
+   "LED on GPIO25 (LED_BUILTIN)",
+   "BOOTSEL button"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "GP0/GP1 = Serial1 (UART0), GP4/GP5 = I2C0 (Wire default on Arduino-Pico: SDA 4, SCL 5), GP16–19 = SPI0 (MISO 16, CS 17, SCK 18, MOSI 19); ADC0–2 on GP26–28; 3V3_EN, VSYS, VBUS pins."
+  ]
+ },
+ "pico-w": {
+  "onboard": [
+   "LED through the CYW43 Wi-Fi chip (LED_BUILTIN works only with the Pico W board selected)",
+   "BOOTSEL"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "WiFi.h (Arduino-Pico): WiFi.begin(ssid, pass); WiFi.status(); same GPIO notes as the Pico. BLE through BTstack (BluetoothSerial/KeyboardBLE examples)."
+  ]
+ },
+ "pico2": {
+  "onboard": [
+   "LED on GPIO25",
+   "BOOTSEL"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same pins as the Pico; RP2350 needs Arduino-Pico 4.0+."
+  ]
+ },
+ "pico2-w": {
+  "onboard": [
+   "LED through the CYW43 chip",
+   "BOOTSEL"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same notes as the Pico W, on the RP2350."
+  ]
+ },
+ "xiao-rp2040": {
+  "onboard": [
+   "RGB user LED: GPIO17 red, 16 green, 25 blue (active-LOW)",
+   "NeoPixel on GPIO12, powered by GPIO11 (set HIGH)",
+   "BOOT and RESET buttons"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D0–D10 = GPIO 26, 27, 28, 29, 6, 7, 0, 1, 2, 4, 3; SDA D4 (GPIO6), SCL D5 (GPIO7); TX D6 (GPIO0), RX D7 (GPIO1)."
+  ]
+ },
+ "rp2040-zero": {
+  "onboard": [
+   "WS2812 RGB LED on GPIO16 (no plain LED)",
+   "BOOT and RESET buttons"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "GPIO0–15 and 26–29 on the castellated edge; USB-C."
+  ]
+ },
+ "blue-pill": {
+  "onboard": [
+   "LED on PC13 (active-LOW)",
+   "BOOT0 and BOOT1 jumpers, RESET button",
+   "Micro-USB (needs the CDC build option for Serial)"
+  ],
+  "taken": [],
+  "upload": [
+   "ST-Link V2 on the 4-pin SWD header (3.3 V, SWDIO PA13, SWCLK PA14, GND) with BOOT0 = 0; or BOOT0 = 1 and a USB-serial adapter on PA9 (TX) / PA10 (RX) with upload method 'STM32CubeProgrammer (Serial)'; set BOOT0 back to 0 afterwards."
+  ],
+  "notes": [
+   "PA9/PA10 = Serial1 (USART1), PB6/PB7 = I2C1, PA5/PA6/PA7 = SPI1; PC13 can only sink a few mA (it drives the LED, not a load). 5 V tolerant pins: PA8–PA15, PB2–PB15 (except analog use)."
+  ]
+ },
+ "black-pill-f411": {
+  "onboard": [
+   "LED on PC13 (active-LOW)",
+   "KEY button on PA0 (active-LOW)",
+   "BOOT0 button and NRST button",
+   "USB-C with correct pull-up",
+   "32.768 kHz crystal"
+  ],
+  "taken": [],
+  "upload": [
+   "DFU: hold BOOT0, press and release NRST, release BOOT0, then upload with method 'STM32CubeProgrammer (DFU)'. Or an ST-Link on the SWD header. For Serial over USB choose USB support = CDC."
+  ],
+  "notes": [
+   "PA9/PA10 Serial1, PB6/PB7 I2C1, PA5–PA7 SPI1; 100 MHz, 512 KB flash, 128 KB RAM."
+  ]
+ },
+ "black-pill-f401": {
+  "onboard": [
+   "LED on PC13 (active-LOW)",
+   "KEY button PA0",
+   "BOOT0 / NRST buttons"
+  ],
+  "taken": [],
+  "upload": [
+   "Same DFU or ST-Link procedure as the F411."
+  ],
+  "notes": [
+   "84 MHz, 256 KB flash, 64 KB RAM."
+  ]
+ },
+ "nucleo-f401re": {
+  "onboard": [
+   "LD2 LED on PA5 (D13)",
+   "User button B1 on PC13 (active-LOW)",
+   "Onboard ST-Link V2-1 with a virtual COM port on PA2 (TX) / PA3 (RX) = Serial"
+  ],
+  "taken": [],
+  "upload": [
+   "Plug in; upload method 'Mass Storage' (drive NODE_F401RE) or 'STM32CubeProgrammer (SWD)'; no buttons needed."
+  ],
+  "notes": [
+   "Arduino headers: D0–D15, A0–A5 map to STM32 pins (D13 = PA5, A0 = PA0); Morpho headers expose the rest. 3.3 V logic, 5 V tolerant digital pins."
+  ]
+ },
+ "nucleo-f446re": {
+  "onboard": [
+   "LD2 LED on PA5",
+   "Button PC13",
+   "ST-Link with virtual COM on PA2/PA3"
+  ],
+  "taken": [],
+  "upload": [
+   "Same as the F401RE (drive NODE_F446RE)."
+  ],
+  "notes": []
+ },
+ "nucleo-l476rg": {
+  "onboard": [
+   "LD2 LED on PA5",
+   "Button PC13",
+   "ST-Link with virtual COM on PA2/PA3"
+  ],
+  "taken": [],
+  "upload": [
+   "Same as the F401RE (drive NODE_L476RG)."
+  ],
+  "notes": []
+ },
+ "disco-f407": {
+  "onboard": [
+   "LEDs: green PD12, orange PD13, red PD14, blue PD15",
+   "User button PA0",
+   "LIS3DSH accelerometer (SPI1), CS43L22 audio DAC (I2C1/I2S3), MP45DT02 mic",
+   "Onboard ST-Link (SWD) and a user micro-USB (OTG)"
+  ],
+  "taken": [],
+  "upload": [
+   "Through the ST-Link mini-USB; upload method 'STM32CubeProgrammer (SWD)'."
+  ],
+  "notes": [
+   "Serial: no virtual COM on older boards; use Serial2 on PA2/PA3 with a USB-serial adapter, or enable USB CDC on the OTG port."
+  ]
+ },
+ "teensy40": {
+  "onboard": [
+   "LED on 13",
+   "Program button"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "3.3 V, not 5 V tolerant; Serial1 pins 0/1, Wire SDA 18 / SCL 19, SPI MOSI 11 / MISO 12 / SCK 13."
+  ]
+ },
+ "teensy41": {
+  "onboard": [
+   "LED on 13",
+   "Program button",
+   "microSD slot (SDIO), Ethernet PHY pads, PSRAM/flash pads underneath"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Same pin notes as the 4.0 plus pins 24–41 (bottom pads 42–54)."
+  ]
+ },
+ "xiao-nrf52840": {
+  "onboard": [
+   "RGB user LED (LED_RED 11, LED_GREEN 13, LED_BLUE 12, active-LOW)",
+   "Charger with a status LED",
+   "Reset pads (double-tap for the bootloader)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D0–D10 like other XIAO boards; use Seeed nRF52 Boards (Bluefruit / Adafruit libraries) unless a library needs the mbed core."
+  ]
+ },
+ "xiao-nrf52840-sense": {
+  "onboard": [
+   "LSM6DS3 IMU (I2C 0x6A, power on pin 15/PIN_LSM6DS3_POWER)",
+   "PDM microphone (PIN_PDM_CLK/PIN_PDM_DIN)",
+   "RGB LED like the plain XIAO nRF52840"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "feather-nrf52840": {
+  "onboard": [
+   "NeoPixel on pin 8",
+   "Red LED on pin 3, blue LED on pin 4",
+   "Battery charger and voltage on A6"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "nrf52840-dk": {
+  "onboard": [
+   "Four LEDs (LED1–LED4 on P0.13–P0.16, active-LOW) and four buttons",
+   "Onboard J-Link (programs and gives a virtual COM port)"
+  ],
+  "taken": [],
+  "upload": [
+   "Through the J-Link USB with the Adafruit nRF52 core's pca10056 target (flash the Adafruit bootloader once with Burn Bootloader)."
+  ],
+  "notes": []
+ },
+ "digispark": {
+  "onboard": [
+   "LED on P1 (P0 on some clones)",
+   "USB on P3 (D−, with a 1.5 kΩ pull-up) and P4 (D+)"
+  ],
+  "taken": [],
+  "upload": [
+   "Click Upload first; plug the board in when 'Plug in device now' appears (Micronucleus waits 5 s after power-up). On Windows, install the Digistump drivers once."
+  ],
+  "notes": [
+   "P0 (PWM, SDA), P1 (PWM, LED, MISO), P2 (A1, SCL), P3 (A3, USB), P4 (PWM, A2, USB), P5 (A0, RESET unless fuses changed). Sketch space is about 6 KB because the bootloader takes 2 KB; Serial does not exist, use DigiCDC or DigiKeyboard."
+  ]
+ },
+ "attiny85": {
+  "onboard": [],
+  "taken": [],
+  "upload": [
+   "Arduino as ISP: Uno pins 10 → RESET (pin 1), 11 → MOSI (pin 5), 12 → MISO (pin 6), 13 → SCK (pin 7), 5 V and GND; 10 µF between the Uno's RESET and GND after loading ArduinoISP. Tools › Programmer 'Arduino as ISP', then Sketch › Upload Using Programmer. Burn Bootloader once to set the 8 MHz fuse."
+  ],
+  "notes": [
+   "Pins: PB0 (pin 5, PWM, MOSI), PB1 (pin 6, PWM, MISO), PB2 (pin 7, SCK, A1), PB3 (pin 2, A3), PB4 (pin 3, PWM, A2), PB5 (pin 1, RESET/A0); VCC pin 8, GND pin 4."
+  ]
+ },
+ "attiny84": {
+  "onboard": [],
+  "taken": [],
+  "upload": [
+   "Same ISP procedure as the ATtiny85 (pins differ: see ATTinyCore's ATtiny84 pinout)."
+  ],
+  "notes": [
+   "11 I/O pins (PA0–PA7, PB0–PB2); ATTinyCore's clockwise or counter-clockwise pin numbering is a Board Option: Impulse uses the core's default."
+  ]
+ },
+ "attiny1614": {
+  "onboard": [],
+  "taken": [],
+  "upload": [
+   "SerialUPDI: adapter TX → 4.7 kΩ → UPDI (pin 10), adapter RX → UPDI, GND, VCC; Programmer 'SerialUPDI - 230400 baud', Upload Using Programmer."
+  ],
+  "notes": [
+   "Pins PA0 (UPDI), PA1–PA7, PB0–PB3; hardware Serial on PB2 (TX)/PB3 (RX), I2C on PB0 (SCL)/PB1 (SDA); 20 MHz."
+  ]
+ },
+ "attiny1616": {
+  "onboard": [],
+  "taken": [],
+  "upload": [
+   "Same SerialUPDI procedure as the ATtiny1614 (UPDI on pin 16)."
+  ],
+  "notes": [
+   "Adds PC0–PC3 to the 1614's pins."
+  ]
+ },
+ "atmega328p-bare": {
+  "onboard": [],
+  "taken": [],
+  "upload": [
+   "Through an Uno with its chip removed (RX→RX, TX→TX, RESET→RESET), or a USB-serial adapter with DTR through a 100 nF capacitor to RESET; or ISP with Burn Bootloader first."
+  ],
+  "notes": [
+   "Minimal circuit: 16 MHz crystal with two 22 pF caps on the chip's legs 9 and 10, 10 kΩ pull-up on RESET (leg 1), 100 nF on VCC/AVCC.",
+   "Arduino pin 13 is the chip's leg 19, A0 is leg 23, and Arduino pins 0 and 1 are legs 2 and 3. Write Arduino pin numbers in code, not leg numbers."
+  ]
+ },
+ "atmega2560-bare": {
+  "onboard": [],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Needs the Mega 2560 bootloader and a 16 MHz crystal; a USB-serial adapter with DTR reset uploads like a Mega."
+  ]
+ },
+ "wio-terminal": {
+  "onboard": [
+   "2.4″ 320×240 TFT (Seeed_Arduino_LCD), five-way switch and three buttons, buzzer, light sensor, IR emitter, LIS3DHTR IMU, microSD, Grove ports, RTL8720DN Wi-Fi/BLE"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Buttons: WIO_KEY_A/B/C, WIO_5S_UP/DOWN/LEFT/RIGHT/PRESS; Wi-Fi through rpcWiFi after updating the RTL8720 firmware."
+  ]
+ },
+ "due": {
+  "onboard": [
+   "LED on 13, TX/RX LEDs",
+   "Programming port (ATmega16U2, uploads and Serial) and Native USB port (SerialUSB)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "3.3 V logic (5 V destroys pins); two DACs (DAC0/DAC1, 12-bit); 84 MHz SAM3X8E; analogReadResolution(12)."
+  ]
+ },
+ "mkr-wifi-1010": {
+  "onboard": [
+   "LED on 6 (LED_BUILTIN)",
+   "RGB LED through the NINA module (WiFiNINA's WiFiDrv.pinMode on 25/26/27)",
+   "LiPo charger (JST), battery on ADC_BATTERY"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "3.3 V; pins D0–D14, A0–A6; Serial1 on 13 (RX) / 14 (TX)."
+  ]
+ },
+ "mkr-zero": {
+  "onboard": [
+   "LED on 32",
+   "microSD slot (SDCARD_SS_PIN 28)",
+   "I2S for audio"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "mkr1000": {
+  "onboard": [
+   "LED on 6",
+   "ATWINC1500 Wi-Fi (WiFi101)",
+   "LiPo charger"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "zero": {
+  "onboard": [
+   "LED on 13 (L), TX/RX LEDs",
+   "Two USB ports: Programming (EDBG debugger, Serial) and Native (SerialUSB)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Upload through the Programming port with the 'Arduino Zero (Programming Port)' board, or the Native port with this board selection."
+  ]
+ },
+ "nano-rp2040-connect": {
+  "onboard": [
+   "LED on 13 (through the RP2040), RGB LED through the NINA module",
+   "u-blox NINA-W102 Wi-Fi/BLE (WiFiNINA, ArduinoBLE)",
+   "LSM6DSOX IMU (Arduino_LSM6DSOX), MP34DT06 PDM mic"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "3.3 V; mbed core: WiFiNINA, not Arduino-Pico's WiFi.h."
+  ]
+ },
+ "uno-wifi-rev2": {
+  "onboard": [
+   "LED on 25 (LED_BUILTIN), TX/RX LEDs",
+   "u-blox NINA-W102 (WiFiNINA)",
+   "LSM6DS3 IMU, ECC608 crypto chip"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "5 V logic on the headers; Serial = USB, Serial1 = 0/1."
+  ]
+ },
+ "lilypad": {
+  "onboard": [
+   "LED on 13"
+  ],
+  "taken": [],
+  "upload": [
+   "FTDI adapter on the 6-pin header; the ATmega328P version runs at 8 MHz."
+  ],
+  "notes": [
+   "Conductive-thread friendly pads; 3.3–5 V from a LiPo through the LilyPad power board."
+  ]
+ },
+ "esp32-wrover-kit": {
+  "onboard": [
+   "ILI9341 LCD on SPI (MOSI 23, MISO 25, SCK 19, CS 22, DC 21, RST 18, backlight 5)",
+   "Camera connector",
+   "microSD (SD_MMC)",
+   "RGB LED on GPIO 0 (red), 2 (green), 4 (blue)",
+   "FT2232 USB-JTAG/serial"
+  ],
+  "taken": [
+   "5",
+   "18",
+   "19",
+   "21",
+   "22",
+   "23",
+   "25"
+  ],
+  "upload": [],
+  "notes": []
+ },
+ "esp32-pico-d4": {
+  "onboard": [
+   "BOOT/EN buttons",
+   "CP2102"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "ESP32-PICO-D4 SiP: GPIO16/17 are internal flash pins and not broken out."
+  ]
+ },
+ "firebeetle-esp32": {
+  "onboard": [
+   "LED on GPIO2",
+   "Charger, battery connector"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D-pin labels on the silkscreen map to GPIOs (D9 = GPIO2); use GPIO numbers."
+  ]
+ },
+ "huzzah-esp8266": {
+  "onboard": [
+   "Red LED on GPIO0 (active-LOW), blue LED on GPIO2 (active-LOW)",
+   "LiPo charger; battery on ADC through a divider"
+  ],
+  "taken": [],
+  "upload": [
+   "Hold GPIO0 while pressing RESET for flash mode if the auto-reset fails (it has none without an FTDI's DTR)."
+  ],
+  "notes": []
+ },
+ "feather-rp2040": {
+  "onboard": [
+   "NeoPixel on GPIO16",
+   "LED on GPIO13",
+   "STEMMA QT (SDA 2, SCL 3)",
+   "LiPo charger"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "pro-micro-rp2040": {
+  "onboard": [
+   "WS2812 on GPIO25",
+   "BOOT and RESET buttons",
+   "Qwiic connector (SDA 16, SCL 17)"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": []
+ },
+ "rp2040-generic": {
+  "onboard": [],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Set Flash Size in Board Options to match the chip (2 MB is the Pico's); LED pin depends on the board."
+  ]
+ },
+ "d1-mini32": {
+  "onboard": [
+   "LED on GPIO2 on most boards",
+   "CH340"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "D1 mini footprint; the D-pin labels of ESP8266 shields do not match the ESP32 GPIO numbers, read the LOLIN pinout."
+  ]
+ },
+ "lolin32": {
+  "onboard": [
+   "LED on GPIO5 (active-LOW)",
+   "LiPo connector with charger"
+  ],
+  "taken": [],
+  "upload": [],
+  "notes": [
+   "Battery voltage is not measured on the plain LOLIN32 (the D32 has that)."
+  ]
+ }
+}

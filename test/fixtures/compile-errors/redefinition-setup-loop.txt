@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/redefinition_setup_loop.ino: In function 'void setup()':
+<sketch>/redefinition_setup_loop.ino:3:6: error: redefinition of 'void setup()'
+      ^~~~~
+<sketch>/redefinition_setup_loop.ino:1:6: note: 'void setup()' previously defined here
+      ^~~~~

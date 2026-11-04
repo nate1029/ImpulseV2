@@ -1,0 +1,8 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/string_literal_to_char.ino: In function 'void setup()':
+<sketch>/string_literal_to_char.ino:2:45: error: invalid conversion from 'const char*' to 'char*' [-fpermissive]
+    2 | void setup() { const char *msg = "hi"; show(msg); }
+      |                                             ^~~
+<sketch>/string_literal_to_char.ino:1:17: note:   initializing argument 1 of 'void show(char*)'
+    1 | void show(char *t) {}
+      |           ~~~~~~^

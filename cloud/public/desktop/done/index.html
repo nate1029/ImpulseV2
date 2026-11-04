@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impulse</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/impulse.css">
+  <link rel="stylesheet" href="/sign-in/sign-in.css">
+  <script type="module" src="/desktop/done/done.js"></script>
+</head>
+<body>
+  <main class="auth">
+    <header class="auth-brand">
+      <svg class="auth-mark" viewBox="0 0 24 24" aria-hidden="true"><polyline points="2 12 6 12 9 3 15 21 18 12 22 12" /></svg>
+      <span class="label">Impulse</span>
+    </header>
+    <section class="auth-card">
+      <svg class="auth-trace" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true">
+        <path class="grid" d="M0 22H400M50 0V44M100 0V44M150 0V44M200 0V44M250 0V44M300 0V44M350 0V44" />
+        <path class="wave" d="M0 30H178L186 30L192 8L198 38L203 26L208 30H400" />
+      </svg>
+      <div class="step">
+        <div class="auth-desktop"><span class="led green" id="led"></span><span id="state">Connected</span></div>
+        <h1 id="title">You're signed in</h1>
+        <p class="sub" id="text">Go back to Impulse. You can close this tab.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

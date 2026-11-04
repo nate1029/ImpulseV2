@@ -1,0 +1,6 @@
+# arduino:avr:uno with arduino:avr@1.8.8
+<sketch>/not_declared.ino: In function 'void loop()':
+<sketch>/not_declared.ino:2:39: error: 'dlay' was not declared in this scope
+                                       ^~~~
+<sketch>/not_declared.ino:2:39: note: suggested alternative: 'delay'
+                                       ^~~~

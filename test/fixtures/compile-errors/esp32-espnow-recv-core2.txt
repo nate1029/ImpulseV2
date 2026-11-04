@@ -1,0 +1,13 @@
+# arduino:esp32:nano_nora with arduino:esp32@2.0.18-arduino.5
+<sketch>/esp32_espnow_recv_core2.ino:3:19: error: 'esp_now_recv_info_t' does not name a type; did you mean 'esp_now_peer_info_t'?
+                   ^~~~~~~~~~~~~~~~~~~
+<sketch>/esp32_espnow_recv_core2.ino:3:19: error: 'esp_now_recv_info_t' does not name a type; did you mean 'esp_now_peer_info_t'?
+                   ^~~~~~~~~~~~~~~~~~~
+<sketch>/esp32_espnow_recv_core2.ino: In function 'void onRecv(const int*, const uint8_t*, int)':
+<sketch>/esp32_espnow_recv_core2.ino:3:99: error: request for member 'src_addr' in '* info', which is of non-class type 'const int'
+                                                                                                   ^~~~~~~~
+<sketch>/esp32_espnow_recv_core2.ino: In function 'void setup()':
+<sketch>/esp32_espnow_recv_core2.ino:7:28: error: invalid conversion from 'void (*)(const int*, const uint8_t*, int)' {aka 'void (*)(const int*, const unsigned char*, int)'} to 'esp_now_recv_cb_t' {aka 'void (*)(const unsigned char*, const unsigned char*, int)'} [-fpermissive]
+                            ^~~~~~
+~/Library/Arduino15/packages/arduino/hardware/esp32/2.0.18-arduino.5/tools/sdk/esp32s3/include/esp_wifi/include/esp_now.h:136:54: note:   initializing argument 1 of 'esp_err_t esp_now_register_recv_cb(esp_now_recv_cb_t)'
+                                    ~~~~~~~~~~~~~~~~~~^~

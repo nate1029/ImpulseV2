@@ -1,0 +1,8 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/esp32_ledc_core3.ino: In function 'void setup()':
+<sketch>/esp32_ledc_core3.ino:2:3: error: 'ledcSetup' was not declared in this scope
+    2 |   ledcSetup(0, 5000, 8);
+      |   ^~~~~~~~~
+<sketch>/esp32_ledc_core3.ino:3:3: error: 'ledcAttachPin' was not declared in this scope; did you mean 'ledcAttach'?
+    3 |   ledcAttachPin(4, 0);
+      |   ^~~~~~~~~~~~~

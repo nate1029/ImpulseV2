@@ -1,0 +1,14 @@
+# arduino:esp32:nano_nora with arduino:esp32@2.0.18-arduino.5
+<sketch>/esp32_timer_core2.ino: In function 'void setup()':
+<sketch>/esp32_timer_core2.ino:4:25: error: too few arguments to function 'hw_timer_t* timerBegin(uint8_t, uint16_t, bool)'
+                         ^
+~/Library/Arduino15/packages/arduino/hardware/esp32/2.0.18-arduino.5/cores/esp32/esp32-hal-timer.h:33:14: note: declared here
+              ^~~~~~~~~~
+<sketch>/esp32_timer_core2.ino:5:35: error: too few arguments to function 'void timerAttachInterrupt(hw_timer_t*, void (*)(), bool)'
+                                   ^
+~/Library/Arduino15/packages/arduino/hardware/esp32/2.0.18-arduino.5/cores/esp32/esp32-hal-timer.h:40:6: note: declared here
+      ^~~~~~~~~~~~~~~~~~~~
+<sketch>/esp32_timer_core2.ino:6:3: error: 'timerAlarm' was not declared in this scope
+   ^~~~~~~~~~
+<sketch>/esp32_timer_core2.ino:6:3: note: suggested alternative: 'timerStart'
+   ^~~~~~~~~~

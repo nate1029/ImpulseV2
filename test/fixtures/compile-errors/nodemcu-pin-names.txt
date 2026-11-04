@@ -1,0 +1,5 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/nodemcu_pin_names.ino: In function 'void setup()':
+<sketch>/nodemcu_pin_names.ino:1:24: error: 'D4' was not declared in this scope; did you mean 'T4'?
+    1 | void setup() { pinMode(D4, OUTPUT); }
+      |                        ^~

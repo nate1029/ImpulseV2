@@ -1,0 +1,4 @@
+# esp32:esp32:esp32 with esp32:esp32@3.3.12
+<sketch>/esp8266_header_on_esp32.ino:1:10: fatal error: ESP8266WiFi.h: No such file or directory
+    1 | #include <ESP8266WiFi.h>
+      |          ^~~~~~~~~~~~~~~
