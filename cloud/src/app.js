@@ -11,6 +11,7 @@ import { createAccountApi } from './account-api.js';
 import { createAdminApi } from './admin-api.js';
 import { createDesktopHandoff } from './desktop.js';
 import { createLearningApi } from './learning.js';
+import { createEmbedder } from './embed.js';
 import { getAccount } from './credits.js';
 
 /**
@@ -35,7 +36,9 @@ export function createApp({ config, pool, background, log = (m) => console.log(m
   const account = createAccountApi(deps);
   const admin = createAdminApi(deps);
   const desktop = createDesktopHandoff(deps);
-  const learning = createLearningApi(deps);
+  // Embeddings for semantic fix/recipe lookup; degrades to exact match without an OpenAI key.
+  const embed = createEmbedder(config, fetchImpl || globalThis.fetch);
+  const learning = createLearningApi({ ...deps, embed });
 
   const app = new Hono();
 
@@ -63,6 +66,9 @@ export function createApp({ config, pool, background, log = (m) => console.log(m
   // Learning from fixes: the apps share (error, fix) records and ask for known fixes.
   app.post('/v1/learn/fixes', (c) => learning.share(c.req.raw));
   app.get('/v1/learn/fixes', (c) => learning.known(c.req.raw));
+  app.post('/v1/learn/outcome', (c) => learning.outcome(c.req.raw));
+  app.post('/v1/learn/recipes', (c) => learning.shareRecipe(c.req.raw));
+  app.get('/v1/learn/recipes', (c) => learning.recipes(c.req.raw));
   app.get('/v1/knowledge/manifest', (c) => learning.manifest(c.req.raw));
 
   app.get('/desktop/complete', (c) => desktop.complete(c.req.raw));

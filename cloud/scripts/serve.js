@@ -6,6 +6,7 @@ import { loadConfig } from '../src/config.js';
 import { createPool } from '../src/db.js';
 import { createApp } from '../src/app.js';
 import { migrate } from '../src/migrate.js';
+import { refreshPlaybooks, refreshManifest } from '../src/learning.js';
 
 const { config, missing } = loadConfig();
 if (!config) {
@@ -23,3 +24,18 @@ const hostname = process.env.HOST || '127.0.0.1';
 serve({ fetch: app.fetch, port, hostname }, () => {
   console.log(`Impulse Cloud on ${config.baseURL} (listening on ${hostname}:${port})`);
 });
+
+// Keep the ranked playbooks and the served manifest warm. Once at start, then
+// daily. Errors are logged, never fatal — the loop falls back to live queries.
+// ponytail: a daily setInterval on one instance is enough; a job queue only if
+// you scale to many instances or need sub-day freshness.
+const refreshKnowledge = async () => {
+  try {
+    await refreshPlaybooks(pool);
+    await refreshManifest(pool);
+  } catch (error) {
+    console.log(`[knowledge] refresh failed: ${error?.message || error}`);
+  }
+};
+refreshKnowledge();
+setInterval(refreshKnowledge, 24 * 60 * 60 * 1000).unref();

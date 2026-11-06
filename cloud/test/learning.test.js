@@ -1,7 +1,7 @@
 import { after, before, describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { setup } from './helpers.js';
-import { validateFix } from '../src/learning.js';
+import { validateFix, validateOutcome, validateRecipe, refreshPlaybooks, refreshManifest } from '../src/learning.js';
 
 const FIX = {
   hash: '9f2b7c1d3e4a5b60', signature: "compile:CODE_ERROR:<file>:<line>: error: 'ledcSetup' was not declared in this scope", kind: 'compile', failureCode: 'CODE_ERROR',
@@ -106,5 +106,75 @@ describe('learning from fixes', () => {
     }
     const over = await t.json('/v1/learn/fixes', FIX, { headers: t.bearer(c.token) });
     assert.equal(over.status, 429);
+  });
+
+  test('outcomes validate and store; ranking prefers a proven fix', async () => {
+    assert.match(validateOutcome(null).error, /Send an outcome/);
+    assert.match(validateOutcome({ hash: '9f2b7c1d3e4a5b60', worked: 'yes', diff: 'x' }).error, /worked must be/);
+    assert.match(validateOutcome({ hash: '9f2b7c1d3e4a5b60', worked: true }).error, /diff or diffHash/);
+
+    const d = await t.signUp('learner-d@impulse.test');
+    const hash = 'c1c1c1c1c1c1c1c1';
+    const base = { ...FIX, hash, errorExcerpt: '<file>:9:3: error: rank-me' };
+    // Fix A: one person. Fix B: one person but a proven success.
+    await t.json('/v1/learn/fixes', { ...base, diff: '@@ -9 +9 @@\n-A_OLD\n+A_NEW' }, { headers: t.bearer(d.token) });
+    await t.json('/v1/learn/fixes', { ...base, diff: '@@ -9 +9 @@\n-B_OLD\n+B_NEW' }, { headers: t.bearer(d.token) });
+    const good = await t.json('/v1/learn/outcome', { hash, diff: '@@ -9 +9 @@\n-B_OLD\n+B_NEW', worked: true }, { headers: t.bearer(d.token) });
+    assert.equal(good.status, 200);
+    assert.equal((await good.json()).stored, true);
+
+    await refreshPlaybooks(t.pool);
+    const res = await t.request(`/v1/learn/fixes?hash=${hash}&board=${encodeURIComponent(base.board)}`, { headers: t.bearer(d.token) });
+    const body = await res.json();
+    assert.equal(body.fixes, 2);
+    // The playbook now serves it, and the proven fix (B) ranks first.
+    assert.match(body.known[0].diff, /B_NEW/);
+    assert.equal(body.known[0].worked, 1);
+  });
+
+  test('outcomes are refused when not signed in', async () => {
+    assert.equal((await t.json('/v1/learn/outcome', { hash: '9f2b7c1d3e4a5b60', worked: true, diffHash: 'deadbeef' })).status, 401);
+  });
+
+  test('recipe validation bounds fields', () => {
+    assert.match(validateRecipe({}).error, /task it solves/);
+    assert.match(validateRecipe({ task: 'blink' }).error, /needs its sketch/);
+    const ok = validateRecipe({ task: 'Blink an LED', sketch: 'void setup(){}', board: 'uno', proof: 'bogus', libraries: ['Servo', 2] });
+    assert.equal(ok.value.proof, 'compiled');
+    assert.deepEqual(ok.value.libraries, ['Servo']);
+  });
+
+  test('recipes are off by default, on when enabled, and retrievable by task', async () => {
+    const e = await t.signUp('learner-e@impulse.test');
+    const recipe = { task: 'Read a DHT22 and print the temperature', sketch: '#include <DHT.h>\nvoid setup(){}\nvoid loop(){}', board: 'esp32:esp32:esp32s3', core: 'esp32:esp32', coreVersion: '3.3.12', libraries: ['DHT sensor library'], proof: 'compiled' };
+
+    // Off by default.
+    const off = await t.json('/v1/learn/recipes', recipe, { headers: t.bearer(e.token) });
+    assert.deepEqual(await off.json(), { ok: true, stored: false, reason: 'recipes_off' });
+
+    // Owner turns recipe sharing on.
+    await t.pool.query(`insert into app_setting (key, value) values ('recipeSharingEnabled', 'true') on conflict (key) do update set value = 'true'`);
+    t.settings.invalidate();
+
+    const on = await t.json('/v1/learn/recipes', recipe, { headers: t.bearer(e.token) });
+    assert.equal(on.status, 200);
+    assert.equal((await on.json()).stored, true);
+
+    // Exact task+board lookup (no embedder needed) returns the sketch.
+    const got = await (await t.request(`/v1/learn/recipes?task=${encodeURIComponent(recipe.task)}&board=${encodeURIComponent(recipe.board)}`, { headers: t.bearer(e.token) })).json();
+    assert.equal(got.recipes.length, 1);
+    assert.match(got.recipes[0].sketch, /DHT\.h/);
+    assert.equal(got.recipes[0].proof, 'compiled');
+
+    await t.pool.query(`delete from app_setting where key = 'recipeSharingEnabled'`);
+    t.settings.invalidate();
+  });
+
+  test('refreshManifest writes a served row that the manifest endpoint uses', async () => {
+    const data = await refreshManifest(t.pool);
+    assert.equal(data.version, 1);
+    const { rows } = await t.pool.query('select data from knowledge_manifest where id = 1');
+    assert.equal(rows.length, 1);
+    assert.ok(Array.isArray(rows[0].data.signatures));
   });
 });

@@ -28,6 +28,9 @@ export const DEFAULTS = Object.freeze({
   announcement: '',
   // Accept fix records from the apps (learning from fixes); off stops intake, lookups still work.
   learningEnabled: true,
+  // Accept opt-in working-sketch recipes. Off by default: a recipe carries the
+  // user's own sketch, so this is a deliberate owner choice, not a default.
+  recipeSharingEnabled: false,
   // monthlyCredits is the allowance per period; periodHours null means a
   // calendar month. The free plan refills a small allowance every few hours,
   // so a student who runs out waits rather than paying; paid plans are monthly.
@@ -56,6 +59,7 @@ const RULES = {
   dailyBudgetUsd: (v) => (isNum(v, 0, 1_000_000) ? null : 'a number from 0 to 1,000,000'),
   maintenance: (v) => (typeof v === 'boolean' ? null : 'true or false'),
   learningEnabled: (v) => (typeof v === 'boolean' ? null : 'true or false'),
+  recipeSharingEnabled: (v) => (typeof v === 'boolean' ? null : 'true or false'),
   announcement: (v) => (typeof v === 'string' && v.length <= 280 ? null : 'text up to 280 characters'),
   routing: (v) => {
     if (!v || typeof v !== 'object' || Array.isArray(v)) return 'an object with a model per kind of work';
