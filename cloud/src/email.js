@@ -1,5 +1,9 @@
-// One-time codes by email, through Resend's HTTP API. Without an API key
-// (local development) the code is printed to the server log instead.
+// One-time codes by email. SMTP (e.g. Gmail) is tried first because mail sent
+// through the provider's own authenticated servers lands in the inbox without
+// a domain of our own; then Brevo, then Resend. Without any of them (local
+// development) the code is printed to the server log instead.
+// nodemailer is imported lazily (only when an SMTP send actually happens), so
+// the module loads fine where SMTP isn't used.
 
 const SUBJECTS = {
   'email-verification': 'Your Impulse verification code',
@@ -37,15 +41,39 @@ function parseFrom(from) {
   return m ? { name: m[1] || 'Impulse', email: m[2].trim() } : { name: 'Impulse', email: String(from || '').trim() };
 }
 
+// Which sender a config uses, in precedence order. Pure, so it is easy to test.
+export function pickProvider(config) {
+  if (config.smtpUrl || (config.gmailUser && config.gmailPass)) return 'smtp';
+  if (config.brevoKey) return 'brevo';
+  if (config.resendKey) return 'resend';
+  return 'log';
+}
+
 /**
- * @param {{ resendKey: string, brevoKey: string, from: string }} config
+ * @param {{ smtpUrl?: string, gmailUser?: string, gmailPass?: string, resendKey?: string, brevoKey?: string, from: string }} config
  * @param {(msg: string) => void} [log]
  */
 export function createMailer(config, log = console.log) {
+  let transport = null; // built once, on first SMTP send
+  const smtp = async () => {
+    if (transport) return transport;
+    const { default: nodemailer } = await import('nodemailer');
+    transport = config.smtpUrl
+      ? nodemailer.createTransport(config.smtpUrl)
+      : nodemailer.createTransport({ service: 'gmail', auth: { user: config.gmailUser, pass: config.gmailPass } });
+    return transport;
+  };
+
   return async function sendCode({ email, otp, type }) {
     const message = codeEmail(type, otp);
-    // Brevo first (single verified sender, no domain), then Resend, then log.
-    if (config.brevoKey) {
+    const provider = pickProvider(config);
+    // SMTP (Gmail etc.) first: authenticated sender, best deliverability.
+    if (provider === 'smtp') {
+      const t = await smtp();
+      await t.sendMail({ from: config.from, to: email, subject: message.subject, text: message.text, html: message.html });
+      return;
+    }
+    if (provider === 'brevo') {
       const sender = parseFrom(config.from);
       const res = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',

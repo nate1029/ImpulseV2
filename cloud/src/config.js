@@ -17,6 +17,13 @@ export function loadConfig(env = process.env) {
   const production = env.VERCEL_ENV === 'production' || env.NODE_ENV === 'production';
   const resendKey = env.RESEND_API_KEY || '';
   const brevoKey = env.BREVO_API_KEY || '';
+  // SMTP (e.g. Gmail): best inbox delivery with no domain, since the mail is
+  // sent through the provider's own authenticated servers. SMTP_URL wins;
+  // otherwise a Gmail address + App Password.
+  const smtpUrl = env.SMTP_URL || '';
+  const gmailUser = env.GMAIL_USER || '';
+  const gmailPass = env.GMAIL_APP_PASSWORD || '';
+  const smtp = Boolean(smtpUrl || (gmailUser && gmailPass));
 
   return {
     missing,
@@ -44,15 +51,19 @@ export function loadConfig(env = process.env) {
         ? { clientId: env.GITHUB_CLIENT_ID, clientSecret: env.GITHUB_CLIENT_SECRET }
         : null,
       email: {
-        resendKey,
-        // Brevo (single verified sender, no domain needed). Takes precedence
-        // over Resend when set.
+        // SMTP first (Gmail etc.): authenticated sender, best deliverability
+        // with no domain of our own.
+        smtpUrl, gmailUser, gmailPass,
+        // Brevo (single verified sender, no domain needed).
         brevoKey,
-        // Resend's shared test sender until a domain of ours is verified there.
+        // Resend (needs a verified sending domain).
+        resendKey,
+        // For SMTP/Gmail set this to the sending Gmail address; for Resend it
+        // must be on a verified domain.
         from: env.EMAIL_FROM || 'Impulse <onboarding@resend.dev>',
         // Without a mail service, codes are printed to the server log, which
         // is only acceptable outside production.
-        enabled: Boolean(resendKey) || Boolean(brevoKey) || !production,
+        enabled: smtp || Boolean(brevoKey) || Boolean(resendKey) || !production,
       },
       adminEmails: list(env.ADMIN_EMAILS).map((e) => e.toLowerCase()),
       trustedOrigins: list(env.TRUSTED_ORIGINS),
